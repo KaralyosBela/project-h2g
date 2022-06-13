@@ -1,1 +1,17 @@
 
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+li > a {
+    text-decoration: none;
+}
+
+.navigation-bar ul li {
+    display: inline;
+    float: left;
+    padding: 5px;
+    text-align: center;
+    list-style-type: none;
+}
+
