@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,99 +5,103 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="cvcss.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700;900&display=swap" rel="stylesheet">
     <title>Karalyos Bela CV</title>
 </head>
 
 <body>
-    <div class="container">
-        <nav class="navigation-bar">
-            <ul>
-                <li><a href="#1">Personal details</a></li>
-                <li><a href="#2">Professional summary</a></li>
-                <li><a href="#3">Employment history</a></li>
-                <li><a href="#4">Education & languages</a></li>
-                <li><a href="#5">Skills</a></li>
-                <li><a href="#6">Hobbies</a></li>
-            </ul>
-        </nav>
-        <br>
+    <nav class="navbar">
+    <ul class="menu-list">
+        <li><a href="#personalDetails">Personal details</a></li>
+        <li><a href="#profSummary">Professional summary</a></li>
+        <li><a href="#employHist">Employment history</a></li>
+        <li><a href="#educationLanguages">Education & languages</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#hobbies">Hobbies</a></li>
+    </ul>
+</nav>
 
-        <section>
-            <h2>Personal details</h2>
-            <ul>
-                <li>Address: Üteg utca 17/B, Budapest XIII. kerület 1139 Hungary</li>
-                <li>Phone: +36 xxx xxxx</li>
-                <li>Email: xxxxx@gmail.com</li>
-                <li>LinkedIn. </li>
-            </ul>
-        </section>
-        <section>
-            <h2>Professional summary</h2>
-            <p>Frontend developer with continuously gaining backend knowledge. My creativity comes from my video-making
-                past, which followed me through my first project as a frontend developer.
-                After my first project, I worked both frontend and backend as well to this day. Through the years I
-                started to learn new technologies such as Vue.js, and its ecosystem, MongoDB, and Node.js. I would like
-                to pursue a carrier in frontend development with a modern JavaScript framework, or in backend
-                development.</p>
-        </section>
-        <section>
-            <h2>Employment history</h2>
-            <p>Junior frontend developer, Omnit solutions ltd. (Oct 2019 — may 2022), Budapest XIII. kerület
-                Designed and created forms based on JavaScript and drag & drop technologies for the Hungarian national
-                treasury. Efficiently worked in a team to achieve project goals and deadlines. Helped to create
-                different applications from front to back-end with a custom full-stack framework based on Java and
-                Bootstrap. Learned the basics of SAPUI5.
-                Web developer intern, Curver. (Dec 2018 — Mar 2019), Ebes
-                Created a website with HTML/CSS, Bootstrap, and MySQL. Provided office employees with continual IT
-                support.</p>
-        </section>
-        <section>
-            <h2>Education & languages</h2>
-            <p>University of Debrecen, Bachelor of Science
+<!-- 
+    <section id="personalDetails">
+        <h2>Personal details</h2>
+        <ul>
+            <li>Address: Üteg utca 17/B, Budapest XIII. kerület 1139 Hungary</li>
+            <li>Phone: +36 xxx xxxx</li>
+            <li>Email: xxxxx@gmail.com</li>
+            <li>LinkedIn. </li>
+        </ul>
+    </section>
 
-                Computer Science Engineering
-                Sep 2015 — Jun 2019 Debrecen
-                Sirius Gimnázium, Szakgimnázium És Szakközépiskola
+    <section id="profSummary">
+        <h2>Professional summary</h2>
+        <p>Frontend developer with continuously gaining backend knowledge. My creativity comes from my video-making
+            past, which followed me through my first project as a frontend developer.
+            After my first project, I worked both frontend and backend as well to this day. Through the years I
+            started to learn new technologies such as Vue.js, and its ecosystem, MongoDB, and Node.js. I would like
+            to pursue a carrier in frontend development with a modern JavaScript framework, or in backend
+            development.</p>
+    </section>
 
-                National Qualifications Register: System Administrator
-                Sep 2013 — Jun 2015 Debrecen</p>
-        </section>
-        <section>
-            <h2>Skills</h2>
-            <table>
-                <tr>
-                    <td>Skill</td>
-                    <td>Level</td>
-                </tr>
-                <tr>
-                    <td>JavaScript</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td>Node.js</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td>Vue</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td>Java</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td>Firebase</td>
-                    <td>3</td>
-                </tr>
-            </table>
-        </section>
-        <section>
-            <h2>Hobbies</h2>
-            <pre>
+    <section id="employHist">
+        <h2>Employment history</h2>
+        <p>Junior frontend developer, Omnit solutions ltd. (Oct 2019 — may 2022), Budapest XIII. kerület
+            Designed and created forms based on JavaScript and drag & drop technologies for the Hungarian national
+            treasury. Efficiently worked in a team to achieve project goals and deadlines. Helped to create
+            different applications from front to back-end with a custom full-stack framework based on Java and
+            Bootstrap. Learned the basics of SAPUI5.
+            Web developer intern, Curver. (Dec 2018 — Mar 2019), Ebes
+            Created a website with HTML/CSS, Bootstrap, and MySQL. Provided office employees with continual IT
+            support.</p>
+    </section>
+
+    <section id="educationLanguages">
+        <h2>Education & languages</h2>
+        <p>University of Debrecen, Bachelor of Science
+
+            Computer Science Engineering
+            Sep 2015 — Jun 2019 Debrecen
+            Sirius Gimnázium, Szakgimnázium És Szakközépiskola
+
+            National Qualifications Register: System Administrator
+            Sep 2013 — Jun 2015 Debrecen</p>
+    </section>
+
+    <section id="skills">
+        <h2>Skils</h2>
+        <table>
+            <tr>
+                <td>Skill</td>
+                <td>Level</td>
+            </tr>
+            <tr>
+                <td>JavaScript</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>Node.js</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>Vue</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>Java</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>Firebase</td>
+                <td>3</td>
+            </tr>
+        </table>
+    </section>
+
+    <section id="hobbies">
+        <h2>Hobbies</h2>
+        <pre>
                 <code>
 let hobbies = {
     gaming: 🎮,
@@ -107,8 +110,7 @@ let hobbies = {
 }
                 </code>
             </pre>
-        </section>
-    </div>
+    </section> -->
 </body>
 
 </html>
