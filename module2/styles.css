@@ -1,0 +1,199 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+h2 {
+    color: #009879;
+    margin: 15px 0;
+    font-weight: 900;
+    font-size: 2rem;
+    text-align: left;
+}
+
+h2,
+h3,
+h4 {
+    padding-left: 10px;
+    text-align: left;
+}
+
+h3,
+h4 {
+    font-weight: 700;
+    margin: 0;
+}
+
+li>a {
+    text-decoration: none;
+    color: black;
+}
+
+li>a:hover {
+    color: #009879;
+    transition: all 200ms ease-in;
+}
+
+#container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.navbar>ul {
+    padding: 0;
+}
+
+.menu-list {
+    border-radius: 10px;
+    margin: 15px 0;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 10px #c9c9c9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.menu-list li {
+    padding: 25px;
+    text-align: center;
+    list-style-type: none;
+}
+
+/*work history list*/
+.workHistoryList {
+    margin-right: 25px;
+}
+
+.workHistoryList li {
+    margin: 10px;
+}
+
+/*SECTIONS CSS*/
+.sections {
+    padding: 10px;
+    margin-bottom: 15px;
+    text-align: justify;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+/* responsive view */
+@media (max-width: 860px) {
+    .menu-list {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .menu-list li {
+        padding: 5px;
+        margin: 5px;
+        list-style-type: none;
+        text-align: left;
+    }
+}
+
+
+/* responsive view */
+@media (max-width: 600px) {
+
+    .hobbiesList {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #personalDetails {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+/*table*/
+table {
+    width: 300px;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.23);
+}
+
+th,
+td {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+table thead tr {
+    font-weight: bold;
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    max-width: 200px;
+    border-radius: 5px;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+img {
+    border-radius: 5px 5px 0 0;
+}
+
+.card-container {
+    padding: 2px 16px;
+}
+
+.card-container>h4,
+p {
+    margin: 5px;
+    padding: 5px;
+}
+
+#personalDetails {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hobbiesList {
+    display: flex;
+    justify-content: center;
+    padding-left: 0px;
+}
+
+.hobbiesList li {
+    list-style-type: none;
+    font-weight: 300;
+    font-size: 1.5rem;
+    padding: 5px;
+    padding-left: 10px;
+}
+
+.details{
+    height: 100%;
+    padding: 15px;
+}
+
+.details li {
+    list-style-type: none;
+}
+
+.sticky {
+    position: sticky;
+    top: 0;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    padding: 2em 0;
+}
