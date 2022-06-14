@@ -1,199 +1,158 @@
-* {
-    font-family: 'Montserrat', sans-serif;
-}
+<!DOCTYPE html>
+<html lang="en">
 
-h2 {
-    color: #009879;
-    margin: 15px 0;
-    font-weight: 900;
-    font-size: 2rem;
-    text-align: left;
-}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cvcss.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700;900&display=swap" rel="stylesheet">
+    <title>Karalyos Bela CV</title>
+</head>
 
-h2,
-h3,
-h4 {
-    padding-left: 10px;
-    text-align: left;
-}
+<body>
+    <div id="container">
+        <nav class="navbar sticky">
+            <ul class="menu-list">
+                <li><a href="#personalDetails">Personal details</a></li>
+                <li><a href="#profSummary">Professional summary</a></li>
+                <li><a href="#employHist">Employment history</a></li>
+                <li><a href="#educationLanguages">Education & languages</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#hobbies">Hobbies</a></li>
+            </ul>
+        </nav>
 
-h3,
-h4 {
-    font-weight: 700;
-    margin: 0;
-}
+        <main id="content">
+            <section id="personalDetails" class="sections">
+                <!-- <h2>Personal details</h2> -->
+                <div>
+                    <div class="card">
+                        <img src="profpic.jpg" alt="Avatar" style="width:100%">
+                        <div class="card-container">
+                            <h4><b>Karalyos Béla</b></h4>
+                            <p>Software engineer</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <ul class="details">
+                        <li>Address: Üteg utca 17/B, Budapest XIII. kerület 1139 Hungary</li>
+                        <li>Phone: +36 xxx xxxx</li>
+                        <li>Email: xxxxx@gmail.com</li>
+                        <li>LinkedIn. </li>
+                    </ul>
+                </div>
 
-li>a {
-    text-decoration: none;
-    color: black;
-}
+            </section>
 
-li>a:hover {
-    color: #009879;
-    transition: all 200ms ease-in;
-}
-
-#container {
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.navbar>ul {
-    padding: 0;
-}
-
-.menu-list {
-    border-radius: 10px;
-    margin: 15px 0;
-    background-color: rgb(255, 255, 255);
-    box-shadow: 0 0 10px #c9c9c9;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-}
-
-.menu-list li {
-    padding: 25px;
-    text-align: center;
-    list-style-type: none;
-}
-
-/*work history list*/
-.workHistoryList {
-    margin-right: 25px;
-}
-
-.workHistoryList li {
-    margin: 10px;
-}
-
-/*SECTIONS CSS*/
-.sections {
-    padding: 10px;
-    margin-bottom: 15px;
-    text-align: justify;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-}
-
-/* responsive view */
-@media (max-width: 860px) {
-    .menu-list {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .menu-list li {
-        padding: 5px;
-        margin: 5px;
-        list-style-type: none;
-        text-align: left;
-    }
-}
+            <section id="profSummary" class="sections">
 
 
-/* responsive view */
-@media (max-width: 600px) {
+                <h2>Professional summary</h2>
+                <p>Frontend developer with continuously gaining backend knowledge. My creativity comes from my
+                    video-making
+                    past, which followed me through my first project as a frontend developer.
+                </p>
+                <p>
+                    After my first project, I worked both frontend and backend as well to this day. Through the years I
+                    started to learn new technologies such as Vue.js, and its ecosystem, MongoDB, and Node.js. I would
+                    like
+                    to pursue a carrier in frontend development with a modern JavaScript framework, or in backend
+                    development.
+                </p>
+            </section>
 
-    .hobbiesList {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+            <section id="employHist" class="sections">
+                <h2>Employment history</h2>
+                <h3>Junior frontend developer, Omnit solutions ltd.</h3>
+                <h4>(Oct 2019 — may 2022), Budapest XIII. kerület</h4>
+                <ul class="workHistoryList">
+                    <li> Designed and created forms based on JavaScript and drag & drop technologies for the Hungarian
+                        national treasury.</li>
+                    <li>Efficiently worked in a team to achieve project goals and deadlines.</li>
+                    <li>Helped to create
+                        different applications from front to back-end with a custom full-stack framework based on Java
+                        and
+                        Bootstrap.</li>
+                    <li>Learned the basics of SAPUI5.</li>
+                </ul>
 
-    #personalDetails {
-        display: flex;
-        flex-direction: column;
-    }
-}
-
-/*table*/
-table {
-    width: 300px;
-    border-collapse: collapse;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.23);
-}
-
-th,
-td {
-    border: 1px solid black;
-    padding: 10px;
-}
-
-table thead tr {
-    font-weight: bold;
-    background-color: #009879;
-    color: #ffffff;
-    text-align: left;
-}
-
-table tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
-}
+                <h3>Web developer intern, Curver.</h3>
+                <h4>(Dec 2018 — Mar 2019), Ebes</h4>
+                <p>
+                    Designed and created forms based on JavaScript and drag & drop technologies for the Hungarian
+                    national
+                </p>
 
 
-.card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    transition: 0.3s;
-    max-width: 200px;
-    border-radius: 5px;
-}
+            </section>
 
-.card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-}
+            <section id="educationLanguages" class="sections">
+                <h2>Education & languages</h2>
 
-img {
-    border-radius: 5px 5px 0 0;
-}
+                <h3>University of Debrecen, Bachelor of Science</h3>
+                <ul class="workHistoryList">
+                    <li>Computer Science Engineering</li>
+                    <li>Sep 2015 — Jun 2019 Debrecen.</li>
+                </ul>
+                
+                <h3>Sirius Gimnázium, Szakgimnázium És Szakközépiskola</h3>
+                <ul class="workHistoryList">
+                    <li>National Qualifications Register: System Administratorg</li>
+                    <li>Sep 2013 — Jun 2015 Debrecen.</li>
+                </ul>
+ 
+            </section>
 
-.card-container {
-    padding: 2px 16px;
-}
+            <section id="skills" class="sections">
+                <h2>Skills</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Skill</td>
+                            <td>Level</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>JavaScript</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td>Node.js</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td>Vue</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td>Java</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td>Firebase</td>
+                            <td>3</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
 
-.card-container>h4,
-p {
-    margin: 5px;
-    padding: 5px;
-}
+            <section id="hobbies" class="sections">
+                <h2>Hobbies</h2>
+                <ul class="hobbiesList">
+                    <li>Gaming 🎮</li>
+                    <li>Guitar 🎸</li>
+                    <li>Drumming 🥁</li>
+                </ul>
+            </section>
+        </div>
+    </main>
+</body>
+<footer>&copy; Copyright 2022 Béla Karalyos</footer>
 
-#personalDetails {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
-.hobbiesList {
-    display: flex;
-    justify-content: center;
-    padding-left: 0px;
-}
-
-.hobbiesList li {
-    list-style-type: none;
-    font-weight: 300;
-    font-size: 1.5rem;
-    padding: 5px;
-    padding-left: 10px;
-}
-
-.details{
-    height: 100%;
-    padding: 15px;
-}
-
-.details li {
-    list-style-type: none;
-}
-
-.sticky {
-    position: sticky;
-    top: 0;
-}
-
-footer {
-    display: flex;
-    justify-content: center;
-    padding: 2em 0;
-}
+</html>
