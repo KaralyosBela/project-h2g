@@ -12,8 +12,8 @@ function DailyWeather(props) {
         <img src = {`http://openweathermap.org/img/wn/${icon}.png`} alt="hehe"/>
         </div>
         <div className={classes.inner}>
-            <div>Temp {temperature}</div>
-            <div>City {city}</div>
+            <div><span>Temp</span> {temperature}</div>
+            <div><span>City</span> {city}</div>
         </div>
         </div>
         </Card>
