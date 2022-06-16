@@ -1,5 +1,9 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import Container from "../components/Container";
+import DailyWeather from "../components/DailyWeather";
+import classes from './Custom.module.css';
+//TODO: itt kell e a classes, ha csak sima h1-re akarok hivatkozni
 
 function WeatherPage() {
   const [weather, setWeather] = useState("");
@@ -7,11 +11,9 @@ function WeatherPage() {
   // (async () => {
   //   try {
   //     //.env nem mukodik
-  //     const API_KEY = "b203fc1026c241d3e13b9713a3665286"
   //     const response = await axios.get(
-  //       `https://api.openweathermap.org/data/2.5/weather?lat=33.44&lon=-94.04&appid=${API_KEY}`
+  //       `https://api.openweathermap.org/data/2.5/weather?lat=33.44&lon=-94.04&appid=${process.env.REACT_APP_API_KEY}`
   //     );
-  //     console.log(response);
   //     setWeather({
   //       temp: response.data.temp,
   //       city: response.data.name,
@@ -25,13 +27,13 @@ function WeatherPage() {
   useEffect(() => {
     const fetchWeatherApi = async () => {
       try {
-        const API_KEY = "b203fc1026c241d3e13b9713a3665286";
         const response = await axios.get(
-          `https://api.openweathermap.org/data/2.5/weather?lat=33.44&lon=-94.04&appid=${API_KEY}`
+          `https://api.openweathermap.org/data/2.5/weather?lat=33.44&lon=-94.04&appid=${process.env.REACT_APP_API_KEY}&unit=metric`
         );
         setWeather({
           temperature: response.data.main.temp,
           city: response.data.name,
+          icon: response.data.weather[0].icon
         });
       } catch (error) {
         console.log(error);
@@ -43,9 +45,10 @@ function WeatherPage() {
 
   return (
     <div>
-      <h1>This is the weather page.</h1>
-      <p>{weather.temperature}</p>
-      <p>{weather.city}</p>
+      <Container>
+        <h1>This is the weather page.</h1>
+        <DailyWeather weatherInfo={weather} />
+      </Container>
     </div>
   );
 }
