@@ -1,6 +1,7 @@
 import React from 'react';
 import {Route, Routes } from 'react-router-dom';
 import WeatherPage from './pages/WeatherPage';
+import WeeklyWeatherPage from './pages/WeeklyWeatherPage';
 import MainPage from './pages/MainPage';
 import MainNavigation from './components/MainNavigation';
 
@@ -10,7 +11,8 @@ function App() {
     <MainNavigation/>
     <Routes>
       <Route path="/" element={<MainPage/>}/>
-      <Route path="/weather" element={<WeatherPage/>}/>
+      <Route path="/daily-weather" element={<WeatherPage/>}/>
+      <Route path="/weekly-weather" element={<WeeklyWeatherPage/>}/>
     </Routes>
     </div>
   );

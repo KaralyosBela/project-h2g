@@ -5,11 +5,14 @@
   background-color: rgb(255, 255, 255);
   height: 100px;
   box-shadow: 0 0 10px #c9c9c9;
+  position: sticky;
+  top: 0px;
 }
 
 nav ul {
   display: flex;
   list-style-type: none;
+  align-items: center;
   padding: 0px;
   margin: 25px;
 }
@@ -20,6 +23,8 @@ nav ul li {
   border: 1px solid black;
   border-radius: 10px;
   margin-right: 15px;
+  text-align: center;
+  align-items: center;
 }
 
 a {

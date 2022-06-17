@@ -6,7 +6,7 @@ function DailyWeather(props) {
     const {temperature, city, icon} = props.weatherInfo;
 
     return <div>
-        <Card>
+        <Card day="Today">
         <div className={classes.outer}>
         <div>
         <img src = {`http://openweathermap.org/img/wn/${icon}.png`} alt="hehe"/>

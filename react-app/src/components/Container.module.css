@@ -1,6 +1,6 @@
 .container {
-    max-width: 1200px;
-    background-color: rgb(255, 255, 255);
+    max-width: 1400px;
+    background-color: rgba(255, 255, 255, 0.464);
     margin: 25px auto;
     padding: 15px;
     border-radius: 10px;

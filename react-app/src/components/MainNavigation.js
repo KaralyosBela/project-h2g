@@ -11,7 +11,10 @@ function MainNavigation() {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/weather">Weather</Link>
+            <Link to="/daily-weather">Todays Weather</Link>
+          </li>
+          <li>
+            <Link to="/weekly-weather">Weekly Weather</Link>
           </li>
         </ul>
       </nav>

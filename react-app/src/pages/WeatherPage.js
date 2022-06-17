@@ -1,12 +1,14 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Container from "../components/Container";
 import DailyWeather from "../components/DailyWeather";
 import classes from './Custom.module.css';
 //TODO: itt kell e a classes, ha csak sima h1-re akarok hivatkozni
 
 function WeatherPage() {
-  const [weather, setWeather] = useState("");
+  const [weather, setWeather] = useState([]);
+  const [cityName, setCityName] = useState(["unkown"]);
+  const cityInputRef = useRef('');
 
   // (async () => {
   //   try {
@@ -43,11 +45,19 @@ function WeatherPage() {
     //Csak mount-nal akarunk fetchelni
   }, []);
 
+  const clicked = () => {
+    setCityName(cityInputRef.current.value);
+  }
+
   return (
     <div>
       <Container>
-        <h1>This is the weather page.</h1>
-        <DailyWeather weatherInfo={weather} />
+        <div className={classes.searchBar}>
+        <input type="text" ref={cityInputRef}></input>
+        <button onClick={clicked}>Search city</button>
+        </div>
+        <h1>Todays weather in [ {cityName} ]</h1>
+        {!!weather && <DailyWeather weatherInfo={weather} />}
       </Container>
     </div>
   );
