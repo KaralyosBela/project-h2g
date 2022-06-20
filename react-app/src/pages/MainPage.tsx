@@ -1,5 +1,5 @@
 import Container from "../components/Container";
-//import classes from './Custom.module.css';
+import "../styles/Custom.module.css";
 
 function MainPage() {
   return (

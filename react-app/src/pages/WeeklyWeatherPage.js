@@ -2,6 +2,7 @@ import Container from "../components/Container";
 import WeeklyWeather from "../components/WeeklyWeather";
 import axios from "axios";
 import { useState, useEffect, useRef } from "react";
+import "../styles/Custom.module.css";
 
 function WeeklyWeatherPage() {
 

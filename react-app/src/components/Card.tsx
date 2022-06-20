@@ -1,4 +1,4 @@
-//import classes from "./Card.module.css";
+import classes from "../styles/Card.module.css";
 
 type Props = {
   day: String;
@@ -7,7 +7,7 @@ type Props = {
 
 const Card: React.FC<Props> = ({ day, children }) => {
   return (
-    <div>
+    <div className={classes.card}>
       <h1>{day}</h1>
       {children}
     </div>

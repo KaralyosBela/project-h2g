@@ -2,7 +2,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Container from "../components/Container";
 import DailyWeather from "../components/DailyWeather";
-import Weather from '../components/Weather.interface';
+import Weather from "../interfaces/Weather.interface";
+import "../styles/Custom.module.css";
 
 const WeatherPage: React.FC = () => {
   const [weather, setWeather] = useState<Weather | null>(null);
@@ -29,19 +30,17 @@ const WeatherPage: React.FC = () => {
 
     fetchWeatherApi();
     //Csak mount-nal akarunk fetchelni
-  }, []);
+  }, [weather]);
 
   return (
-    <div>
-      <Container>
-      {/* <div className={classes.searchBar}>
-        <input type="text" ref={cityInputRef}></input>
-        <button onClick={clicked}>Search city</button>
-        </div> */}
-        <h1>Todays weather in [ ]</h1>
-        {!!weather && <DailyWeather weatherInfo={weather}/>}
-      </Container>
-    </div>
+    <Container>
+      <div>
+        <input type="text"></input>
+        <button>Search city</button>
+      </div>
+      <h1>Todays weather in [ ]</h1>
+      {!!weather && <DailyWeather weatherInfo={weather} />}
+    </Container>
   );
 };
 
