@@ -1,5 +1,5 @@
 import Card from "./Card";
-import Weather from "../interfaces/Weather.interface";
+import {Weather} from "../interfaces/Weather.interface";
 import classes from "../styles/DailyWeather.module.css";
 
 type Props = {

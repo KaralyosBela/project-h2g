@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Container from "../components/Container";
 import DailyWeather from "../components/DailyWeather";
-import Weather from "../interfaces/Weather.interface";
+import {Weather} from "../interfaces/Weather.interface";
 import "../styles/Custom.module.css";
 
 const WeatherPage: React.FC = () => {
@@ -30,7 +30,7 @@ const WeatherPage: React.FC = () => {
 
     fetchWeatherApi();
     //Csak mount-nal akarunk fetchelni
-  }, [weather]);
+  }, []);
 
   return (
     <Container>
