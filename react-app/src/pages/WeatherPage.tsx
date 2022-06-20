@@ -12,7 +12,7 @@ const WeatherPage: React.FC = () => {
     const fetchWeatherApi = async () => {
       try {
         const response = await axios.get(
-          `https://api.openweathermap.org/data/2.5/weather?lat=30.44&lon=-94.04&appid=${process.env.REACT_APP_API_KEY}&unit=metric`
+          `https://api.openweathermap.org/data/2.5/weather?lat=30.44&lon=-94.04&appid=${process.env.REACT_APP_API_KEY}&units=metric`
         );
 
         setWeather({

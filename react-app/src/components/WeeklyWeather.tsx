@@ -33,10 +33,10 @@ const WeeklyWeather: React.FC<Props> = ({ dailyWeather }) => {
               </div>
               <div className={classes.inner}>
                 <div>
-                  <span>{weather.temperature}</span>
+                  <span>{weather.temperature} C&deg;</span>
                 </div>
                 <div>
-                  <span>{weather.main}</span>
+                  <span>{weather.description}</span>
                 </div>
               </div>
             </div>

@@ -6,8 +6,6 @@ type Props = {
   weatherInfo: Weather;
 };
 
-//const DailyWeather: React.FC<Weather> = ({ temperature, city, icon }) => {
-
 const DailyWeather: React.FC<Props> = ({ weatherInfo }) => {
   return (
     <Card day="Monday">
@@ -20,10 +18,10 @@ const DailyWeather: React.FC<Props> = ({ weatherInfo }) => {
         </div>
         <div className={classes.inner}>
           <div>
-            <span>Temp</span> {weatherInfo.temperature}
+            <span>{weatherInfo.temperature} C&deg;</span>
           </div>
           <div>
-            <span>City</span> {weatherInfo.city}
+            <span>{weatherInfo.city}</span>
           </div>
         </div>
       </div>

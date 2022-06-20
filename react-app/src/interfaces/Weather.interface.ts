@@ -6,6 +6,6 @@ export interface Weather {
 
 export interface IWeeklyWeather {
   temperature: string,
-  main: string,
+  description: string,
   icon: string
 }
