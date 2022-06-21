@@ -31,6 +31,10 @@ const WeatherPage: React.FC = () => {
     console.log(data);
   };
 
+  // useEffect(() => {
+
+  // }[cityName])
+
   useEffect(() => {
     searchCity();
   },[])
