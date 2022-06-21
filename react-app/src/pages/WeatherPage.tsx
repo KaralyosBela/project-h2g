@@ -1,11 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
-import Container from "../components/Container";
-import DailyWeather from "../components/DailyWeather";
+import {Container} from "../components/Container";
+import {DailyWeather} from "../components/DailyWeather";
 import { Weather, ICity } from "../interfaces/Weather.interface";
 import "../styles/Custom.module.css";
 
-const WeatherPage: React.FC = () => {
+export const WeatherPage: React.FC = () => {
   const [weather, setWeather] = useState<Weather | null>(null);
   const [cityData, setCityData] = useState<ICity | null>(null);
   const [error, setError] = useState<boolean>(false);
@@ -78,5 +78,3 @@ const WeatherPage: React.FC = () => {
     </Container>
   );
 };
-
-export default WeatherPage;

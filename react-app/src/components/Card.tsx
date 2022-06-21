@@ -5,7 +5,7 @@ type Props = {
   children: React.ReactNode;
 };
 
-const Card: React.FC<Props> = ({ day, children }) => {
+export const Card: React.FC<Props> = ({ day, children }) => {
   return (
     <div className={classes.card}>
       <h1>{day}</h1>
@@ -14,4 +14,3 @@ const Card: React.FC<Props> = ({ day, children }) => {
   );
 };
 
-export default Card;

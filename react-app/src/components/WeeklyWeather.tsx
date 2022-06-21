@@ -1,5 +1,5 @@
 import classes from "../styles/WeeklyWeather.module.css";
-import Card from "./Card";
+import {Card} from "./Card";
 import { IWeeklyWeather } from "../interfaces/Weather.interface";
 
 type Props = {
@@ -17,7 +17,7 @@ const days= [
     "Monday"
   ];
 
-const WeeklyWeather: React.FC<Props> = ({ dailyWeather }) => {
+export const WeeklyWeather: React.FC<Props> = ({ dailyWeather }) => {
   return (
     <div className={classes.weekly}>
       {dailyWeather.map((weather, id) => {
@@ -45,5 +45,3 @@ const WeeklyWeather: React.FC<Props> = ({ dailyWeather }) => {
     </div>
   );
 };
-
-export default WeeklyWeather;

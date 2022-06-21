@@ -1,11 +1,11 @@
-import Container from "../components/Container";
-import WeeklyWeather from "../components/WeeklyWeather";
+import {Container} from "../components/Container";
+import {WeeklyWeather} from "../components/WeeklyWeather";
 import axios from "axios";
 import { useState, useEffect, useRef } from "react";
 import "../styles/Custom.module.css";
 import { IWeeklyWeather } from "../interfaces/Weather.interface";
 
-const WeeklyWeatherPage: React.FC = () => {
+export const WeeklyWeatherPage: React.FC = () => {
   const [dailyWeather, setDailyWeather] = useState<IWeeklyWeather[]>([]);
 
   useEffect(() => {
@@ -40,5 +40,3 @@ const WeeklyWeatherPage: React.FC = () => {
     </Container>
   );
 };
-
-export default WeeklyWeatherPage;

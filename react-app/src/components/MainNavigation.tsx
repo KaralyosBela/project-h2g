@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import classes from "../styles/MainNavigation.module.css";
 
-function MainNavigation() {
+export const MainNavigation = () => {
   return (
     <header className={classes.header}>
       <div className={classes.logo}>Weather application</div>
@@ -21,5 +21,3 @@ function MainNavigation() {
     </header>
   );
 }
-
-export default MainNavigation;
