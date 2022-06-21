@@ -15,7 +15,6 @@ const WeeklyWeatherPage: React.FC = () => {
           `https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&appid=${process.env.REACT_APP_API_KEY}&units=metric`
         );
 
-        console.log(response.data.daily);
         //TODO: az apinak kellene interface, és az lenne a type az itemnek
         const asd = response.data.daily.map((item: any) => {
           return {

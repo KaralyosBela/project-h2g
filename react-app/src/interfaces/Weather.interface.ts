@@ -9,3 +9,10 @@ export interface IWeeklyWeather {
   description: string,
   icon: string
 }
+
+export interface ICity {
+  country: string,
+  lat: number,
+  lon: number,
+  city: string
+}

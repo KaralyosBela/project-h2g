@@ -17,7 +17,6 @@ const days= [
     "Monday"
   ];
 
-
 const WeeklyWeather: React.FC<Props> = ({ dailyWeather }) => {
   return (
     <div className={classes.weekly}>
