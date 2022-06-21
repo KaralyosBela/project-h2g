@@ -16,7 +16,7 @@ const WeeklyWeatherPage: React.FC = () => {
         );
 
         //TODO: az apinak kellene interface, és az lenne a type az itemnek
-        const asd = response.data.daily.map((item: any) => {
+        const weatherData = response.data.daily.map((item: any) => {
           return {
             temperature: item.temp.day,
             description: item.weather[0].description,
@@ -24,17 +24,13 @@ const WeeklyWeatherPage: React.FC = () => {
           };
         });
 
-        setDailyWeather(asd);
+        setDailyWeather(weatherData);
       } catch (error) {
         console.log(error);
       }
     };
     fetchWeatherApi();
   }, []);
-
-  // miért lesz ez null elsőnek
-  // console.log(dailyWeather);
-
 
   return (
     <Container>
