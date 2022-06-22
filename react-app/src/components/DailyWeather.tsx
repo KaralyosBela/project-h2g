@@ -1,4 +1,4 @@
-import Card from "./Card";
+import {Card} from "./Card";
 import {Weather} from "../interfaces/Weather.interface";
 import classes from "../styles/DailyWeather.module.css";
 
@@ -6,7 +6,7 @@ type Props = {
   weatherInfo: Weather;
 };
 
-const DailyWeather: React.FC<Props> = ({ weatherInfo }) => {
+export const DailyWeather: React.FC<Props> = ({ weatherInfo }) => {
   return (
     <Card day="Monday">
       <div className={classes.outer}>
@@ -28,5 +28,3 @@ const DailyWeather: React.FC<Props> = ({ weatherInfo }) => {
     </Card>
   );
 };
-
-export default DailyWeather;
