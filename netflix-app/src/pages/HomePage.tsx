@@ -49,8 +49,7 @@ const [moviesCount, setMoviesCount] = useState<number>(0);
       <Layout>
         <Banner />
         <FilterBar movieCount={moviesCount}/>
-        <MovieList moviesList={movies}>
-        </MovieList>
+        <MovieList moviesList={movies}/>
         <Footer />
       </Layout>
     </div>
