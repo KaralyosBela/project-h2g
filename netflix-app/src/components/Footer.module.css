@@ -7,12 +7,14 @@
     margin-top: 10px;
 }
 
+/* miért nem csak erre a css-re vonatokozik ez? */
 h4{
     margin: 0px;
     text-align: center;
     color: white;
     line-height: 70px;
     backdrop-filter: blur(4px);
+    letter-spacing: 3px;
 }
 
 span {
