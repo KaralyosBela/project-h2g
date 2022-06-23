@@ -9,7 +9,7 @@
 }
 
 .picture {
-  background-image: url("./moviebanner2.PNG");
+  background-image: url("../../assets/moviebanner2.PNG");
   background-size: cover;
   background-position: center;
   margin-bottom: 10px;
