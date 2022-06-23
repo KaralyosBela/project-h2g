@@ -19,6 +19,7 @@ export const FilterBar: React.FC = () => {
           </select>
         </div>
       </div>
+      <hr/>
       <div className={classes.movieCounter}>
         <span>50</span> movies found
       </div>
