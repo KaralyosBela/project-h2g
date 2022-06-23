@@ -9,6 +9,11 @@ export const Movie: React.FC<Props> = ({movie}) => {
   return (
     <div>
       <div className={classes.card}>
+        <div className={classes.circle}>
+          <div className={classes.firstDot}></div>
+          <div className={classes.secondDot}></div>
+          <div className={classes.thirdDot}></div>
+        </div>
         {/* <div className={classes.image}></div> */}
         <img className={classes.image} src={movie.thumbnail} alt="alt"></img>
         <div className={classes.info}>

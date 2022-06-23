@@ -5,6 +5,7 @@
   flex-direction: column;
   color: white;
   margin-bottom: 10px;
+  position: relative;
 }
 
 .card:hover {
@@ -41,4 +42,38 @@
   display: flex;
   margin-left: 5px;
   font-size: 12px;
+}
+
+.circle {
+  background-color: #F65261;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  position: absolute;
+  cursor: pointer;
+  left: 290px;
+  top: 10px;
+}
+
+.firstDot, .secondDot, .thirdDot{
+  background-color: white;
+  width: 5px;
+  height: 5px;
+  border-radius: 100%;
+  position: absolute;
+}
+
+.firstDot {
+  left:12px;
+  top:4px
+}
+
+.secondDot{
+  left:12px;
+  top:12px
+}
+
+.thirdDot{
+  left:12px;
+  top:20px
 }
