@@ -1,0 +1,59 @@
+.filterBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 50px;
+  background-color: #232323;
+  color: white;
+  text-transform: uppercase;
+}
+
+.categories {
+  display: flex;
+  padding: 0px;
+}
+
+.categories > li {
+  list-style-type: none;
+  padding: 0px 15px;
+  cursor: pointer;
+}
+
+.categories > li:hover {
+  color: #f65261;
+  transition: color 0.2s ease-in;
+}
+
+.sortSection {
+  display: flex;
+  align-items: center;
+}
+
+.sortSection > div {
+  padding: 0px 10px;
+}
+
+.sortSection > select {
+  cursor: pointer;
+  margin: 0px 15px;
+  width: 150px;
+  height: 25px;
+  background-color: #232323;
+  color: white;
+  border-radius: 4px;
+  border-color: #f65261;
+  text-align: center;
+}
+
+.movieCounter {
+    background-color: #232323;
+    color: white;
+    padding: 10px;
+    padding-left: 65px;
+}
+
+hr {
+    color: white;
+    margin: 0px;
+    background-color: #232323;
+}

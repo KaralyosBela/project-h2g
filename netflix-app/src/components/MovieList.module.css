@@ -1,5 +1,9 @@
 .movieContainer {
-    top: 10px;
-    height: 1000px;
-    background-color: rgba(101, 26, 26, 0.496);
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+.mainSection {
+  background-color: #232323;
 }
