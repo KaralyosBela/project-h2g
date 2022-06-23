@@ -1,7 +1,13 @@
 import classes from "./MovieList.module.css";
 
-export const MovieList: React.FC = () => {
-  return <div className={classes.movieContainer}>
+interface Props {
+  children: React.ReactNode;
+}
 
-  </div>;
+export const MovieList: React.FC<Props> = ({ children }) => {
+  return (
+    <div className={classes.mainSection}>
+      <div className={classes.movieContainer}>{children}</div>
+      </div>
+  );
 };

@@ -1,10 +1,10 @@
 .footer {
     height: 70px;
     background-color: black;
-    background-image: url("./moviebanner2.PNG");
+    background-image: url("../../assets/moviebanner2.PNG");
     background-size: cover;
     background-position: center;
-    margin-top: 10px;
+    /* margin-top: 10px; */
 }
 
 /* miért nem csak erre a css-re vonatokozik ez? */
