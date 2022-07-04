@@ -1,6 +1,10 @@
 import classes from "./FilterBar.module.css";
 
-export const FilterBar: React.FC = () => {
+interface Props {
+  movieCount: number
+}
+
+export const FilterBar: React.FC<Props> = ({movieCount}) => {
   return (
     <div>
       <div className={classes.filterBar}>
@@ -21,7 +25,7 @@ export const FilterBar: React.FC = () => {
       </div>
       <hr/>
       <div className={classes.movieCounter}>
-        <span>50</span> movies found
+        <span>{movieCount}</span> movies found
       </div>
     </div>
   );
