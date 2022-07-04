@@ -1,5 +1,5 @@
-.card {
-border-radius: 10px;
+.logincard .card {
+  border-radius: 10px;
   position: absolute;
   width: 686px;
   height: 560px;
@@ -13,14 +13,14 @@ border-radius: 10px;
   transform: translate(-50%, -50%);
 }
 
-.logincard h1{
+.logincard h1 {
   color: white;
   font-size: 35px;
   margin-left: 52px;
 }
 
 .logincard p {
-    color: white;
+  color: white;
 }
 
 .logincard .inputs {
@@ -52,7 +52,7 @@ border-radius: 10px;
 .logincard .action button {
   width: 186px;
   height: 57px;
-  border: 1.5px solid #F65261;
+  border: 1.5px solid #f65261;
   border-radius: 4px;
   font-size: 20px;
   margin: 0px 10px;
@@ -60,14 +60,14 @@ border-radius: 10px;
 }
 
 .logincard .action .resetBtn {
-    color: #f65261;
-    border-color: #f65261;
-    background-color: #424242;
+  color: #f65261;
+  border-color: #f65261;
+  background-color: #424242;
 }
 
 .logincard .action .loginBtn {
-    color: white;
-    border-color: #f65261;
-    background-color: #f65261;
-    margin-right: 6px;
+  color: white;
+  border-color: #f65261;
+  background-color: #f65261;
+  margin-right: 6px;
 }
