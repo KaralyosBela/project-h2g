@@ -1,7 +1,11 @@
+import { Layout } from "../ui/Layout";
+import { LoginCard } from "../components/LoginCard";
 export const LoginPage: React.FC = () => {
-  return <div>
-    <h1>
-    Login page
-    </h1>
-  </div>;
+  return (
+    <div>
+      <Layout>
+        <LoginCard />
+      </Layout>
+    </div>
+  );
 };
