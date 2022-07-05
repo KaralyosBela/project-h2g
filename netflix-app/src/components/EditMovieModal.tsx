@@ -3,7 +3,7 @@ import { ModalHolder } from "./ModalHolder";
 
 export const EditMovieModal: React.FC = () => {
   return (
-    <ModalHolder>
+    // <ModalHolder>
     <div className={classes.modal}>
       <h1>EDIT MOVIE</h1>
       <form>
@@ -42,6 +42,6 @@ export const EditMovieModal: React.FC = () => {
         </div>
       </form>
     </div>
-    </ModalHolder>
+    // </ModalHolder>
   );
 };

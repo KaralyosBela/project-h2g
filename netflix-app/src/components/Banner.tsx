@@ -7,7 +7,7 @@ export const Banner: React.FC = () => {
 
   return (
     <div className={classes.picture}>
-      {openAddModal && <AddMovieModal/>}
+      <AddMovieModal show={openAddModal} hide={() => setOpenAddModal(false)}/>
       <div className={classes.banner}>
         <div className={classes.upperBar}>
           <div>

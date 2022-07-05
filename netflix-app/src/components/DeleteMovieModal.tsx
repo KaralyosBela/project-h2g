@@ -3,7 +3,7 @@ import { ModalHolder } from "./ModalHolder";
 
 export const DeleteMovieModal: React.FC = () => {
   return (
-    <ModalHolder>
+    // <ModalHolder>
     <div>
       <div className={classes.deleteModal}>
         <h1 className={classes.title}>DELETE MOVIE</h1>
@@ -14,6 +14,6 @@ export const DeleteMovieModal: React.FC = () => {
         <div className={classes.close}>X</div>
       </div>
     </div>
-    </ModalHolder>
+    // </ModalHolder>
   );
 };
