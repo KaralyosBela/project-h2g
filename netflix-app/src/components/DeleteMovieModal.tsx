@@ -1,9 +1,10 @@
 import classes from "./DeleteMovieModal.module.css";
+import { ModalHolder } from "./ModalHolder";
 
 export const DeleteMovieModal: React.FC = () => {
   return (
+    <ModalHolder>
     <div>
-      return{" "}
       <div className={classes.deleteModal}>
         <h1 className={classes.title}>DELETE MOVIE</h1>
         <div className={classes.subtitle}>
@@ -13,5 +14,6 @@ export const DeleteMovieModal: React.FC = () => {
         <div className={classes.close}>X</div>
       </div>
     </div>
+    </ModalHolder>
   );
 };

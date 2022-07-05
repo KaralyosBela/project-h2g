@@ -1,8 +1,13 @@
+import { useState } from "react";
+import { AddMovieModal } from "./AddMovieModal";
 import classes from "./Banner.module.css";
 
 export const Banner: React.FC = () => {
+  const [openAddModal, setOpenAddModal] = useState<boolean>(false);
+
   return (
     <div className={classes.picture}>
+      {openAddModal && <AddMovieModal/>}
       <div className={classes.banner}>
         <div className={classes.upperBar}>
           <div>
@@ -10,7 +15,7 @@ export const Banner: React.FC = () => {
               <span>netflix</span>Roulette
             </h4>
           </div>
-          <button className={classes.addButton}>+ ADD MOVIE</button>
+          <button className={classes.addButton} onClick={()=> setOpenAddModal(!openAddModal)}>+ ADD MOVIE</button>
         </div>
         <div className={classes.title}>
           <h1>FIND YOUR MOVIE</h1>

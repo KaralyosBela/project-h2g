@@ -1,4 +1,5 @@
 .modal {
+  z-index: 1;
   width: 976px;
   height: 860px;
   background-color: rgb(64, 64, 64);
@@ -6,7 +7,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-
   position: absolute;
   top: 50%;
   left: 50%;
@@ -108,4 +108,14 @@
   color: #f65261;
   font-size: 16px;
   padding: 20px 0px 12px 0px;
+}
+
+
+.modal .close {
+  position: absolute;
+  color: white;
+  top: 15px;
+  left: 940px;
+  cursor: pointer;
+  font-size: 25px;
 }

@@ -8,10 +8,10 @@ export const LoginPage: React.FC = () => {
   return (
     <div>
       <Layout>
-        {/* <AddMovieModal/> */}
+        <AddMovieModal/>
         {/* <EditMovieModal/> */}
         {/* <AddMovieSuccessModal/> */}
-        <DeleteMovieModal/>
+        {/* <DeleteMovieModal/> */}
         {/* <LoginCard /> */}
       </Layout>
     </div>
