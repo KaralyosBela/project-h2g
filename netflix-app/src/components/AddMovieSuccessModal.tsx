@@ -3,7 +3,6 @@ import { ModalHolder } from "./ModalHolder";
 
 export const AddMovieSuccessModal: React.FC = () => {
   return (
-    // <ModalHolder>
     <div className={classes.successModal}>
       <div className={classes.icon}>(icon helye)</div>
       <h1 className={classes.title}>CONGRATULATIONS!</h1>
@@ -12,6 +11,5 @@ export const AddMovieSuccessModal: React.FC = () => {
       </div>
       <div className={classes.close}>X</div>
     </div>
-    // </ModalHolder>
   );
 };

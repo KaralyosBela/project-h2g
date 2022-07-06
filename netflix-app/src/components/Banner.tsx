@@ -5,9 +5,13 @@ import classes from "./Banner.module.css";
 export const Banner: React.FC = () => {
   const [openAddModal, setOpenAddModal] = useState<boolean>(false);
 
+  const hideModal = () => {
+    setOpenAddModal(false);
+  }
+
   return (
     <div className={classes.picture}>
-      <AddMovieModal show={openAddModal} hide={() => setOpenAddModal(false)}/>
+      <AddMovieModal show={openAddModal} hide={hideModal}/>
       <div className={classes.banner}>
         <div className={classes.upperBar}>
           <div>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { IMovies } from "../interfaces/movies.interface";
 import { DeleteMovieModal } from "./DeleteMovieModal";
 import { EditMovieModal } from "./EditMovieModal";
@@ -17,10 +17,15 @@ export const Movie: React.FC<Props> = ({ movie }) => {
     setModalOpen(!modalOpen);
   }
 
+  const hideModal = () => {
+    setEditModalOpen(false);
+    setDeleteModalOpen(false);
+  }
+
   return (
     <div>
-      {deleteModalOpen && <DeleteMovieModal/>}
-      {editModalOpen && <EditMovieModal/>}
+      <DeleteMovieModal hide={hideModal} show={deleteModalOpen}/>
+      <EditMovieModal hide={hideModal} show={editModalOpen}/>
       <div className={classes.card}>
         <div className={classes.circle} onClick={toggleModal}>
           <div className={classes.firstDot}></div>

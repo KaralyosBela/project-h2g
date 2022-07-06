@@ -1,6 +1,4 @@
-import { useState } from "react";
 import classes from "./AddMovieModal.module.css";
-import { ModalHolder } from "./ModalHolder";
 
 interface Props {
   show: boolean;
@@ -8,13 +6,11 @@ interface Props {
 }
 
 export const AddMovieModal: React.FC<Props> = ({ show, hide }) => {
-  const [openAddModal, setOpenAddModal] = useState<boolean>(false);
-
   return (
-    //
     <div>
       {show && (
-        <ModalHolder show={openAddModal} hide={() => setOpenAddModal(false)}>
+        <div>
+          <div className={classes.overlay} onClick={hide}/>
           <div className={classes.modal}>
             <h1>ADD MOVIE</h1>
             <form>
@@ -56,7 +52,7 @@ export const AddMovieModal: React.FC<Props> = ({ show, hide }) => {
               X
             </div>
           </div>
-        </ModalHolder>
+        </div>
       )}
     </div>
   );
