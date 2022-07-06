@@ -17,6 +17,7 @@
   list-style-type: none;
   padding: 0px 15px;
   cursor: pointer;
+  transition: color 0.2s ease-in;
 }
 
 .categories > li:hover {
