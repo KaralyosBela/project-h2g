@@ -77,3 +77,20 @@
   left:12px;
   top:20px
 }
+
+.dropdownMenu {
+  display: flex;
+  flex-direction: column;
+  background-color: #F65261;
+  width: 80px;
+  align-items: center;
+  position: absolute;
+  top: 45px;
+  left: 265px;
+  border-radius: 10px;
+}
+
+.editModal, .deleteModal {
+  padding: 5px;
+  cursor: pointer;
+}

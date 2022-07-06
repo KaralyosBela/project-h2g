@@ -5,6 +5,7 @@ import { Footer } from "../components/Footer";
 import { MovieList } from "../components/MovieList";
 import { Layout } from "../ui/Layout";
 import { IMovies } from "../interfaces/movies.interface";
+import { AddMovieModal } from "../components/AddMovieModal";
 
 export const HomePage: React.FC = () => {
 const [movies, setMovies] = useState<IMovies[]>([])
