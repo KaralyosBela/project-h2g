@@ -5,7 +5,6 @@ import { Footer } from "../components/Footer";
 import { MovieList } from "../components/MovieList";
 import { Layout } from "../ui/Layout";
 import { IMovies } from "../interfaces/movies.interface";
-import { AddMovieModal } from "../components/AddMovieModal";
 
 export const HomePage: React.FC = () => {
 const [movies, setMovies] = useState<IMovies[]>([])
@@ -13,7 +12,7 @@ const [moviesCount, setMoviesCount] = useState<number>(0);
 
   const getMovies = async () => {
     try {
-      const response = await fetch("movies.json", {
+      const response = await fetch("https://my-json-server.typicode.com/karalyosbela/json-server/db", {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
@@ -21,6 +20,7 @@ const [moviesCount, setMoviesCount] = useState<number>(0);
       });
       const data = await response.json();
    
+      //local json servernél data.movies.map
       const movieData = data.movies.map((item: IMovies) => {
         return {
             title: item.title,
