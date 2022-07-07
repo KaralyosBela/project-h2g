@@ -11,22 +11,20 @@ export const getMovies = createAsyncThunk(
       const response = await axios.get(
         "https://my-json-server.typicode.com/karalyosbela/json-server/movies"
       );
+      
+      const movieData = response.data.map((item: IMovies) => {
+        return {
+          title: item.title,
+          release_date: item.release_date,
+          genre: item.genre,
+          thumbnail: item.thumbnail,
+          movie_url: item.movie_url,
+          rating: item.rating,
+          runtime: item.runtime,
+        };
+      });
 
-      const data = response.data;
-
-      // const movieData = data.movies.map((item: IMovies) => {
-      //   return {
-      //     title: item.title,
-      //     release_date: item.release_date,
-      //     genre: item.genre,
-      //     thumbnail: item.thumbnail,
-      //     movie_url: item.movie_url,
-      //     rating: item.rating,
-      //     runtime: item.runtime,
-      //   };
-      // });
-
-      return data;
+      return movieData;
     } catch (error) {}
   }
 );
