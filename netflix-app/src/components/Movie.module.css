@@ -8,6 +8,7 @@
   position: relative;
   transition: all 0.3s ease-in-out;
   border: 1px solid rgba(255, 255, 255, 0.221);
+  cursor: pointer;
 }
 
 .card:hover {
