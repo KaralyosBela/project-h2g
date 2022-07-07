@@ -12,7 +12,7 @@ const [moviesCount, setMoviesCount] = useState<number>(0);
 
   const getMovies = async () => {
     try {
-      const response = await fetch("https://my-json-server.typicode.com/karalyosbela/json-server/movies", {
+      const response = await fetch("https://my-json-server.typicode.com/karalyosbela/json-server/db", {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
@@ -21,7 +21,7 @@ const [moviesCount, setMoviesCount] = useState<number>(0);
       const data = await response.json();
    
       //local json servernél data.movies.map
-      const movieData = data.map((item: IMovies) => {
+      const movieData = data.movies.map((item: IMovies) => {
         return {
             title: item.title,
             release_date: item.release_date,
