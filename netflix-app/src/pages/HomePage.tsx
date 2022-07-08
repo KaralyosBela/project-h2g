@@ -51,7 +51,7 @@ const moviesCount = useAppSelector((state) => state.movies.numberOfMovies);
 
   useEffect(() => {
     dispatch(getMovies());
-  }, []);
+  }, []); //eddig benne volt a moviesCount
 
   return (
     <div>

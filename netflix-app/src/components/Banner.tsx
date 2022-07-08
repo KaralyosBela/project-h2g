@@ -1,33 +1,39 @@
-import { useState } from "react";
+import React, { useRef, useState } from "react";
 import { AddMovieModal } from "./AddMovieModal";
 import classes from "./Banner.module.css";
 import { useDispatch } from "react-redux";
-import { getMovies, addMovie, addMovies } from "../features/moviesSlice";
+import { updateSearchedMovie, addMovies, searchMovie } from "../features/moviesSlice";
 import { AppDispatch } from "../app/store";
+import { useAppSelector } from "../app/hooks";
 
 export const Banner: React.FC = () => {
   const [openAddModal, setOpenAddModal] = useState<boolean>(false);
-
   const dispatch = useDispatch<AppDispatch>();
+  const searchedMovie = useAppSelector((state) => state.movies.searchedMovie);
 
   const hideModal = () => {
     setOpenAddModal(false);
   };
 
-  const feccs = () => {
-    dispatch(getMovies());
-  };
+  const inputChange = (e: React.FormEvent<HTMLInputElement>) => {
+    dispatch(updateSearchedMovie(e.currentTarget.value))
+  }
+
+  const search = () => {
+    dispatch(searchMovie())
+  }
 
   const add = () => {
     dispatch(
       addMovies({
+        id: "x",
         title: "x",
         release_date: "X",
-        genre: "item.genre",
-        thumbnail: "item.thumbnail",
-        movie_url: "item.movie_url",
-        rating: "item.rating",
-        runtime: "item.runtime",
+        genre: "item",
+        thumbnail: "item",
+        movie_url: "ite",
+        rating: "item",
+        runtime: "item",
       })
     );
   };
@@ -56,8 +62,8 @@ export const Banner: React.FC = () => {
           <h1>FIND YOUR MOVIE</h1>
         </div>
         <div className={classes.searchBar}>
-          <input placeholder="What do you want to watch?"></input>
-          <button className={classes.searchbutton} onClick={feccs}>
+          <input placeholder="What do you want to watch?" onChange={inputChange}></input>
+          <button className={classes.searchbutton} onClick={search}>
             SEARCH
           </button>
         </div>

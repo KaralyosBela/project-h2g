@@ -25,6 +25,10 @@
   transition: color 0.2s ease-in;
 }
 
+.categories > li:active {
+  border-bottom: 1px solid #f65261;
+}
+
 .sortSection {
   display: flex;
   align-items: center;
