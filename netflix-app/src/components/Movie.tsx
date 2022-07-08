@@ -1,8 +1,12 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { IMovies } from "../interfaces/movies.interface";
 import { DeleteMovieModal } from "./DeleteMovieModal";
 import { EditMovieModal } from "./EditMovieModal";
 import classes from "./Movie.module.css";
+import {deleteMovie} from "../features/moviesSlice";
+import { AppDispatch } from "../app/store";
+import { useAppSelector } from "../app/hooks";
+import { useDispatch } from "react-redux";
 
 interface Props {
   movie: IMovies;
@@ -13,6 +17,8 @@ export const Movie: React.FC<Props> = ({ movie }) => {
   const [editModalOpen, setEditModalOpen] = useState<boolean>(false);
   const [deleteModalOpen, setDeleteModalOpen] = useState<boolean>(false);
 
+  const dispatch = useDispatch<AppDispatch>();
+
   const toggleModal = () => {
     setModalOpen(!modalOpen);
   }
@@ -22,9 +28,13 @@ export const Movie: React.FC<Props> = ({ movie }) => {
     setDeleteModalOpen(false);
   }
 
+  const delMovie = () => {
+    dispatch(deleteMovie(movie))
+  }
+
   return (
     <div>
-      <DeleteMovieModal hide={hideModal} show={deleteModalOpen}/>
+      <DeleteMovieModal hide={hideModal} show={deleteModalOpen} delMovie={delMovie}/>
       <EditMovieModal hide={hideModal} show={editModalOpen}/>
       <div className={classes.card}>
         <div className={classes.circle} onClick={toggleModal}>

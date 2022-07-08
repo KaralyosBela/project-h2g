@@ -31,15 +31,27 @@ export const getMovies = createAsyncThunk(
   }
 );
 
-export const addMovies = createAsyncThunk(
+export const addMovie = createAsyncThunk(
   "movies/addMovie",
-  async (args: IMovies, { rejectWithValue }) => {
+  async (movie: IMovies, { rejectWithValue }) => {
     //adding a uniqe id to the movie
-    args.id = v4();
+    movie.id = v4();
     try {
-      axios.post("http://localhost:8000/movies", 
-        args
+      axios.post("http://localhost:8000/movies", movie);
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const deleteMovie = createAsyncThunk(
+  "movies/deleteMovie",
+  async (movie: IMovies, { rejectWithValue }) => {
+    try {
+      const response = await axios.delete(
+        `http://localhost:8000/movies/${movie.id}`
       );
+      console.log(response);
     } catch (error) {
       return rejectWithValue(error);
     }
@@ -48,36 +60,44 @@ export const addMovies = createAsyncThunk(
 
 interface moviesState {
   moviesAPI: IMovies[];
-  error: string;
-  status: boolean;
   numberOfMovies: number;
   movies: IMovies[];
-  searchedMovie: string
+  searchedMovie: string;
+  movie: IMovies;
 }
 
 const initialState: moviesState = {
   moviesAPI: [],
-  error: "",
-  status: false,
   numberOfMovies: 0,
   movies: [],
-  searchedMovie: ""
+  searchedMovie: "",
+  movie: {
+    id: "",
+    genre: "",
+    movie_url: "",
+    rating: "",
+    release_date: "",
+    runtime: "",
+    thumbnail: "",
+    title: "",
+  },
 };
 
 export const moviesSlice = createSlice({
   name: "movies",
   initialState,
-  //A reducerben lévő fgv-ek fogják updatelni a statet
   reducers: {
-   updateSearchedMovie: (state, action) => {
-    state.searchedMovie = action.payload;
-   },
-   searchMovie: (state) => {
-    console.log(state.searchedMovie);
-    state.movies = state.moviesAPI.filter((movie) => movie.title.toLowerCase().includes(state.searchedMovie.toLowerCase()));
-    state.numberOfMovies = state.movies.length;
-    console.log(state.movies);
-   }
+    updateSearchedMovie: (state, action) => {
+      state.searchedMovie = action.payload;
+    },
+    searchMovie: (state) => {
+      console.log(state.searchedMovie);
+      state.movies = state.moviesAPI.filter((movie) =>
+        movie.title.toLowerCase().includes(state.searchedMovie.toLowerCase())
+      );
+      state.numberOfMovies = state.movies.length;
+      console.log(state.movies);
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -86,8 +106,6 @@ export const moviesSlice = createSlice({
         //ide raktam át a map loopot a thunkból akkor hibát kaptam
         (state, action: PayloadAction<IMovies>) => {
           state.moviesAPI = Object.values(action.payload);
-          state.status = true;
-          state.error = "";
           state.numberOfMovies = state.moviesAPI.length;
           console.log(state.moviesAPI);
 
@@ -97,19 +115,18 @@ export const moviesSlice = createSlice({
       )
       .addCase(getMovies.pending, (state) => {
         console.log("Pending");
-        state.status = false;
       })
       //actionnak type kell még
       .addCase(getMovies.rejected, (state, action) => {
         console.log(action.payload);
-        state.error = "error bruh";
-      }).addCase(
-        addMovies.fulfilled,
+      })
+      .addCase(
+        addMovie.fulfilled,
         //ide raktam át a map loopot a thunkból akkor hibát kaptam
         (state) => {
           state.numberOfMovies++;
         }
-      )
+      );
   },
 });
 

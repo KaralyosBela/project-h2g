@@ -1,11 +1,10 @@
 import classes from "./DeleteMovieModal.module.css";
-
 interface Props {
   hide: () => void;
+  delMovie: () => void;
   show: boolean;
 }
-
-export const DeleteMovieModal: React.FC<Props> = ({ hide, show }) => {
+export const DeleteMovieModal: React.FC<Props> = ({ hide, show, delMovie }) => {
   return (
     <div>
       {show && (
@@ -16,7 +15,7 @@ export const DeleteMovieModal: React.FC<Props> = ({ hide, show }) => {
             <div className={classes.subtitle}>
               Are you sure you want to delete this movie?
             </div>
-            <button>CONFIRM</button>
+            <button onClick={delMovie}>CONFIRM</button>
             <div className={classes.close} onClick={hide}>
               X
             </div>

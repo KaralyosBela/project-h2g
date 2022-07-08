@@ -1,8 +1,8 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { AddMovieModal } from "./AddMovieModal";
 import classes from "./Banner.module.css";
 import { useDispatch } from "react-redux";
-import { updateSearchedMovie, addMovies, searchMovie } from "../features/moviesSlice";
+import { updateSearchedMovie, addMovie, searchMovie } from "../features/moviesSlice";
 import { AppDispatch } from "../app/store";
 import { useAppSelector } from "../app/hooks";
 
@@ -23,24 +23,24 @@ export const Banner: React.FC = () => {
     dispatch(searchMovie())
   }
 
-  const add = () => {
-    dispatch(
-      addMovies({
-        id: "x",
-        title: "x",
-        release_date: "X",
-        genre: "item",
-        thumbnail: "item",
-        movie_url: "ite",
-        rating: "item",
-        runtime: "item",
-      })
-    );
-  };
+  // const add = () => {
+  //   dispatch(
+  //     addMovie({
+  //       id: "x",
+  //       title: "x",
+  //       release_date: "X",
+  //       genre: "item",
+  //       thumbnail: "item",
+  //       movie_url: "ite",
+  //       rating: "item",
+  //       runtime: "item",
+  //     })
+  //   );
+  // };
 
   return (
     <div className={classes.picture}>
-      <AddMovieModal show={openAddModal} hide={hideModal} />
+      <AddMovieModal show={openAddModal} hide={hideModal}/>
       <div className={classes.banner}>
         <div className={classes.upperBar}>
           <div>
@@ -52,7 +52,7 @@ export const Banner: React.FC = () => {
             className={classes.addButton}
             onClick={() => {
               setOpenAddModal(!openAddModal);
-              add();
+              // add();
             }}
           >
             + ADD MOVIE
