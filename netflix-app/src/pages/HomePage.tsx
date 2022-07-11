@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Banner } from "../components/Banner";
 import { FilterBar } from "../components/FilterBar";
 import { Footer } from "../components/Footer";
 import { MovieList } from "../components/MovieList";
 import { Layout } from "../ui/Layout";
-import { IMovies } from "../interfaces/movies.interface";
+// import { IMovies } from "../interfaces/movies.interface";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../app/store";
 import { getMovies } from "../features/moviesSlice";
@@ -58,7 +58,7 @@ const moviesCount = useAppSelector((state) => state.movies.numberOfMovies);
       <Layout>
         <Banner />
         <FilterBar movieCount={moviesCount}/>
-        <MovieList moviesList={movies}/>
+        {moviesCount !== 0 && <MovieList moviesList={movies}/>}
         <Footer />
       </Layout>
     </div>

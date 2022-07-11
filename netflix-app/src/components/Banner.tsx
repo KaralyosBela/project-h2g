@@ -9,7 +9,6 @@ import { useAppSelector } from "../app/hooks";
 export const Banner: React.FC = () => {
   const [openAddModal, setOpenAddModal] = useState<boolean>(false);
   const dispatch = useDispatch<AppDispatch>();
-  const searchedMovie = useAppSelector((state) => state.movies.searchedMovie);
 
   const hideModal = () => {
     setOpenAddModal(false);
@@ -23,20 +22,11 @@ export const Banner: React.FC = () => {
     dispatch(searchMovie())
   }
 
-  // const add = () => {
-  //   dispatch(
-  //     addMovie({
-  //       id: "x",
-  //       title: "x",
-  //       release_date: "X",
-  //       genre: "item",
-  //       thumbnail: "item",
-  //       movie_url: "ite",
-  //       rating: "item",
-  //       runtime: "item",
-  //     })
-  //   );
-  // };
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if(e.key === "Enter") {
+    dispatch(searchMovie())
+  }
+  }
 
   return (
     <div className={classes.picture}>
@@ -52,7 +42,6 @@ export const Banner: React.FC = () => {
             className={classes.addButton}
             onClick={() => {
               setOpenAddModal(!openAddModal);
-              // add();
             }}
           >
             + ADD MOVIE
@@ -62,7 +51,7 @@ export const Banner: React.FC = () => {
           <h1>FIND YOUR MOVIE</h1>
         </div>
         <div className={classes.searchBar}>
-          <input placeholder="What do you want to watch?" onChange={inputChange}></input>
+          <input placeholder="What do you want to watch?" onChange={inputChange} onKeyDown={handleKeyDown}></input>
           <button className={classes.searchbutton} onClick={search}>
             SEARCH
           </button>

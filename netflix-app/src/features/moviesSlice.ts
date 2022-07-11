@@ -21,7 +21,7 @@ export const getMovies = createAsyncThunk(
           movie_url: item.movie_url,
           rating: item.rating,
           runtime: item.runtime,
-          overview: item.overview
+          overview: item.overview,
         };
       });
 
@@ -82,7 +82,7 @@ const initialState: moviesState = {
     runtime: "",
     thumbnail: "",
     title: "",
-    overview: ""
+    overview: "",
   },
 };
 
@@ -99,14 +99,60 @@ export const moviesSlice = createSlice({
         movie.title.toLowerCase().includes(state.searchedMovie.toLowerCase())
       );
       state.numberOfMovies = state.movies.length;
-      console.log(state.movies);
     },
-    filterByGenre: (state, action:PayloadAction<string>) => {
-        if(action.payload === "all") {
-          state.movies = state.moviesAPI;
-        }else {
-          state.movies = state.moviesAPI.filter((movie) => movie.genre.toLowerCase().includes(action.payload));
+    filterByGenre: (state, action: PayloadAction<string>) => {
+      if (action.payload === "all") {
+        state.movies = state.moviesAPI;
+      } else {
+        state.movies = state.moviesAPI.filter((movie) =>
+          movie.genre.toLowerCase().includes(action.payload)
+        );
+      }
+      state.numberOfMovies = state.movies.length;
+    },
+    sortBy: (state, action: PayloadAction<string>) => {
+      const sortParams = action.payload.split("_");
+      console.log(sortParams);
+      if (sortParams[1] === "Up") {
+        switch (sortParams[0]) {
+          case "relDate":
+            state.movies = [...state.moviesAPI].sort((a: any, b: any) => {
+              return a.release_date - b.release_date;
+            });
+            break;
+          case "len":
+            state.movies = [...state.moviesAPI].sort((a: any, b: any) => {
+              return a.runtime.split(" ")[0] - b.runtime.split(" ")[0];
+            });
+            break;
+          case "rate":
+            state.movies = [...state.moviesAPI].sort((a: any, b: any) => {
+              return a.rating - b.rating;
+            });
+            break;
         }
+      } else {
+        switch (sortParams[0]) {
+          case "relDate":
+            state.movies = [...state.moviesAPI].sort((a: any, b: any) => {
+              return b.release_date - a.release_date;
+            });
+            break;
+          case "len":
+            state.movies = [...state.moviesAPI].sort((a: any, b: any) => {
+              return b.runtime.split(" ")[0] - a.runtime.split(" ")[0];
+            });
+            break;
+          case "rate":
+            state.movies = [...state.moviesAPI].sort((a: any, b: any) => {
+              return b.rating - a.rating;
+            });
+            break;
+        }
+      }
+    },
+    setEditedMovie: (state, action: PayloadAction<IMovies>) => {
+      state.movie = action.payload;
     }
   },
   extraReducers: (builder) => {
@@ -117,7 +163,6 @@ export const moviesSlice = createSlice({
         (state, action: PayloadAction<IMovies>) => {
           state.moviesAPI = Object.values(action.payload);
           state.numberOfMovies = state.moviesAPI.length;
-          console.log(state.moviesAPI);
           //másik tömb használata filterre
           state.movies = state.moviesAPI;
         }
@@ -139,5 +184,6 @@ export const moviesSlice = createSlice({
   },
 });
 
-export const { updateSearchedMovie, searchMovie, filterByGenre } = moviesSlice.actions;
+export const { updateSearchedMovie, searchMovie, filterByGenre, sortBy, setEditedMovie } =
+  moviesSlice.actions;
 export default moviesSlice.reducer;

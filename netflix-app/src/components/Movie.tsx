@@ -32,10 +32,14 @@ export const Movie: React.FC<Props> = ({ movie }) => {
     hideModal();
   }
 
+  // const setEditedMovie = (movie: IMovies) => {
+  //   dispatch(setEditedMovie(movie));
+  // }
+
   return (
     <div>
       <DeleteMovieModal hide={hideModal} show={deleteModalOpen} delMovie={delMovie}/>
-      <EditMovieModal hide={hideModal} show={editModalOpen}/>
+      <EditMovieModal hide={hideModal} show={editModalOpen} movieDetails={movie}/>
       <div className={classes.card}>
         <div className={classes.circle} onClick={toggleModal}>
           <div className={classes.firstDot}></div>
@@ -44,7 +48,7 @@ export const Movie: React.FC<Props> = ({ movie }) => {
         </div>
         {modalOpen && (
           <div className={classes.dropdownMenu}>
-            <div className={classes.editModal} onClick={() => setEditModalOpen(!editModalOpen)}>Edit</div>
+            <div className={classes.editModal} onClick={() => {setEditModalOpen(!editModalOpen);}}>Edit</div>
             <div className={classes.deleteModal} onClick={() => setDeleteModalOpen(!deleteModalOpen)}>Delete</div>
           </div>
         )}
