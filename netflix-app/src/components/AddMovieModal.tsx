@@ -1,9 +1,10 @@
 import classes from "./AddMovieModal.module.css";
 import { AppDispatch } from "../app/store";
-import { useAppSelector } from "../app/hooks";
 import { useDispatch } from "react-redux";
 import { addMovie } from "../features/moviesSlice";
-import React, { FormEventHandler } from "react";
+import React, { useState } from "react";
+import {AddMovieSuccessModal} from "./AddMovieSuccessModal";
+
 interface Props {
   show: boolean;
   hide: () => void;
@@ -12,34 +13,45 @@ interface Props {
 export const AddMovieModal: React.FC<Props> = ({ show, hide }) => {
   const dispatch = useDispatch<AppDispatch>();
 
-  const add = (e:React.MouseEvent<HTMLButtonElement>) => {
+  const [submitted, setSubmitted] = useState<boolean>(false);
+
+  //Itt nem okés a formevent<htmlform> valami
+  const add = (e: any) => {
     e.preventDefault();
     dispatch(addMovie({
-      id: "x",
-      title: "x",
-      release_date: "X",
-      genre: "item",
-      thumbnail: "item",
-      movie_url: "ite",
-      rating: "item",
-      runtime: "item",
+      id: "",
+      title: e.currentTarget.title.value,
+      release_date: e.currentTarget.url.value,
+      genre: e.currentTarget.genre.value,
+      thumbnail: "https://i.kym-cdn.com/photos/images/original/001/394/314/c62.jpg",
+      movie_url: e.currentTarget.url.value,
+      rating: e.currentTarget.rating.value,
+      runtime: e.currentTarget.runtime.value,
+      overview: e.currentTarget.overview.value
     }));
+    setSubmitted(true);
+    hide();
   };
+
+  const close = () =>{
+    setSubmitted(false);
+  }
 
   return (
     <div>
+      {submitted && <AddMovieSuccessModal close={close}/>}
       {show && (
         <div>
           <div className={classes.overlay} onClick={hide} />
           <div className={classes.modal}>
             <h1>ADD MOVIE</h1>
-            <form>
+            <form onSubmit={add}>
               <div className={classes.modalbody}>
                 <div className={classes.leftside}>
                   <label htmlFor="title">TITLE</label>
-                  <input type="text" id="title"></input>
+                  <input type="text" id="title" name="title"></input>
                   <label htmlFor="url">MOVIE URL</label>
-                  <input type="text" id="url"></input>
+                  <input type="text" id="url" name="url"></input>
                   <label htmlFor="genre">GENRE</label>
                   <select name="genre" id="genre">
                     <option value="Horror">Horror</option>
@@ -50,24 +62,24 @@ export const AddMovieModal: React.FC<Props> = ({ show, hide }) => {
 
                 <div className={classes.rightside}>
                   <label htmlFor="releasedate">RELEASE DATE</label>
-                  <input type="date" id="releasedate"></input>
+                  <input type="date" id="releasedate" name="date"></input>
                   <label htmlFor="rating">RATING</label>
-                  <input type="text" id="rating"></input>
+                  <input type="text" id="rating" name="rating"></input>
                   <label htmlFor="runtime">RUNTIME</label>
-                  <input type="text" id="runtime"></input>
+                  <input type="text" id="runtime" name="runtime"></input>
                 </div>
               </div>
 
               <div className={classes.overview}>
                 <label htmlFor="overview">OVERVIEW</label>
-                <textarea id="overview"></textarea>
+                <textarea id="overview" name="overview"></textarea>
               </div>
 
               <div className={classes.action}>
                 <button className={classes.resetBtn}>
                   RESET
                 </button>
-                <button className={classes.submitBtn} onClick={add}>SUBMIT</button>
+                <button type="submit" className={classes.submitBtn}>SUBMIT</button>
               </div>
             </form>
             <div className={classes.close} onClick={hide}>

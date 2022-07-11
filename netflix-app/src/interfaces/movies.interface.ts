@@ -7,4 +7,5 @@ export interface IMovies {
   movie_url: string;
   rating: string;
   runtime: string;
+  overview: string;
 }

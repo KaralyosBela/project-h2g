@@ -13,19 +13,19 @@
   padding: 0px;
 }
 
-.categories > li {
+.categories > button {
   list-style-type: none;
   padding: 0px 15px;
   cursor: pointer;
   transition: color 0.2s ease-in;
 }
 
-.categories > li:hover {
+.categories > button:hover {
   color: #f65261;
   transition: color 0.2s ease-in;
 }
 
-.categories > li:active {
+.categories > button:active {
   border-bottom: 1px solid #f65261;
 }
 

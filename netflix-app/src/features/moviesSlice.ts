@@ -21,6 +21,7 @@ export const getMovies = createAsyncThunk(
           movie_url: item.movie_url,
           rating: item.rating,
           runtime: item.runtime,
+          overview: item.overview
         };
       });
 
@@ -38,6 +39,7 @@ export const addMovie = createAsyncThunk(
     movie.id = v4();
     try {
       axios.post("http://localhost:8000/movies", movie);
+      console.log(movie);
     } catch (error) {
       return rejectWithValue(error);
     }
@@ -80,6 +82,7 @@ const initialState: moviesState = {
     runtime: "",
     thumbnail: "",
     title: "",
+    overview: ""
   },
 };
 
@@ -98,6 +101,13 @@ export const moviesSlice = createSlice({
       state.numberOfMovies = state.movies.length;
       console.log(state.movies);
     },
+    filterByGenre: (state, action:PayloadAction<string>) => {
+        if(action.payload === "all") {
+          state.movies = state.moviesAPI;
+        }else {
+          state.movies = state.moviesAPI.filter((movie) => movie.genre.toLowerCase().includes(action.payload));
+        }
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -108,8 +118,7 @@ export const moviesSlice = createSlice({
           state.moviesAPI = Object.values(action.payload);
           state.numberOfMovies = state.moviesAPI.length;
           console.log(state.moviesAPI);
-
-          //bruh
+          //másik tömb használata filterre
           state.movies = state.moviesAPI;
         }
       )
@@ -130,5 +139,5 @@ export const moviesSlice = createSlice({
   },
 });
 
-export const { updateSearchedMovie, searchMovie } = moviesSlice.actions;
+export const { updateSearchedMovie, searchMovie, filterByGenre } = moviesSlice.actions;
 export default moviesSlice.reducer;

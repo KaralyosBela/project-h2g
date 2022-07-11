@@ -5,7 +5,6 @@ import { EditMovieModal } from "./EditMovieModal";
 import classes from "./Movie.module.css";
 import {deleteMovie} from "../features/moviesSlice";
 import { AppDispatch } from "../app/store";
-import { useAppSelector } from "../app/hooks";
 import { useDispatch } from "react-redux";
 
 interface Props {
@@ -30,6 +29,7 @@ export const Movie: React.FC<Props> = ({ movie }) => {
 
   const delMovie = () => {
     dispatch(deleteMovie(movie))
+    hideModal();
   }
 
   return (
