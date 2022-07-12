@@ -4,7 +4,11 @@
       "id": 412,
       "title": "Thor",
       "release_date": "2011",
-      "genre": "Action, Adventure, Fantasy",
+      "genre": [
+        "Crime",
+        "Adventure",
+        "Fantasy"
+      ],
       "thumbnail": "https://m.media-amazon.com/images/M/MV5BOGE4NzU1YTAtNzA3Mi00ZTA2LTg2YmYtMDJmMThiMjlkYjg2XkEyXkFqcGdeQXVyNTgzMDMzMTg@._V1_SX300.jpg",
       "movie_url": "https://www.imdb.com/title/tt0800369/",
       "rating": "7.0",
@@ -15,7 +19,11 @@
       "id": 624,
       "title": "Pulp Fiction",
       "release_date": "1994",
-      "genre": "Crime, Drama",
+      "genre": [
+        "Crime",
+        "Drama",
+        "Fantasy"
+      ],
       "thumbnail": "https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
       "movie_url": "https://www.imdb.com/title/tt0110912/",
       "rating": "8.9",
@@ -26,7 +34,11 @@
       "id": 936,
       "title": "Stranger Things",
       "release_date": "2016",
-      "genre": "Drama, Fantasy, Horror",
+      "genre": [
+        "Crime",
+        "Adventure",
+        "Fantasy"
+      ],
       "thumbnail": "https://m.media-amazon.com/images/M/MV5BODZlYjQ4NzYtZTg1MC00NGY4LTg4NjQtNGE3ZjRkMjk3YjMyXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_SX300.jpg",
       "movie_url": "https://www.imdb.com/title/tt4574334/",
       "rating": "8.7",
@@ -37,7 +49,10 @@
       "id": 524,
       "title": "Star Wars",
       "release_date": "1977",
-      "genre": "Action, Adventure, Fantasy",
+      "genre": [
+        "Horror",
+        "Fantasy"
+      ],
       "thumbnail": "https://www.themoviedb.org/t/p/original/pWVLFh4OuejTpUaDQbB1C4zoS2p.jpg",
       "movie_url": "https://www.imdb.com/star-wars/",
       "rating": "8.6",
@@ -48,7 +63,10 @@
       "id": 473,
       "title": "Thor",
       "release_date": "2011",
-      "genre": "Action, Adventure, Fantasy",
+      "genre": [
+        "Crime",
+        "Adventure"
+      ],
       "thumbnail": "https://m.media-amazon.com/images/M/MV5BOGE4NzU1YTAtNzA3Mi00ZTA2LTg2YmYtMDJmMThiMjlkYjg2XkEyXkFqcGdeQXVyNTgzMDMzMTg@._V1_SX300.jpg",
       "movie_url": "https://www.imdb.com/title/tt0800369/",
       "rating": "7.0",
@@ -59,7 +77,11 @@
       "id": 924,
       "title": "Pulp Fiction",
       "release_date": "1994",
-      "genre": "Crime, Drama",
+      "genre": [
+        "Crime",
+        "Adventure",
+        "Fantasy"
+      ],
       "thumbnail": "https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
       "movie_url": "https://www.imdb.com/title/tt0110912/",
       "rating": "8.9",
@@ -70,7 +92,11 @@
       "id": 624,
       "title": "Stranger Things",
       "release_date": "2016",
-      "genre": "Drama, Fantasy, Horror",
+      "genre": [
+        "Action",
+        "Adventure",
+        "Fantasy"
+      ],
       "thumbnail": "https://m.media-amazon.com/images/M/MV5BODZlYjQ4NzYtZTg1MC00NGY4LTg4NjQtNGE3ZjRkMjk3YjMyXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_SX300.jpg",
       "movie_url": "https://www.imdb.com/title/tt4574334/",
       "rating": "8.7",
@@ -81,7 +107,11 @@
       "id": 666,
       "title": "Star Wars",
       "release_date": "1977",
-      "genre": "Action, Adventure, Fantasy",
+      "genre": [
+        "Action",
+        "Adventure",
+        "Fantasy"
+      ],
       "thumbnail": "https://www.themoviedb.org/t/p/original/pWVLFh4OuejTpUaDQbB1C4zoS2p.jpg",
       "rating": "8.6",
       "runtime": "121 min",
@@ -91,7 +121,11 @@
       "id": 123,
       "title": "Thor",
       "release_date": "2011",
-      "genre": "Action, Adventure, Fantasy",
+      "genre": [
+        "Action",
+        "Adventure",
+        "Fantasy"
+      ],
       "thumbnail": "https://m.media-amazon.com/images/M/MV5BOGE4NzU1YTAtNzA3Mi00ZTA2LTg2YmYtMDJmMThiMjlkYjg2XkEyXkFqcGdeQXVyNTgzMDMzMTg@._V1_SX300.jpg",
       "movie_url": "https://www.imdb.com/title/tt0800369/",
       "rating": "7.0",
@@ -99,37 +133,17 @@
       "overview": "overview blablalba"
     },
     {
-      "id": "4c5aac33-d90e-4520-8306-be283c21403f",
-      "title": "The cat",
-      "release_date": "catcat",
-      "genre": "Horror",
-      "thumbnail": "https://i.kym-cdn.com/photos/images/original/001/394/314/c62.jpg",
-      "movie_url": "catcat",
-      "rating": "11",
-      "runtime": "650",
-      "overview": "Cat?"
-    },
-    {
       "id": "fa9a86e7-bddc-43e0-adb8-c7031a07232f",
-      "title": "asd",
+      "title": "asd34",
       "release_date": "2028-06-29",
-      "genre": "Horror",
+      "genre": [
+        "Horror"
+      ],
       "thumbnail": "https://i.kym-cdn.com/photos/images/original/001/394/314/c62.jpg",
       "movie_url": "asd",
       "rating": "1234",
       "runtime": "asd",
       "overview": "123"
-    },
-    {
-      "id": "62bc2432-df5b-43f9-9194-bc44a68d771e",
-      "title": "asd",
-      "release_date": "2022",
-      "genre": "Horror",
-      "thumbnail": "https://i.kym-cdn.com/photos/images/original/001/394/314/c62.jpg",
-      "movie_url": "",
-      "rating": "",
-      "runtime": "",
-      "overview": ""
     }
   ]
 }

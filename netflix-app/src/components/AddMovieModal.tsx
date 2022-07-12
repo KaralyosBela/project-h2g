@@ -83,7 +83,7 @@ export const AddMovieModal: React.FC<Props> = ({ show, hide }) => {
               </div>
             </form>
             <div className={classes.close} onClick={hide}>
-              X
+              &times;
             </div>
           </div>
         </div>

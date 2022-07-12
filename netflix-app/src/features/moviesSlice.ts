@@ -4,9 +4,7 @@ import { IMovies } from "../interfaces/movies.interface";
 import { v4 } from "uuid";
 
 export const getMovies = createAsyncThunk(
-  //this is the type
   "movies/getMovies",
-  //this is the payload
   async (args, { rejectWithValue }) => {
     try {
       const response = await axios.get("http://localhost:8000/movies");
@@ -24,7 +22,7 @@ export const getMovies = createAsyncThunk(
           overview: item.overview,
         };
       });
-
+      console.log(movieData);
       return movieData;
     } catch (error) {
       return rejectWithValue(error);
@@ -39,7 +37,6 @@ export const addMovie = createAsyncThunk(
     movie.id = v4();
     try {
       axios.post("http://localhost:8000/movies", movie);
-      console.log(movie);
       return movie;
     } catch (error) {
       return rejectWithValue(error);
@@ -51,10 +48,9 @@ export const deleteMovie = createAsyncThunk(
   "movies/deleteMovie",
   async (movie: IMovies, { rejectWithValue }) => {
     try {
-      const response = await axios.delete(
+      axios.delete(
         `http://localhost:8000/movies/${movie.id}`
       );
-      console.log(response);
       return movie;
     } catch (error) {
       return rejectWithValue(error);
@@ -66,10 +62,9 @@ export const editMovie = createAsyncThunk(
   "movies/editMovie",
   async (movie: IMovies, { rejectWithValue }) => {
     try {
-      const response = await axios.patch(
+      axios.patch(
         `http://localhost:8000/movies/${movie.id}`, movie
       );
-      console.log(response);
       return movie;
     } catch (error) {
       return rejectWithValue(error);
@@ -83,6 +78,13 @@ interface moviesState {
   movies: IMovies[];
   searchedMovie: string;
   movie: IMovies;
+  sortOptions: {
+    sortKey: string
+    sortOrder: string
+  }
+  filterOptions: {
+    genre: string
+  }
 }
 
 const initialState: moviesState = {
@@ -92,7 +94,7 @@ const initialState: moviesState = {
   searchedMovie: "",
   movie: {
     id: "",
-    genre: "",
+    genre: [],
     movie_url: "",
     rating: "",
     release_date: "",
@@ -100,9 +102,14 @@ const initialState: moviesState = {
     thumbnail: "",
     title: "",
     overview: "",
+  },
+  sortOptions: {
+    sortKey: "",
+    sortOrder: ""
+  },
+  filterOptions: {
+    genre: ""
   }
-  //sort
-  //filter
 };
 
 export const moviesSlice = createSlice({
@@ -118,55 +125,12 @@ export const moviesSlice = createSlice({
       );
       state.numberOfMovies = state.movies.length;
     },
-    filterByGenre: (state, action: PayloadAction<string>) => {
-      if (action.payload === "all") {
-        state.movies = state.moviesAPI;
-      } else {
-        state.movies = state.moviesAPI.filter((movie) =>
-          movie.genre.toLowerCase().includes(action.payload)
-        );
-      }
-      state.numberOfMovies = state.movies.length;
+    setGenreFilter: (state, action) => {
+      state.filterOptions.genre = action.payload;
     },
-    sortBy: (state, action: PayloadAction<string>) => {
-      const sortParams = action.payload.split("_");
-      if (sortParams[1] === "Up") {
-        switch (sortParams[0]) {
-          case "relDate":
-            state.movies = [...state.moviesAPI].sort((a: any, b: any) => {
-              return a.release_date - b.release_date;
-            });
-            break;
-          case "len":
-            state.movies = [...state.moviesAPI].sort((a: any, b: any) => {
-              return a.runtime.split(" ")[0] - b.runtime.split(" ")[0];
-            });
-            break;
-          case "rate":
-            state.movies = [...state.moviesAPI].sort((a: any, b: any) => {
-              return a.rating - b.rating;
-            });
-            break;
-        }
-      } else {
-        switch (sortParams[0]) {
-          case "relDate":
-            state.movies = [...state.moviesAPI].sort((a: any, b: any) => {
-              return b.release_date - a.release_date;
-            });
-            break;
-          case "len":
-            state.movies = [...state.moviesAPI].sort((a: any, b: any) => {
-              return b.runtime.split(" ")[0] - a.runtime.split(" ")[0];
-            });
-            break;
-          case "rate":
-            state.movies = [...state.moviesAPI].sort((a: any, b: any) => {
-              return b.rating - a.rating;
-            });
-            break;
-        }
-      }
+    setSortParams: (state, action) => {
+      state.sortOptions.sortKey = action.payload.key;
+      state.sortOptions.sortOrder = action.payload.order;
     },
     setEditedMovie: (state, action: PayloadAction<IMovies>) => {
       state.movie = action.payload;
@@ -176,9 +140,9 @@ export const moviesSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getMovies.fulfilled, (state, action: PayloadAction<IMovies>) => {
-        state.moviesAPI = Object.values(action.payload);
-        state.numberOfMovies = state.moviesAPI.length;
-        state.movies = state.moviesAPI;
+        state.movies = Object.values(action.payload);
+        state.numberOfMovies = state.movies.length;
+        // state.movies = state.moviesAPI;
       })
       .addCase(addMovie.fulfilled, (state, action) => {
         state.movies.push(action.payload);
@@ -198,8 +162,8 @@ export const moviesSlice = createSlice({
 export const {
   updateSearchedMovie,
   searchMovie,
-  filterByGenre,
-  sortBy,
+  setGenreFilter,
+  setSortParams,
   setEditedMovie,
 } = moviesSlice.actions;
 export default moviesSlice.reducer;

@@ -38,8 +38,8 @@ export const Movie: React.FC<Props> = ({ movie }) => {
 
   return (
     <div>
-      {editModalOpen &&       <EditMovieModal hide={hideModal} movieDetails={movie}/>}
-      <DeleteMovieModal hide={hideModal} show={deleteModalOpen} delMovie={delMovie}/>
+      {editModalOpen && <EditMovieModal hide={hideModal} movieDetails={movie}/>}
+      {deleteModalOpen && <DeleteMovieModal hide={hideModal} delMovie={delMovie}/>}
       <div className={classes.card}>
         <div className={classes.circle} onClick={toggleModal}>
           <div className={classes.firstDot}></div>
