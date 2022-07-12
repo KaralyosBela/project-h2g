@@ -21,7 +21,7 @@ export const AddMovieModal: React.FC<Props> = ({ show, hide }) => {
     dispatch(addMovie({
       id: "",
       title: e.currentTarget.title.value,
-      release_date: e.currentTarget.url.value,
+      release_date: e.currentTarget.releasedate.value.slice(0,4),
       genre: e.currentTarget.genre.value,
       thumbnail: "https://i.kym-cdn.com/photos/images/original/001/394/314/c62.jpg",
       movie_url: e.currentTarget.url.value,

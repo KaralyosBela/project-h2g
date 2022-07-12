@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "../app/store";
 import { getMovies } from "../features/moviesSlice";
 import { useAppSelector } from "../app/hooks";
+import { MovieBanner } from "../components/MovieBanner";
 
 export const HomePage: React.FC = () => {
 // const [movies, setMovies] = useState<IMovies[]>([])
@@ -56,6 +57,7 @@ const moviesCount = useAppSelector((state) => state.movies.numberOfMovies);
   return (
     <div>
       <Layout>
+        {/* <MovieBanner/> */}
         <Banner />
         <FilterBar movieCount={moviesCount}/>
         {moviesCount !== 0 && <MovieList moviesList={movies}/>}

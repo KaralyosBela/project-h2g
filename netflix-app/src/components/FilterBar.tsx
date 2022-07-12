@@ -41,7 +41,6 @@ export const FilterBar: React.FC<Props> = ({movieCount}) => {
 
   const filterBy = (activeTab: number, filter: string) => {
     setActive(activeTab);
-    console.log(activeTab);
     dispatch(filterByGenre(filter));
   }
 

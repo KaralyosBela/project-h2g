@@ -99,15 +99,37 @@
       "overview": "overview blablalba"
     },
     {
-      "id": "8688ca99-b46f-4e67-917b-f380de23148e",
-      "title": "cat",
-      "release_date": "asd",
+      "id": "4c5aac33-d90e-4520-8306-be283c21403f",
+      "title": "The cat",
+      "release_date": "catcat",
+      "genre": "Horror",
+      "thumbnail": "https://i.kym-cdn.com/photos/images/original/001/394/314/c62.jpg",
+      "movie_url": "catcat",
+      "rating": "11",
+      "runtime": "650",
+      "overview": "Cat?"
+    },
+    {
+      "id": "fa9a86e7-bddc-43e0-adb8-c7031a07232f",
+      "title": "asd",
+      "release_date": "2028-06-29",
       "genre": "Horror",
       "thumbnail": "https://i.kym-cdn.com/photos/images/original/001/394/314/c62.jpg",
       "movie_url": "asd",
-      "rating": "11.1",
-      "runtime": "123",
-      "overview": "cat"
+      "rating": "1234",
+      "runtime": "asd",
+      "overview": "123"
+    },
+    {
+      "id": "62bc2432-df5b-43f9-9194-bc44a68d771e",
+      "title": "asd",
+      "release_date": "2022",
+      "genre": "Horror",
+      "thumbnail": "https://i.kym-cdn.com/photos/images/original/001/394/314/c62.jpg",
+      "movie_url": "",
+      "rating": "",
+      "runtime": "",
+      "overview": ""
     }
   ]
 }

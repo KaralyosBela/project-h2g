@@ -3,7 +3,7 @@ import { IMovies } from "../interfaces/movies.interface";
 import { DeleteMovieModal } from "./DeleteMovieModal";
 import { EditMovieModal } from "./EditMovieModal";
 import classes from "./Movie.module.css";
-import {deleteMovie} from "../features/moviesSlice";
+import {deleteMovie, setEditedMovie} from "../features/moviesSlice";
 import { AppDispatch } from "../app/store";
 import { useDispatch } from "react-redux";
 
@@ -32,14 +32,14 @@ export const Movie: React.FC<Props> = ({ movie }) => {
     hideModal();
   }
 
-  // const setEditedMovie = (movie: IMovies) => {
-  //   dispatch(setEditedMovie(movie));
-  // }
+  const setMovie = (movie: IMovies) => {
+    dispatch(setEditedMovie(movie));
+  }
 
   return (
     <div>
+      {editModalOpen &&       <EditMovieModal hide={hideModal} movieDetails={movie}/>}
       <DeleteMovieModal hide={hideModal} show={deleteModalOpen} delMovie={delMovie}/>
-      <EditMovieModal hide={hideModal} show={editModalOpen} movieDetails={movie}/>
       <div className={classes.card}>
         <div className={classes.circle} onClick={toggleModal}>
           <div className={classes.firstDot}></div>
@@ -48,8 +48,8 @@ export const Movie: React.FC<Props> = ({ movie }) => {
         </div>
         {modalOpen && (
           <div className={classes.dropdownMenu}>
-            <div className={classes.editModal} onClick={() => {setEditModalOpen(!editModalOpen);}}>Edit</div>
-            <div className={classes.deleteModal} onClick={() => setDeleteModalOpen(!deleteModalOpen)}>Delete</div>
+            <div className={classes.editModal} onClick={() => {setEditModalOpen(!editModalOpen); toggleModal(); setMovie(movie)}}>Edit</div>
+            <div className={classes.deleteModal} onClick={() => {setDeleteModalOpen(!deleteModalOpen); toggleModal();}}>Delete</div>
           </div>
         )}
         <img className={classes.image} src={movie.thumbnail} alt="alt"></img>

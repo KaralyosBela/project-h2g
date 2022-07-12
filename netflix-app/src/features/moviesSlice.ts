@@ -40,6 +40,7 @@ export const addMovie = createAsyncThunk(
     try {
       axios.post("http://localhost:8000/movies", movie);
       console.log(movie);
+      return movie;
     } catch (error) {
       return rejectWithValue(error);
     }
@@ -54,6 +55,22 @@ export const deleteMovie = createAsyncThunk(
         `http://localhost:8000/movies/${movie.id}`
       );
       console.log(response);
+      return movie;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const editMovie = createAsyncThunk(
+  "movies/editMovie",
+  async (movie: IMovies, { rejectWithValue }) => {
+    try {
+      const response = await axios.patch(
+        `http://localhost:8000/movies/${movie.id}`, movie
+      );
+      console.log(response);
+      return movie;
     } catch (error) {
       return rejectWithValue(error);
     }
@@ -83,7 +100,9 @@ const initialState: moviesState = {
     thumbnail: "",
     title: "",
     overview: "",
-  },
+  }
+  //sort
+  //filter
 };
 
 export const moviesSlice = createSlice({
@@ -94,7 +113,6 @@ export const moviesSlice = createSlice({
       state.searchedMovie = action.payload;
     },
     searchMovie: (state) => {
-      console.log(state.searchedMovie);
       state.movies = state.moviesAPI.filter((movie) =>
         movie.title.toLowerCase().includes(state.searchedMovie.toLowerCase())
       );
@@ -112,7 +130,6 @@ export const moviesSlice = createSlice({
     },
     sortBy: (state, action: PayloadAction<string>) => {
       const sortParams = action.payload.split("_");
-      console.log(sortParams);
       if (sortParams[1] === "Up") {
         switch (sortParams[0]) {
           case "relDate":
@@ -153,37 +170,36 @@ export const moviesSlice = createSlice({
     },
     setEditedMovie: (state, action: PayloadAction<IMovies>) => {
       state.movie = action.payload;
-    }
+      console.log(state.movie);
+    },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(
-        getMovies.fulfilled,
-        //ide raktam át a map loopot a thunkból akkor hibát kaptam
-        (state, action: PayloadAction<IMovies>) => {
-          state.moviesAPI = Object.values(action.payload);
-          state.numberOfMovies = state.moviesAPI.length;
-          //másik tömb használata filterre
-          state.movies = state.moviesAPI;
-        }
-      )
-      .addCase(getMovies.pending, (state) => {
-        console.log("Pending");
+      .addCase(getMovies.fulfilled, (state, action: PayloadAction<IMovies>) => {
+        state.moviesAPI = Object.values(action.payload);
+        state.numberOfMovies = state.moviesAPI.length;
+        state.movies = state.moviesAPI;
       })
-      //actionnak type kell még
-      .addCase(getMovies.rejected, (state, action) => {
-        console.log(action.payload);
+      .addCase(addMovie.fulfilled, (state, action) => {
+        state.movies.push(action.payload);
+        state.numberOfMovies++;
       })
-      .addCase(
-        addMovie.fulfilled,
-        //ide raktam át a map loopot a thunkból akkor hibát kaptam
-        (state) => {
-          state.numberOfMovies++;
-        }
-      );
+      .addCase(deleteMovie.fulfilled, (state, action) => {
+        state.movies = state.movies.filter(
+          (movie) => movie.id !== action.payload.id
+        );
+      }).addCase(editMovie.fulfilled, (state, action) => {
+        const index = state.movies.findIndex((movie) => movie.id === action.payload.id);
+        state.movies[index] = action.payload;
+      })
   },
 });
 
-export const { updateSearchedMovie, searchMovie, filterByGenre, sortBy, setEditedMovie } =
-  moviesSlice.actions;
+export const {
+  updateSearchedMovie,
+  searchMovie,
+  filterByGenre,
+  sortBy,
+  setEditedMovie,
+} = moviesSlice.actions;
 export default moviesSlice.reducer;
