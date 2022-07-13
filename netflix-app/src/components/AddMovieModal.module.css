@@ -112,6 +112,7 @@ select {
 }
 
 .modal .close {
+  size: 30px;
   position: absolute;
   color: white;
   top: 15px;
