@@ -73,8 +73,6 @@ export const editMovie = createAsyncThunk(
 );
 
 interface moviesState {
-  moviesAPI: IMovies[];
-  numberOfMovies: number;
   movies: IMovies[];
   searchedMovie: string;
   movie: IMovies;
@@ -88,8 +86,6 @@ interface moviesState {
 }
 
 const initialState: moviesState = {
-  moviesAPI: [],
-  numberOfMovies: 0,
   movies: [],
   searchedMovie: "",
   movie: {
@@ -116,14 +112,8 @@ export const moviesSlice = createSlice({
   name: "movies",
   initialState,
   reducers: {
-    updateSearchedMovie: (state, action) => {
+    setSearchedMovie: (state, action) => {
       state.searchedMovie = action.payload;
-    },
-    searchMovie: (state) => {
-      state.movies = state.moviesAPI.filter((movie) =>
-        movie.title.toLowerCase().includes(state.searchedMovie.toLowerCase())
-      );
-      state.numberOfMovies = state.movies.length;
     },
     setGenreFilter: (state, action) => {
       state.filterOptions.genre = action.payload;
@@ -132,21 +122,31 @@ export const moviesSlice = createSlice({
       state.sortOptions.sortKey = action.payload.key;
       state.sortOptions.sortOrder = action.payload.order;
     },
-    setEditedMovie: (state, action: PayloadAction<IMovies>) => {
+    setChoosenMovie: (state, action: PayloadAction<IMovies>) => {
       state.movie = action.payload;
-      console.log(state.movie);
     },
+    resetForm: (state) => {
+      console.log("hehe");
+      // state.movie.genre = [];
+      // state.movie.movie_url = "";
+      // state.movie.overview = "";
+      // state.movie.rating = "";
+      // state.movie.release_date = "";
+      // state.movie.runtime = "";
+      // state.movie.thumbnail = "";
+     state.movie.title = "";
+    }
   },
   extraReducers: (builder) => {
     builder
       .addCase(getMovies.fulfilled, (state, action: PayloadAction<IMovies>) => {
         state.movies = Object.values(action.payload);
-        state.numberOfMovies = state.movies.length;
+        // state.numberOfMovies = state.movies.length;
         // state.movies = state.moviesAPI;
       })
       .addCase(addMovie.fulfilled, (state, action) => {
         state.movies.push(action.payload);
-        state.numberOfMovies++;
+        // state.numberOfMovies++;
       })
       .addCase(deleteMovie.fulfilled, (state, action) => {
         state.movies = state.movies.filter(
@@ -160,10 +160,10 @@ export const moviesSlice = createSlice({
 });
 
 export const {
-  updateSearchedMovie,
-  searchMovie,
+  setSearchedMovie,
   setGenreFilter,
   setSortParams,
-  setEditedMovie,
+  setChoosenMovie,
+  resetForm
 } = moviesSlice.actions;
 export default moviesSlice.reducer;

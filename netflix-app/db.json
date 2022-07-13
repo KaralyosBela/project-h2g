@@ -17,12 +17,10 @@
     },
     {
       "id": 624,
-      "title": "Pulp Fiction",
+      "title": "Pulp Fiction2",
       "release_date": "1994",
       "genre": [
-        "Crime",
-        "Drama",
-        "Fantasy"
+        "comedy"
       ],
       "thumbnail": "https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
       "movie_url": "https://www.imdb.com/title/tt0110912/",
@@ -119,12 +117,12 @@
     },
     {
       "id": 123,
-      "title": "Thor",
-      "release_date": "2011",
+      "title": "Thor2",
+      "release_date": "2015",
       "genre": [
-        "Action",
-        "Adventure",
-        "Fantasy"
+        "drama",
+        "fantasy",
+        "adventure"
       ],
       "thumbnail": "https://m.media-amazon.com/images/M/MV5BOGE4NzU1YTAtNzA3Mi00ZTA2LTg2YmYtMDJmMThiMjlkYjg2XkEyXkFqcGdeQXVyNTgzMDMzMTg@._V1_SX300.jpg",
       "movie_url": "https://www.imdb.com/title/tt0800369/",
@@ -133,17 +131,32 @@
       "overview": "overview blablalba"
     },
     {
-      "id": "fa9a86e7-bddc-43e0-adb8-c7031a07232f",
-      "title": "asd34",
-      "release_date": "2028-06-29",
+      "id": "76ace2d5-5c76-458f-aa6c-2cda65a04cb6",
+      "title": "xy",
+      "release_date": "2022",
       "genre": [
+        "Comedy",
         "Horror"
       ],
       "thumbnail": "https://i.kym-cdn.com/photos/images/original/001/394/314/c62.jpg",
-      "movie_url": "asd",
-      "rating": "1234",
-      "runtime": "asd",
-      "overview": "123"
+      "movie_url": "xy",
+      "rating": "10",
+      "runtime": "10",
+      "overview": "xy"
+    },
+    {
+      "id": "8347586a-e94b-45ff-9f2e-a1fabca223a3",
+      "title": "",
+      "release_date": "",
+      "genre": [
+        "drama",
+        "adventure"
+      ],
+      "thumbnail": "https://i.kym-cdn.com/photos/images/original/001/394/314/c62.jpg",
+      "movie_url": "",
+      "rating": "",
+      "runtime": "",
+      "overview": ""
     }
   ]
 }

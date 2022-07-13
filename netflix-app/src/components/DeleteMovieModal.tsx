@@ -1,9 +1,22 @@
 import classes from "./DeleteMovieModal.module.css";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../app/store";
+import { useAppSelector } from "../app/hooks";
+import { deleteMovie } from "../features/moviesSlice";
 interface Props {
   hide: () => void;
-  delMovie: () => void;
 }
-export const DeleteMovieModal: React.FC<Props> = ({ hide, delMovie }) => {
+export const DeleteMovieModal: React.FC<Props> = ({ hide }) => {
+  const dispatch = useDispatch<AppDispatch>();
+
+  //Get the current selected movie from the store
+  const selectedMovie = useAppSelector((state) => state.movies.movie);
+
+  const delMovie = () => {
+    dispatch(deleteMovie(selectedMovie));
+    hide();
+  };
+
   return (
     <>
       <div className={classes.overlay} onClick={hide} />
@@ -14,7 +27,7 @@ export const DeleteMovieModal: React.FC<Props> = ({ hide, delMovie }) => {
         </div>
         <button onClick={delMovie}>CONFIRM</button>
         <div className={classes.close} onClick={hide}>
-          X
+          &times;
         </div>
       </div>
     </>

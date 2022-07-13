@@ -7,7 +7,7 @@ import { Layout } from "../ui/Layout";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../app/store";
 import { getMovies } from "../features/moviesSlice";
-import { MovieBanner } from "../components/MovieBanner";
+// import { MovieBanner } from "../components/MovieBanner";
 import { useMovies } from "../features/movies.hook";
 
 export const HomePage: React.FC = () => {
@@ -17,7 +17,7 @@ export const HomePage: React.FC = () => {
 
   useEffect(() => {
     dispatch(getMovies());
-  }, []); //eddig benne volt a moviesCount
+  }, []);
 
   return (
     <div>
