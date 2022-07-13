@@ -19,7 +19,7 @@ export const EditMovieModal: React.FC<Props> = ({ hide }) => {
 
   //Set the form input fields based on the current selected movie
   const [title, setTitle] = useState<string>(selectedMovieDetails.title)
-  const [genre, setGenre] = useState<string[]>(selectedMovieDetails.genre)
+  const [genre, setGenre] = useState<string[]>(selectedMovieDetails.genres)
   const [movieUrl, setMovieUrl] = useState<string>(selectedMovieDetails.movie_url)
   const [overview, setOverview] = useState<string>(selectedMovieDetails.overview)
   const [rating, setRating] = useState<string>(selectedMovieDetails.rating)
@@ -59,12 +59,17 @@ export const EditMovieModal: React.FC<Props> = ({ hide }) => {
       id: selectedMovieDetails.id,
       title: title,
       release_date: releaseDate,
-      genre: genre,
-      thumbnail: selectedMovieDetails.thumbnail,
-      movie_url: movieUrl,
+      genres: genre,
+      movie_url: selectedMovieDetails.movie_url,
       rating: rating,
       runtime: runtime,
-      overview: overview
+      overview: overview,
+      tagline: "",
+      vote_average: "",
+      budget: "",
+      revenue: "",
+      poster_path: "",
+      vote_count: ""
     }));
     hide();
   };

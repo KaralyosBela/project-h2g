@@ -14,7 +14,8 @@ export const AddMovieSuccessModal: React.FC<Props> = ({ close }) => {
         <div className={classes.subtitle}>
           The movie has been added to the <br /> database successfully
         </div>
-        <div className={classes.close} onClick={close}>              &times;
+        <div className={classes.close} onClick={close}>              
+        &times;
         </div>
       </div>
     </>

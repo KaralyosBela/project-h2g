@@ -47,12 +47,17 @@ export const AddMovieModal: React.FC<Props> = ({ hide }) => {
       id: "",
       title: event.currentTarget.title.value,
       release_date: event.currentTarget.releasedate.value.slice(0, 4),
-      genre: genre,
-      thumbnail: "https://i.kym-cdn.com/photos/images/original/001/394/314/c62.jpg",
-      movie_url: event.currentTarget.url.value,
+      genres: genre,
+      movie_url: "https://i.kym-cdn.com/photos/images/original/001/394/314/c62.jpg",
       rating: event.currentTarget.rating.value,
       runtime: event.currentTarget.runtime.value,
-      overview: event.currentTarget.overview.value
+      overview: event.currentTarget.overview.value,
+      tagline: "",
+      vote_average: "",
+      budget: "",
+      revenue: "",
+      vote_count: "",
+      poster_path: ""
     }));
     setSubmitted(true);
     hide();

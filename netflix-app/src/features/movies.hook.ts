@@ -11,7 +11,7 @@ export const moviesSelector = (state: any) => {
     .filter(
       (movie: IMovies) =>
         state.movies.filterOptions.genre === "" ||
-        movie.genre
+        movie.genres
           .map((genre) => genre.toLowerCase())
           .includes(state.movies.filterOptions.genre)
     )
@@ -22,7 +22,7 @@ export const moviesSelector = (state: any) => {
           case "releaseDate":
             return a.release_date - b.release_date;
           case "length":
-            return a.runtime.split(" ")[0] - b.runtime.split(" ")[0];
+            return a.runtime - b.runtime;
           case "rating":
             return a.rating - b.rating;
         }
@@ -31,7 +31,7 @@ export const moviesSelector = (state: any) => {
           case "releaseDate":
             return b.release_date - a.release_date;
           case "length":
-            return b.runtime.split(" ")[0] - a.runtime.split(" ")[0];
+            return b.runtime - a.runtime;
           case "rating":
             return b.rating - a.rating;
         }

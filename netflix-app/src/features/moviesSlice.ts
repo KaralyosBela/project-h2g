@@ -7,17 +7,20 @@ export const getMovies = createAsyncThunk(
   "movies/getMovies",
   async (args, { rejectWithValue }) => {
     try {
-      const response = await axios.get("http://localhost:8000/movies");
+      const response = await axios.get("http://localhost:4000/movies");
 
-      const movieData = response.data.map((item: IMovies) => {
+      const movieData = response.data.data.map((item: IMovies) => {
         return {
           id: item.id,
           title: item.title,
-          release_date: item.release_date,
-          genre: item.genre,
-          thumbnail: item.thumbnail,
-          movie_url: item.movie_url,
-          rating: item.rating,
+          tagline: item.tagline,
+          vote_average: item.vote_average,
+          budget: item.budget,
+          revenue: item.revenue,
+          release_date: item.release_date.slice(0,4),
+          genres: item.genres,
+          movie_url: item.poster_path,
+          rating: item.vote_count,
           runtime: item.runtime,
           overview: item.overview,
         };
@@ -89,13 +92,18 @@ const initialState: moviesState = {
   movies: [],
   searchedMovie: "",
   movie: {
+    tagline: "",
+    vote_average: "",
+    vote_count: "",
+    poster_path: "",
+    budget: "",
+    revenue: "",
     id: "",
-    genre: [],
+    genres: [],
     movie_url: "",
     rating: "",
     release_date: "",
     runtime: "",
-    thumbnail: "",
     title: "",
     overview: "",
   },

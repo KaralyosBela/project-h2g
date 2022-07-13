@@ -59,12 +59,12 @@ export const Movie: React.FC<Props> = ({ movie }) => {
             <div className={classes.deleteModal} onClick={deleteStuff}>Delete</div>
           </div>
         )}
-        <img className={classes.image} src={movie.thumbnail} alt="alt"></img>
+        <img className={classes.image} src={movie.movie_url} alt="alt"></img>
         <div className={classes.info}>
           <div className={classes.title}>{movie.title}</div>
           <div className={classes.year}>{movie.release_date}</div>
         </div>
-        <div className={classes.genre}>{movie.genre.join(", ")}</div>
+        <div className={classes.genre}>{movie.genres.join(", ")}</div>
       </div>
     </div>
   );
