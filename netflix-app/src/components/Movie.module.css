@@ -9,6 +9,7 @@
   transition: all 0.3s ease-in-out;
   border: 1px solid rgba(255, 255, 255, 0.221);
   cursor: pointer;
+  z-index: 9;
 }
 
 .card:hover {
@@ -23,10 +24,31 @@
   background-color: #F65261;
 }
 
-.card:hover  > .circle {
-  transition: all 0.3s ease-in-out;
+.card:hover .circle {
+  transform: scale(2,2);
+  transition: all 0.5s ease-in-out;
+  transform: rotate(360deg);
+  transform-origin: center;
   width: 30px;
   height: 30px;
+}
+
+.card:hover .firstDot {
+  top:5px;
+  transition: all 0.5s ease-in-out;
+}
+
+.card:hover .secondDot {
+  transition: all 0.5s ease-in-out;
+  height: 5px;
+  width: 5px;
+  left:12.5px;
+  top:12.5px;
+}
+
+.card:hover .thirdDot {
+  top:20px;
+  transition: all 0.5s ease-in-out;
 }
 
 .image {
@@ -58,9 +80,10 @@
 }
 
 .circle {
+  transition: all 0.8s ease-in-out;
   background-color: #F65261;
-  width: 0;
-  height: 0;
+   width: 30px;
+  height: 30px;
   border-radius: 100%;
   position: absolute;
   cursor: pointer;
@@ -71,24 +94,29 @@
 .firstDot, .secondDot, .thirdDot{
   background-color: white;
   width: 5px;
-  height: 5px;
+  height: 5px; 
   border-radius: 100%;
   position: absolute;
 }
 
 .firstDot {
-  left:12px;
-  top:4px
+  transition: all 0.5s ease-in-out;
+  left:12.5px;
+  top:12.5px
 }
 
 .secondDot{
-  left:12px;
-  top:12px
+  transition: all 0.5s ease-in-out;
+  width: 8px;
+  height: 8px;
+  left:11px;
+  top:11px
 }
 
 .thirdDot{
-  left:12px;
-  top:20px
+  transition: all 0.5s ease-in-out;
+  left:12.5px;
+  top:12.5px;
 }
 
 .dropdownMenu {

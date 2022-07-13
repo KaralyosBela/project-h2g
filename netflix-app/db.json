@@ -131,32 +131,18 @@
       "overview": "overview blablalba"
     },
     {
-      "id": "76ace2d5-5c76-458f-aa6c-2cda65a04cb6",
-      "title": "xy",
-      "release_date": "2022",
+      "id": "8347586a-e94b-45ff-9f2e-a1fabca223a3",
+      "title": "Polite cat ollie",
+      "release_date": "2023",
       "genre": [
         "Comedy",
-        "Horror"
+        "Adventure"
       ],
       "thumbnail": "https://i.kym-cdn.com/photos/images/original/001/394/314/c62.jpg",
-      "movie_url": "xy",
-      "rating": "10",
-      "runtime": "10",
-      "overview": "xy"
-    },
-    {
-      "id": "8347586a-e94b-45ff-9f2e-a1fabca223a3",
-      "title": "",
-      "release_date": "",
-      "genre": [
-        "drama",
-        "adventure"
-      ],
-      "thumbnail": "https://i.kym-cdn.com/photos/images/original/001/394/314/c62.jpg",
-      "movie_url": "",
-      "rating": "",
-      "runtime": "",
-      "overview": ""
+      "movie_url": "polite",
+      "rating": "20",
+      "runtime": "420",
+      "overview": "He is very polite."
     }
   ]
 }

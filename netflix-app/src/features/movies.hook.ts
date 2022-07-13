@@ -36,6 +36,7 @@ export const moviesSelector = (state: any) => {
             return b.rating - a.rating;
         }
       }
+      return a.release_date - b.release_date;
     });
 };
 
