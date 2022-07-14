@@ -79,7 +79,6 @@ select {
 .modal .action button {
   width: 186px;
   height: 57px;
-  border: 1.5px solid #f65261;
   border-radius: 4px;
   font-size: 20px;
   margin: 0px 10px;
@@ -88,16 +87,32 @@ select {
 
 .modal .action .resetBtn {
   color: #f65261;
-  border-color: #f65261;
+  border: 1px solid #f65261;
   background-color: #424242;
+  transition: all 0.5s ease-in-out;
 }
 
 .modal .action .submitBtn {
   color: white;
-  border-color: #f65261;
   background-color: #f65261;
   margin-right: 0px;
+  transition: all 0.5s ease-in-out;
+  border: none;
 }
+
+.modal .action .submitBtn:hover {
+  color: #f65261;
+  background-color: white;
+  transition: all 0.5s ease-in-out;
+}
+
+.modal .action .resetBtn:hover {
+  color: #f65261;
+  background-color: white;
+  transition: all 0.5s ease-in-out;
+  border-color: white;
+}
+
 
 .modal h1 {
   font-size: 40px;
@@ -133,7 +148,7 @@ select {
   right: 0;
   bottom: 0;
   position: fixed;
-  z-index: 1;
+  z-index: 20;
   background: rgba(0, 0, 0, 0.8);
   cursor: pointer; 
 

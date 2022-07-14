@@ -17,7 +17,7 @@ export const getMovies = createAsyncThunk(
           vote_average: item.vote_average,
           budget: item.budget,
           revenue: item.revenue,
-          release_date: item.release_date.slice(0,4),
+          release_date: item.release_date.slice(0, 4),
           genres: item.genres,
           poster_path: item.poster_path,
           vote_count: item.vote_count,
@@ -36,11 +36,11 @@ export const getMovies = createAsyncThunk(
 export const addMovie = createAsyncThunk(
   "movies/addMovie",
   async (movie: IMovie, { rejectWithValue }) => {
-    //adding a uniqe id to the movie
-    // movie.id = v4();
+    //Adding a uniqe ID to the movie
+    //movie.id = v4();
     console.log(movie);
     try {
-      //adjam át id nélkül
+      //post without ID
       axios.post("http://localhost:4000/movies", {
         title: movie.title,
         tagline: movie.tagline,
@@ -65,9 +65,7 @@ export const deleteMovie = createAsyncThunk(
   "movies/deleteMovie",
   async (movie: IMovie, { rejectWithValue }) => {
     try {
-      axios.delete(
-        `http://localhost:4000/movies/${movie.id}`
-      );
+      axios.delete(`http://localhost:4000/movies/${movie.id}`);
       return movie;
     } catch (error) {
       return rejectWithValue(error);
@@ -79,9 +77,7 @@ export const editMovie = createAsyncThunk(
   "movies/editMovie",
   async (movie: IMovie, { rejectWithValue }) => {
     try {
-      axios.put(
-        `http://localhost:4000/movies`, movie
-      );
+      axios.put(`http://localhost:4000/movies`, movie);
       return movie;
     } catch (error) {
       return rejectWithValue(error);
@@ -90,17 +86,17 @@ export const editMovie = createAsyncThunk(
 );
 
 interface moviesState {
-  movies: IMovie[]
-  searchedMovie: string
-  movie: IMovie
-  bannerVisible: boolean
+  movies: IMovie[];
+  searchedMovie: string;
+  movie: IMovie;
+  bannerVisible: boolean;
   sortOptions: {
-    sortKey: string
-    sortOrder: string
-  }
+    sortKey: string;
+    sortOrder: string;
+  };
   filterOptions: {
-    genre: string
-  }
+    genre: string;
+  };
 }
 
 const initialState: moviesState = {
@@ -123,11 +119,11 @@ const initialState: moviesState = {
   },
   sortOptions: {
     sortKey: "",
-    sortOrder: ""
+    sortOrder: "",
   },
   filterOptions: {
-    genre: ""
-  }
+    genre: "",
+  },
 };
 
 export const moviesSlice = createSlice({
@@ -152,7 +148,7 @@ export const moviesSlice = createSlice({
     // },
     setMovieBannerStatus: (state, action: PayloadAction<boolean>) => {
       state.bannerVisible = action.payload;
-    }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -166,10 +162,13 @@ export const moviesSlice = createSlice({
         state.movies = state.movies.filter(
           (movie) => movie.id !== action.payload.id
         );
-      }).addCase(editMovie.fulfilled, (state, action) => {
-        const index = state.movies.findIndex((movie) => movie.id === action.payload.id);
-        state.movies[index] = action.payload;
       })
+      .addCase(editMovie.fulfilled, (state, action) => {
+        const index = state.movies.findIndex(
+          (movie) => movie.id === action.payload.id
+        );
+        state.movies[index] = action.payload;
+      });
   },
 });
 
@@ -179,6 +178,6 @@ export const {
   setSortParams,
   setChoosenMovie,
   // resetForm,
-  setMovieBannerStatus
+  setMovieBannerStatus,
 } = moviesSlice.actions;
 export default moviesSlice.reducer;

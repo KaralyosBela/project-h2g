@@ -12,7 +12,6 @@ interface Props {
 }
 
 export const AddMovieModal: React.FC<Props> = ({ hide }) => {
-
   const dispatch = useDispatch<AppDispatch>();
 
   //Success modal visible controll
@@ -101,7 +100,7 @@ export const AddMovieModal: React.FC<Props> = ({ hide }) => {
                 <label htmlFor="url">MOVIE URL</label>
                 <input type="text" id="url" name="url" value={movieUrl} onChange={movieUrlOnChange}></input>
                 <label htmlFor="genre">GENRE</label>
-                <Select options={options} isMulti={true} onChange={genreOnChange} />
+                <Select options={options} isMulti={true} onChange={genreOnChange}/>
               </div>
 
               <div className={classes.rightside}>

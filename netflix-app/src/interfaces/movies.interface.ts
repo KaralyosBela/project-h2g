@@ -12,3 +12,6 @@ export interface IMovie {
   runtime: number
   overview: string
 }
+
+
+//omit utilitypes

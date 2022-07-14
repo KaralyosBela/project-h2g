@@ -25,12 +25,8 @@
 }
 
 .card:hover .circle {
-  transform: scale(2,2);
   transition: all 0.5s ease-in-out;
   transform: rotate(360deg);
-  transform-origin: center;
-  width: 30px;
-  height: 30px;
 }
 
 .card:hover .firstDot {

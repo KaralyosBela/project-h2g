@@ -1,65 +1,73 @@
 .movieBanner {
-    color: white;
-    max-width: 1200px;
-    height: 600px;
-    background-color: #232323;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    box-sizing: border-box;
-    padding: 10px 50px;
+  color: white;
+  max-width: 1200px;
+  height: 550px;
+  background-color: #232323;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  box-sizing: border-box;
+  padding: 10px 64px;
+  margin-bottom: 10px;
 }
 
 .movieBanner .titleBar {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .movieBanner .infoPart {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .movieBanner .movieInfo {
-    padding: 0px 10px;
-    display: flex;
-    flex-direction: column;
+  padding: 0px 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 .movieBanner .image {
-    object-fit: cover;
-    height: 450px;
-  }  
-
-
-.movieBanner .pageTitle, .secondRow {
-    color: #F65261;
+  object-fit: cover;
+  height: 450px;
 }
 
-.movieBanner .firstRow, .secondRow, .thirdRow {
-    display: flex;
-    flex-direction: row;
+.movieBanner .pageTitle,
+.secondRow {
+  color: #f65261;
 }
 
-.movieBanner .title, .vote_average, .genre, .runtime, .release_date, .overview {
-    padding: 0px 25px;
+.movieBanner .firstRow,
+.secondRow,
+.thirdRow {
+  display: flex;
+  flex-direction: row;
+}
+
+.movieBanner .title,
+.vote_average,
+.genre,
+.runtime,
+.release_date,
+.overview {
+  padding: 0px 25px;
 }
 
 .movieBanner .overview {
-    text-align: justify;
+  text-align: justify;
 }
 
 .movieBanner .searchIcon {
-    cursor: pointer;
-    transition: all 0.5s ease-in-out;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
 }
 
 .movieBanner .searchIcon:hover {
-    color: #F65261;
-    transform: rotate(-35deg);
-    transition: all 0.5s ease-in-out;
+  color: #f65261;
+  transform: rotate(-35deg);
+  transition: all 0.5s ease-in-out;
 }
