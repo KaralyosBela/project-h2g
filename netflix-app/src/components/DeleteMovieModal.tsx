@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "../app/store";
 import { useAppSelector } from "../app/hooks";
 import { deleteMovie } from "../features/moviesSlice";
+import {CgClose} from "react-icons/cg"
+
 interface Props {
   hide: () => void;
 }
@@ -27,7 +29,7 @@ export const DeleteMovieModal: React.FC<Props> = ({ hide }) => {
         </div>
         <button onClick={delMovie}>CONFIRM</button>
         <div className={classes.close} onClick={hide}>
-          &times;
+          <CgClose size={30}/>
         </div>
       </div>
     </>

@@ -1,15 +1,15 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
-import { IMovies } from "../interfaces/movies.interface";
+import { IMovie } from "../interfaces/movies.interface";
 import { v4 } from "uuid";
 
 export const getMovies = createAsyncThunk(
   "movies/getMovies",
   async (args, { rejectWithValue }) => {
     try {
-      const response = await axios.get("http://localhost:4000/movies");
+      const response = await axios.get("http://localhost:4000/movies?limit=30");
 
-      const movieData = response.data.data.map((item: IMovies) => {
+      const movieData = response.data.data.map((item: IMovie) => {
         return {
           id: item.id,
           title: item.title,
@@ -19,8 +19,8 @@ export const getMovies = createAsyncThunk(
           revenue: item.revenue,
           release_date: item.release_date.slice(0,4),
           genres: item.genres,
-          movie_url: item.poster_path,
-          rating: item.vote_count,
+          poster_path: item.poster_path,
+          vote_count: item.vote_count,
           runtime: item.runtime,
           overview: item.overview,
         };
@@ -35,11 +35,25 @@ export const getMovies = createAsyncThunk(
 
 export const addMovie = createAsyncThunk(
   "movies/addMovie",
-  async (movie: IMovies, { rejectWithValue }) => {
+  async (movie: IMovie, { rejectWithValue }) => {
     //adding a uniqe id to the movie
-    movie.id = v4();
+    // movie.id = v4();
+    console.log(movie);
     try {
-      axios.post("http://localhost:8000/movies", movie);
+      //adjam át id nélkül
+      axios.post("http://localhost:4000/movies", {
+        title: movie.title,
+        tagline: movie.tagline,
+        vote_average: movie.vote_average,
+        budget: movie.budget,
+        revenue: movie.revenue,
+        release_date: movie.release_date,
+        genres: movie.genres,
+        poster_path: movie.poster_path,
+        vote_count: movie.vote_count,
+        runtime: movie.runtime,
+        overview: movie.overview,
+      });
       return movie;
     } catch (error) {
       return rejectWithValue(error);
@@ -49,10 +63,10 @@ export const addMovie = createAsyncThunk(
 
 export const deleteMovie = createAsyncThunk(
   "movies/deleteMovie",
-  async (movie: IMovies, { rejectWithValue }) => {
+  async (movie: IMovie, { rejectWithValue }) => {
     try {
       axios.delete(
-        `http://localhost:8000/movies/${movie.id}`
+        `http://localhost:4000/movies/${movie.id}`
       );
       return movie;
     } catch (error) {
@@ -63,10 +77,10 @@ export const deleteMovie = createAsyncThunk(
 
 export const editMovie = createAsyncThunk(
   "movies/editMovie",
-  async (movie: IMovies, { rejectWithValue }) => {
+  async (movie: IMovie, { rejectWithValue }) => {
     try {
-      axios.patch(
-        `http://localhost:8000/movies/${movie.id}`, movie
+      axios.put(
+        `http://localhost:4000/movies`, movie
       );
       return movie;
     } catch (error) {
@@ -76,9 +90,10 @@ export const editMovie = createAsyncThunk(
 );
 
 interface moviesState {
-  movies: IMovies[];
-  searchedMovie: string;
-  movie: IMovies;
+  movies: IMovie[]
+  searchedMovie: string
+  movie: IMovie
+  bannerVisible: boolean
   sortOptions: {
     sortKey: string
     sortOrder: string
@@ -91,19 +106,18 @@ interface moviesState {
 const initialState: moviesState = {
   movies: [],
   searchedMovie: "",
+  bannerVisible: false,
   movie: {
     tagline: "",
-    vote_average: "",
-    vote_count: "",
+    vote_average: 0,
+    vote_count: 0,
     poster_path: "",
-    budget: "",
-    revenue: "",
+    budget: 0,
+    revenue: 0,
     id: "",
     genres: [],
-    movie_url: "",
-    rating: "",
     release_date: "",
-    runtime: "",
+    runtime: 0,
     title: "",
     overview: "",
   },
@@ -130,31 +144,23 @@ export const moviesSlice = createSlice({
       state.sortOptions.sortKey = action.payload.key;
       state.sortOptions.sortOrder = action.payload.order;
     },
-    setChoosenMovie: (state, action: PayloadAction<IMovies>) => {
+    setChoosenMovie: (state, action: PayloadAction<IMovie>) => {
       state.movie = action.payload;
     },
-    resetForm: (state) => {
-      console.log("hehe");
-      // state.movie.genre = [];
-      // state.movie.movie_url = "";
-      // state.movie.overview = "";
-      // state.movie.rating = "";
-      // state.movie.release_date = "";
-      // state.movie.runtime = "";
-      // state.movie.thumbnail = "";
-     state.movie.title = "";
+    // resetForm: (state) => {
+    //  state.movie.title = "";
+    // },
+    setMovieBannerStatus: (state, action: PayloadAction<boolean>) => {
+      state.bannerVisible = action.payload;
     }
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getMovies.fulfilled, (state, action: PayloadAction<IMovies>) => {
+      .addCase(getMovies.fulfilled, (state, action: PayloadAction<IMovie>) => {
         state.movies = Object.values(action.payload);
-        // state.numberOfMovies = state.movies.length;
-        // state.movies = state.moviesAPI;
       })
       .addCase(addMovie.fulfilled, (state, action) => {
         state.movies.push(action.payload);
-        // state.numberOfMovies++;
       })
       .addCase(deleteMovie.fulfilled, (state, action) => {
         state.movies = state.movies.filter(
@@ -172,6 +178,7 @@ export const {
   setGenreFilter,
   setSortParams,
   setChoosenMovie,
-  resetForm
+  // resetForm,
+  setMovieBannerStatus
 } = moviesSlice.actions;
 export default moviesSlice.reducer;

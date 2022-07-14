@@ -4,7 +4,8 @@ import { useDispatch } from "react-redux";
 import { addMovie } from "../features/moviesSlice";
 import React, { useState } from "react";
 import { AddMovieSuccessModal } from "./AddMovieSuccessModal";
-import Select from "react-select"
+import Select from "react-select/";
+import {CgClose} from "react-icons/cg"
 
 interface Props {
   hide: () => void;
@@ -22,9 +23,9 @@ export const AddMovieModal: React.FC<Props> = ({ hide }) => {
   const [genre, setGenre] = useState<string[]>([])
   const [movieUrl, setMovieUrl] = useState<string>("")
   const [overview, setOverview] = useState<string>("")
-  const [rating, setRating] = useState<string>("")
+  const [rating, setRating] = useState<number>(0)
   const [releaseDate, setReleaseDate] = useState<string>("")
-  const [runtime, setRuntime] = useState<string>("")
+  const [runtime, setRuntime] = useState<number>(0)
 
   //OnChange handlers
   const titleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => { setTitle(event.currentTarget.value) };
@@ -36,28 +37,25 @@ export const AddMovieModal: React.FC<Props> = ({ hide }) => {
   };
   const movieUrlOnChange = (event: React.ChangeEvent<HTMLInputElement>) => { setMovieUrl(event.currentTarget.value) };
   const overviewOnChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => { setOverview(event.currentTarget.value) };
-  const ratingOnChange = (event: React.ChangeEvent<HTMLInputElement>) => { setRating(event.currentTarget.value) };
+  const ratingOnChange = (event: React.ChangeEvent<HTMLInputElement>) => { setRating(Number.parseInt(event.currentTarget.value)) };
   const releaseDateOnChange = (event: React.ChangeEvent<HTMLInputElement>) => { setReleaseDate(event.currentTarget.value) };
-  const runTimeOnChange = (event: React.ChangeEvent<HTMLInputElement>) => { setRuntime(event.currentTarget.value) };
+  const runTimeOnChange = (event: React.ChangeEvent<HTMLInputElement>) => { setRuntime(Number.parseInt(event.currentTarget.value)) };
 
-  //Itt nem okés a formevent<htmlform> valami
   const add = (event: any) => {
     event.preventDefault();
     dispatch(addMovie({
       id: "",
-      title: event.currentTarget.title.value,
-      release_date: event.currentTarget.releasedate.value.slice(0, 4),
+      title: title,
+      release_date: releaseDate.slice(0, 4),
       genres: genre,
-      movie_url: "https://i.kym-cdn.com/photos/images/original/001/394/314/c62.jpg",
-      rating: event.currentTarget.rating.value,
-      runtime: event.currentTarget.runtime.value,
+      runtime: runtime,
       overview: event.currentTarget.overview.value,
-      tagline: "",
-      vote_average: "",
-      budget: "",
-      revenue: "",
-      vote_count: "",
-      poster_path: ""
+      tagline: "dummyData",
+      vote_average: 0,
+      budget: 0,
+      revenue: 0,
+      vote_count: rating,
+      poster_path: "https://i.kym-cdn.com/photos/images/original/001/394/314/c62.jpg"
     }));
     setSubmitted(true);
     hide();
@@ -74,9 +72,9 @@ export const AddMovieModal: React.FC<Props> = ({ hide }) => {
     setGenre([""]);
     setMovieUrl("");
     setOverview("");
-    setRating("");
+    setRating(0);
     setReleaseDate("");
-    setRuntime("");
+    setRuntime(0);
   }
 
   const options = [
@@ -110,9 +108,9 @@ export const AddMovieModal: React.FC<Props> = ({ hide }) => {
                 <label htmlFor="releasedate">RELEASE DATE</label>
                 <input type="date" id="releasedate" name="date" value={releaseDate} onChange={releaseDateOnChange}></input>
                 <label htmlFor="rating">RATING</label>
-                <input type="text" id="rating" name="rating" value={rating} onChange={ratingOnChange}></input>
+                <input type="number" id="rating" name="rating" value={rating} onChange={ratingOnChange}></input>
                 <label htmlFor="runtime">RUNTIME</label>
-                <input type="text" id="runtime" name="runtime" value={runtime} onChange={runTimeOnChange}></input>
+                <input type="number" id="runtime" name="runtime" value={runtime} onChange={runTimeOnChange}></input>
               </div>
             </div>
 
@@ -129,7 +127,7 @@ export const AddMovieModal: React.FC<Props> = ({ hide }) => {
             </div>
           </form>
           <div className={classes.close} onClick={hide}>
-            &times;
+            <CgClose size={30}/>
           </div>
         </div>
       </div>

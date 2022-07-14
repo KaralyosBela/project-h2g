@@ -1,16 +1,14 @@
-export interface IMovies {
+export interface IMovie {
   id: string
   title: string
   tagline: string
-  vote_average: string
-  vote_count: string
-  budget: string
-  revenue: string
+  vote_average: number
+  vote_count: number
+  budget: number
+  revenue: number
   release_date: string
   genres: string[]
   poster_path: string
-  movie_url: string
-  rating: string
-  runtime: string
+  runtime: number
   overview: string
 }

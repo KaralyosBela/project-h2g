@@ -3,8 +3,9 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "../app/store";
 import { useAppSelector } from "../app/hooks";
 import React, { useState } from "react";
-import { editMovie, resetForm } from "../features/moviesSlice";
+import { editMovie } from "../features/moviesSlice";
 import Select from "react-select"
+import {CgClose} from "react-icons/cg"
 
 interface Props {
   //Hides the  edit movie modal
@@ -20,11 +21,11 @@ export const EditMovieModal: React.FC<Props> = ({ hide }) => {
   //Set the form input fields based on the current selected movie
   const [title, setTitle] = useState<string>(selectedMovieDetails.title)
   const [genre, setGenre] = useState<string[]>(selectedMovieDetails.genres)
-  const [movieUrl, setMovieUrl] = useState<string>(selectedMovieDetails.movie_url)
+  const [movieUrl, setMovieUrl] = useState<string>(selectedMovieDetails.poster_path)
   const [overview, setOverview] = useState<string>(selectedMovieDetails.overview)
-  const [rating, setRating] = useState<string>(selectedMovieDetails.rating)
+  const [rating, setRating] = useState<number>(selectedMovieDetails.vote_count)
   const [releaseDate, setReleaseDate] = useState<string>(selectedMovieDetails.release_date)
-  const [runtime, setRuntime] = useState<string>(selectedMovieDetails.runtime)
+  const [runtime, setRuntime] = useState<number>(selectedMovieDetails.runtime)
 
   //OnChange handlers
   const titleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => { setTitle(event.currentTarget.value) };
@@ -36,9 +37,9 @@ export const EditMovieModal: React.FC<Props> = ({ hide }) => {
   }; 
   const movieUrlOnChange = (event: React.ChangeEvent<HTMLInputElement>) => { setMovieUrl(event.currentTarget.value) };
   const overviewOnChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => { setOverview(event.currentTarget.value) };
-  const ratingOnChange = (event: React.ChangeEvent<HTMLInputElement>) => { setRating(event.currentTarget.value) };
+  const ratingOnChange = (event: React.ChangeEvent<HTMLInputElement>) => { setRating(Number.parseInt(event.currentTarget.value)) };
   const releaseDateOnChange = (event: React.ChangeEvent<HTMLInputElement>) => { setReleaseDate(event.currentTarget.value) };
-  const runTimeOnChange = (event: React.ChangeEvent<HTMLInputElement>) => { setRuntime(event.currentTarget.value) };
+  const runTimeOnChange = (event: React.ChangeEvent<HTMLInputElement>) => { setRuntime(Number.parseInt(event.currentTarget.value)) };
 
   const reset = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
@@ -47,9 +48,9 @@ export const EditMovieModal: React.FC<Props> = ({ hide }) => {
     setGenre([""]);
     setMovieUrl("");
     setOverview("");
-    setRating("");
+    setRating(0);
     setReleaseDate("");
-    setRuntime("");
+    setRuntime(0);
   }
 
   //Submit the changes of the selected movie
@@ -60,16 +61,14 @@ export const EditMovieModal: React.FC<Props> = ({ hide }) => {
       title: title,
       release_date: releaseDate,
       genres: genre,
-      movie_url: selectedMovieDetails.movie_url,
-      rating: rating,
+      poster_path: selectedMovieDetails.poster_path,
       runtime: runtime,
       overview: overview,
-      tagline: "",
-      vote_average: "",
-      budget: "",
-      revenue: "",
-      poster_path: "",
-      vote_count: ""
+      tagline: "dummyData",
+      vote_average: 0,
+      budget: 0,
+      revenue: 0,
+      vote_count: rating
     }));
     hide();
   };
@@ -120,7 +119,7 @@ export const EditMovieModal: React.FC<Props> = ({ hide }) => {
           </div>
         </form>
         <div className={classes.close} onClick={hide}>
-          &times;
+          <CgClose size={30}/>
         </div>
       </div>
     </>

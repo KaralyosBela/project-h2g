@@ -1,6 +1,6 @@
 .card {
   width: 330px;
-  height: 470px;
+  height: 520px;
   display: flex;
   flex-direction: column;
   color: white;
@@ -54,7 +54,7 @@
 .image {
   width: 100%;
   object-fit: cover;
-  height: 400px;
+  height: 450px;
 }  
 
 .info {
@@ -80,7 +80,7 @@
 }
 
 .circle {
-  transition: all 0.8s ease-in-out;
+  transition: all 0.3s ease-in-out;
   background-color: #F65261;
    width: 30px;
   height: 30px;
@@ -100,13 +100,13 @@
 }
 
 .firstDot {
-  transition: all 0.5s ease-in-out;
+  transition: all 0.3s ease-in-out;
   left:12.5px;
   top:12.5px
 }
 
 .secondDot{
-  transition: all 0.5s ease-in-out;
+  transition: all 0.3s ease-in-out;
   width: 8px;
   height: 8px;
   left:11px;
@@ -114,7 +114,7 @@
 }
 
 .thirdDot{
-  transition: all 0.5s ease-in-out;
+  transition: all 0.3s ease-in-out;
   left:12.5px;
   top:12.5px;
 }

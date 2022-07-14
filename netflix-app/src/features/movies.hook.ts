@@ -1,15 +1,15 @@
 import { useSelector } from "react-redux";
-import { IMovies } from "../interfaces/movies.interface";
+import { IMovie } from "../interfaces/movies.interface";
 
 export const moviesSelector = (state: any) => {
   return state.movies.movies
-    .filter((movie: IMovies) =>
+    .filter((movie: IMovie) =>
       movie.title
         .toLowerCase()
         .includes(state.movies.searchedMovie.toLowerCase())
     )
     .filter(
-      (movie: IMovies) =>
+      (movie: IMovie) =>
         state.movies.filterOptions.genre === "" ||
         movie.genres
           .map((genre) => genre.toLowerCase())
@@ -24,7 +24,7 @@ export const moviesSelector = (state: any) => {
           case "length":
             return a.runtime - b.runtime;
           case "rating":
-            return a.rating - b.rating;
+            return a.vote_count - b.vote_count;
         }
       } else {
         switch (state.movies.sortOptions.sortKey) {
@@ -33,7 +33,7 @@ export const moviesSelector = (state: any) => {
           case "length":
             return b.runtime - a.runtime;
           case "rating":
-            return b.rating - a.rating;
+            return b.vote_count - a.vote_count;
         }
       }
       return a.release_date - b.release_date;

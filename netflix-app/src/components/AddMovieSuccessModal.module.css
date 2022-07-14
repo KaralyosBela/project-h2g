@@ -28,13 +28,13 @@
 }
 
 .successModal .close {
-
   position: relative;
   color: white;
   top: -220px;
   left: 320px;
   cursor: pointer;
 }
+
 .overlay {
   width: 100vw;
   height: 100vh;
