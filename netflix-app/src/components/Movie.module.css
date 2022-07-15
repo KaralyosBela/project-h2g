@@ -127,7 +127,23 @@
   border-radius: 10px;
 }
 
-.editModal, .deleteModal {
+
+
+.editModal, .deleteModal, .infoModal {
   padding: 5px;
+  margin: 5px;
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  width: 90%;
+  text-align: center;
+}
+
+.editModal:hover ,.deleteModal:hover, .infoModal:hover {
+  color: #F65261;
+  font-weight: bold;
+  background-color: white;
+  border-radius: 5px;
+  width: 90%;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
 }

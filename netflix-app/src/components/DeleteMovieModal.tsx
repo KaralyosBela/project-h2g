@@ -3,7 +3,8 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "../app/store";
 import { useAppSelector } from "../app/hooks";
 import { deleteMovie } from "../features/moviesSlice";
-import {CgClose} from "react-icons/cg"
+import { CgClose } from "react-icons/cg";
+import { AnyAction } from "@reduxjs/toolkit";
 
 interface Props {
   hide: () => void;
@@ -13,6 +14,11 @@ export const DeleteMovieModal: React.FC<Props> = ({ hide }) => {
 
   //Get the current selected movie from the store
   const selectedMovie = useAppSelector((state) => state.movies.movie);
+
+  // const delMovie = () => {
+  //   dispatch(deleteMovie(selectedMovie) as unknown as AnyAction);
+  //   hide();
+  // };
 
   const delMovie = () => {
     dispatch(deleteMovie(selectedMovie));
@@ -29,7 +35,7 @@ export const DeleteMovieModal: React.FC<Props> = ({ hide }) => {
         </div>
         <button onClick={delMovie}>CONFIRM</button>
         <div className={classes.close} onClick={hide}>
-          <CgClose size={30}/>
+          <CgClose size={30} />
         </div>
       </div>
     </>

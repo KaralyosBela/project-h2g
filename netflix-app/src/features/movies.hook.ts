@@ -1,7 +1,15 @@
 import { useSelector } from "react-redux";
 import { IMovie } from "../interfaces/movies.interface";
 
-export const moviesSelector = (state: any) => {
+const moviesSelector = (state: {
+  //it was state: any before, not this object
+  movies: {
+    movies: IMovie[];
+    searchedMovie: string;
+    filterOptions: { genre: string };
+    sortOptions: { sortOrder: string; sortKey: string };
+  };
+}) => {
   return state.movies.movies
     .filter((movie: IMovie) =>
       movie.title
@@ -15,12 +23,13 @@ export const moviesSelector = (state: any) => {
           .map((genre) => genre.toLowerCase())
           .includes(state.movies.filterOptions.genre)
     )
-    //IMovies nem okés itt
-    .sort((a: any, b: any) => {
+    .sort((a: IMovie, b: IMovie) => {
       if (state.movies.sortOptions.sortOrder === "ascending") {
         switch (state.movies.sortOptions.sortKey) {
           case "releaseDate":
-            return a.release_date - b.release_date;
+            return (
+              Number.parseInt(a.release_date) - Number.parseInt(b.release_date)
+            );
           case "length":
             return a.runtime - b.runtime;
           case "rating":
@@ -29,15 +38,22 @@ export const moviesSelector = (state: any) => {
       } else {
         switch (state.movies.sortOptions.sortKey) {
           case "releaseDate":
-            return b.release_date - a.release_date;
+            return (
+              Number.parseInt(b.release_date) - Number.parseInt(a.release_date)
+            );
           case "length":
             return b.runtime - a.runtime;
           case "rating":
             return b.vote_count - a.vote_count;
         }
       }
-      return a.release_date - b.release_date;
+      return Number.parseInt(a.release_date) - Number.parseInt(b.release_date);
     });
 };
 
+const numberOfMoviesSelector = (state: any) => {
+  return state.movies.movies.length;
+};
+
 export const useMovies = () => useSelector(moviesSelector);
+export const useMoviesCount = () => useSelector(numberOfMoviesSelector);

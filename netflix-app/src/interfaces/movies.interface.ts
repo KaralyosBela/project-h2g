@@ -13,5 +13,7 @@ export interface IMovie {
   overview: string
 }
 
+export type IMovieWithoutID = Omit<IMovie, "id">
 
-//omit utilitypes
+
+

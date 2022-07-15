@@ -27,9 +27,9 @@ export const MovieBanner: React.FC<Props> = ({ movie }) => {
         <div className={classes.movieInfo}>
           <div className={classes.firstRow}>
             <h1 className={classes.title}>{movie.title}</h1>
-            <h1 className={classes.vote_average}>
+            <span className={classes.vote_average}>
             {movie.vote_average}
-            </h1>
+            </span>
           </div>
           <p className={classes.genre}>{movie.genres.join(", ")}</p>
           <div className={classes.secondRow}>

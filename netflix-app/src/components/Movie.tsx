@@ -32,7 +32,7 @@ export const Movie: React.FC<Props> = ({ movie }) => {
   const setMovie = () => {
     dispatch(setMovieBannerStatus(true));
     dispatch(setChoosenMovie(movie));
-    // window.scrollTo({top: 0, behavior: 'smooth'});
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const editStuff = () => {
@@ -47,11 +47,17 @@ export const Movie: React.FC<Props> = ({ movie }) => {
     toggleModal();
   };
 
+  const onMouseLeaveToggle = () => {
+    if (modalOpen) {
+      setModalOpen(false);
+    }
+  };
+
   return (
     <div>
       {editModalOpen && <EditMovieModal hide={hideModal} />}
       {deleteModalOpen && <DeleteMovieModal hide={hideModal} />}
-      <div className={classes.card} onClick={setMovie}>
+      <div className={classes.card} onClick={toggleModal} onMouseLeave={onMouseLeaveToggle}>
         <div className={classes.circle} onClick={toggleModal}>
           <div className={classes.firstDot}></div>
           <div className={classes.secondDot}></div>
@@ -59,6 +65,9 @@ export const Movie: React.FC<Props> = ({ movie }) => {
         </div>
         {modalOpen && (
           <div className={classes.dropdownMenu}>
+            <div className={classes.infoModal} onClick={setMovie}>
+              Info
+            </div>
             <div className={classes.editModal} onClick={editStuff}>
               Edit
             </div>

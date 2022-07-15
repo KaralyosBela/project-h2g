@@ -6,6 +6,8 @@ import React, { useState } from "react";
 import { AddMovieSuccessModal } from "./AddMovieSuccessModal";
 import Select from "react-select/";
 import {CgClose} from "react-icons/cg"
+import { AnyAction } from "@reduxjs/toolkit";
+import { IMovieWithoutID } from "../interfaces/movies.interface";
 
 interface Props {
   hide: () => void;
@@ -43,14 +45,14 @@ export const AddMovieModal: React.FC<Props> = ({ hide }) => {
   const add = (event: any) => {
     event.preventDefault();
     dispatch(addMovie({
-      id: "",
+       id: "",
       title: title,
       release_date: releaseDate.slice(0, 4),
       genres: genre,
       runtime: runtime,
       overview: event.currentTarget.overview.value,
       tagline: "dummyData",
-      vote_average: 0,
+      vote_average: 10,
       budget: 0,
       revenue: 0,
       vote_count: rating,
@@ -59,6 +61,45 @@ export const AddMovieModal: React.FC<Props> = ({ hide }) => {
     setSubmitted(true);
     hide();
   };
+
+  // const add2 = (event: any) =>{
+  //   event.preventDefault();
+  //   addMovie({
+  //         title: title,
+  //         release_date: releaseDate.slice(0, 4),
+  //         genres: genre,
+  //         runtime: runtime,
+  //         overview: event.currentTarget.overview.value,
+  //         tagline: "dummyData",
+  //         vote_average: 10,
+  //         budget: 0,
+  //         revenue: 0,
+  //         vote_count: rating,
+  //         poster_path: "https://i.kym-cdn.com/photos/images/original/001/394/314/c62.jpg"
+  //       }, dispatch);
+  //       setSubmitted(true);
+  //       hide();
+  // }
+
+  // const add = (event: any) => {
+  //   event.preventDefault();
+  //   dispatch(addMovie({
+  //     // id: "",
+  //     title: title,
+  //     release_date: releaseDate.slice(0, 4),
+  //     genres: genre,
+  //     runtime: runtime,
+  //     overview: event.currentTarget.overview.value,
+  //     tagline: "dummyData",
+  //     vote_average: 10,
+  //     budget: 0,
+  //     revenue: 0,
+  //     vote_count: rating,
+  //     poster_path: "https://i.kym-cdn.com/photos/images/original/001/394/314/c62.jpg"
+  //   }) as unknown as AnyAction);
+  //   setSubmitted(true);
+  //   hide();
+  // };
 
   const close = () => {
     setSubmitted(false);

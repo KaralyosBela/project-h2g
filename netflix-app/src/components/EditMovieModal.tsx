@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import { editMovie } from "../features/moviesSlice";
 import Select from "react-select"
 import {CgClose} from "react-icons/cg"
+import { AnyAction } from "@reduxjs/toolkit";
 
 interface Props {
   //Hides the  edit movie modal
@@ -54,6 +55,25 @@ export const EditMovieModal: React.FC<Props> = ({ hide }) => {
   }
 
   //Submit the changes of the selected movie
+  // const submitEdit = (event: React.FormEvent<HTMLFormElement>) => {
+  //   event.preventDefault();
+  //   dispatch(editMovie({
+  //     id: selectedMovieDetails.id,
+  //     title: title,
+  //     release_date: releaseDate,
+  //     genres: genre,
+  //     poster_path: selectedMovieDetails.poster_path,
+  //     runtime: runtime,
+  //     overview: overview,
+  //     tagline: "dummyData",
+  //     vote_average: 10,
+  //     budget: 0,
+  //     revenue: 0,
+  //     vote_count: rating
+  //   }) as unknown as AnyAction);
+  //   hide();
+  // };
+
   const submitEdit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     dispatch(editMovie({
@@ -65,7 +85,7 @@ export const EditMovieModal: React.FC<Props> = ({ hide }) => {
       runtime: runtime,
       overview: overview,
       tagline: "dummyData",
-      vote_average: 0,
+      vote_average: 10,
       budget: 0,
       revenue: 0,
       vote_count: rating
@@ -102,9 +122,9 @@ export const EditMovieModal: React.FC<Props> = ({ hide }) => {
               <label htmlFor="releasedate">RELEASE DATE</label>
               <input type="text" id="releasedate" value={releaseDate} onChange={releaseDateOnChange}></input>
               <label htmlFor="rating">RATING</label>
-              <input type="text" id="rating" value={rating} onChange={ratingOnChange}></input>
+              <input type="number" id="rating" value={rating} onChange={ratingOnChange}></input>
               <label htmlFor="runtime">RUNTIME</label>
-              <input type="text" id="runtime" value={runtime} onChange={runTimeOnChange}></input>
+              <input type="number" id="runtime" value={runtime} onChange={runTimeOnChange}></input>
             </div>
           </div>
 

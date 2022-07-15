@@ -2,14 +2,15 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 import { IMovie } from "../interfaces/movies.interface";
 import { v4 } from "uuid";
+import { IMovieWithoutID } from "../interfaces/movies.interface";
 
 export const getMovies = createAsyncThunk(
   "movies/getMovies",
   async (args, { rejectWithValue }) => {
     try {
-      const response = await axios.get("http://localhost:4000/movies?limit=30");
-
-      const movieData = response.data.data.map((item: IMovie) => {
+      const response = await axios.get("http://localhost:4000/movies?limit=21");
+      
+      const movieData: IMovie = response.data.data.map((item: IMovie) => {
         return {
           id: item.id,
           title: item.title,
@@ -33,14 +34,32 @@ export const getMovies = createAsyncThunk(
   }
 );
 
+// export const addMovie = async (movie: IMovieWithoutID) => (dispatch: any) => {
+//   try {
+//     //post without ID
+//     axios.post("http://localhost:4000/movies", {
+//       title: movie.title,
+//       tagline: movie.tagline,
+//       vote_average: movie.vote_average,
+//       budget: movie.budget,
+//       revenue: movie.revenue,
+//       release_date: movie.release_date,
+//       genres: movie.genres,
+//       poster_path: movie.poster_path,
+//       vote_count: movie.vote_count,
+//       runtime: movie.runtime,
+//       overview: movie.overview,
+//     });
+//     dispatch(getMovies());
+//     // return movie;
+//   } catch (error) {}
+// };
+
 export const addMovie = createAsyncThunk(
   "movies/addMovie",
   async (movie: IMovie, { rejectWithValue }) => {
-    //Adding a uniqe ID to the movie
-    //movie.id = v4();
     console.log(movie);
     try {
-      //post without ID
       axios.post("http://localhost:4000/movies", {
         title: movie.title,
         tagline: movie.tagline,
@@ -55,6 +74,7 @@ export const addMovie = createAsyncThunk(
         overview: movie.overview,
       });
       return movie;
+
     } catch (error) {
       return rejectWithValue(error);
     }
@@ -76,6 +96,7 @@ export const deleteMovie = createAsyncThunk(
 export const editMovie = createAsyncThunk(
   "movies/editMovie",
   async (movie: IMovie, { rejectWithValue }) => {
+    console.log(movie);
     try {
       axios.put(`http://localhost:4000/movies`, movie);
       return movie;
@@ -97,6 +118,7 @@ interface moviesState {
   filterOptions: {
     genre: string;
   };
+  numberOfActionMovies: number;
 }
 
 const initialState: moviesState = {
@@ -124,28 +146,29 @@ const initialState: moviesState = {
   filterOptions: {
     genre: "",
   },
+  numberOfActionMovies: 0,
 };
 
 export const moviesSlice = createSlice({
   name: "movies",
   initialState,
   reducers: {
-    setSearchedMovie: (state, action) => {
+    setSearchedMovie: (state, action: PayloadAction<string>) => {
       state.searchedMovie = action.payload;
     },
-    setGenreFilter: (state, action) => {
+    setGenreFilter: (state, action: PayloadAction<string>) => {
       state.filterOptions.genre = action.payload;
     },
-    setSortParams: (state, action) => {
+    setSortParams: (
+      state,
+      action: PayloadAction<{ key: string; order: string }>
+    ) => {
       state.sortOptions.sortKey = action.payload.key;
       state.sortOptions.sortOrder = action.payload.order;
     },
     setChoosenMovie: (state, action: PayloadAction<IMovie>) => {
       state.movie = action.payload;
     },
-    // resetForm: (state) => {
-    //  state.movie.title = "";
-    // },
     setMovieBannerStatus: (state, action: PayloadAction<boolean>) => {
       state.bannerVisible = action.payload;
     },
@@ -155,15 +178,18 @@ export const moviesSlice = createSlice({
       .addCase(getMovies.fulfilled, (state, action: PayloadAction<IMovie>) => {
         state.movies = Object.values(action.payload);
       })
-      .addCase(addMovie.fulfilled, (state, action) => {
-        state.movies.push(action.payload);
+      .addCase(addMovie.fulfilled, (state, action: PayloadAction<IMovie>) => {
+      state.movies.push(action.payload);
       })
-      .addCase(deleteMovie.fulfilled, (state, action) => {
-        state.movies = state.movies.filter(
-          (movie) => movie.id !== action.payload.id
-        );
-      })
-      .addCase(editMovie.fulfilled, (state, action) => {
+      .addCase(
+        deleteMovie.fulfilled,
+        (state, action: PayloadAction<IMovie>) => {
+          state.movies = state.movies.filter(
+            (movie) => movie.id !== action.payload.id
+          );
+        }
+      )
+      .addCase(editMovie.fulfilled, (state, action: PayloadAction<IMovie>) => {
         const index = state.movies.findIndex(
           (movie) => movie.id === action.payload.id
         );
@@ -177,7 +203,6 @@ export const {
   setGenreFilter,
   setSortParams,
   setChoosenMovie,
-  // resetForm,
   setMovieBannerStatus,
 } = moviesSlice.actions;
 export default moviesSlice.reducer;

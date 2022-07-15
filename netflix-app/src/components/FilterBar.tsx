@@ -28,12 +28,13 @@ export const FilterBar: React.FC<Props> = ({ movieCount }) => {
     dispatch(setGenreFilter(filter));
   };
 
+  //React.ChangeEvent<HTMLInputElement>
   //Sort options
-  const sort = (sort: string) => {
+  const sort = (f: number) => (event: any) => {
     dispatch(
       setSortParams({
-        key: sort.split("_")[0],
-        order: sort.split("_")[1],
+        key: event.currentTarget.value.split("_")[0],
+        order: event.currentTarget.value.split("_")[1],
       })
     );
   };
@@ -80,15 +81,13 @@ export const FilterBar: React.FC<Props> = ({ movieCount }) => {
               filterBy(5, "crime");
             }}
           >
-            Crime
+            Crime 
           </button>
         </div>
         <div className={classes.sortSection}>
           <div>Sort by</div>
           <select
-            onChange={(e) => {
-              sort(e.target.value);
-            }}
+            onChange={sort(2)}
           >
             {sortOptions.map((option) => (
               <option key={option.value} value={option.value}>
