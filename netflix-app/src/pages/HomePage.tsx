@@ -10,7 +10,8 @@ import { getMovies } from "../features/moviesSlice";
 import { MovieBanner } from "../components/MovieBanner";
 import { useMovies } from "../features/movies.hook";
 import { useAppSelector } from "../app/hooks";
-import { AnyAction } from "@reduxjs/toolkit";
+//Action gyakorlas
+import { customAction } from "../features/actions";
 
 export const HomePage: React.FC = () => {
   const movieSelected = useAppSelector((state) => state.movies.movie);
@@ -19,7 +20,9 @@ export const HomePage: React.FC = () => {
   const movies = useMovies();
 
   useEffect(() => {
-    dispatch(getMovies() as unknown as AnyAction);
+    dispatch(getMovies());
+    //Action gyakorlas
+    dispatch(customAction("Hello Action"));
   }, []);
 
   return (

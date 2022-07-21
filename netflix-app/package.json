@@ -28,7 +28,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
+    "test:coverage": "react-scripts test --coverage",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -50,6 +51,6 @@
     ]
   },
   "devDependencies": {
-    "@types/uuid": "^8.3.4"
+    "react-test-renderer": "^18.2.0"
   }
 }

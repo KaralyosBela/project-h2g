@@ -97,7 +97,6 @@ export const FilterBar: React.FC<Props> = ({ movieCount }) => {
           </select>
         </div>
       </div>
-      {/* <hr /> */}
       <div className={classes.movieCounter}>
         <span>{movieCount}</span> movies found
       </div>

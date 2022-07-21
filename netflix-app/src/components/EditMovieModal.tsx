@@ -6,10 +6,9 @@ import React, { useState } from "react";
 import { editMovie } from "../features/moviesSlice";
 import Select from "react-select"
 import {CgClose} from "react-icons/cg"
-import { AnyAction } from "@reduxjs/toolkit";
+import {selectStyle} from "../components/selectStyle";
 
 interface Props {
-  //Hides the  edit movie modal
   hide: () => void;
 }
 
@@ -18,6 +17,9 @@ export const EditMovieModal: React.FC<Props> = ({ hide }) => {
 
   //Get the current selected movie from the store
   const selectedMovieDetails = useAppSelector((state) => state.movies.movie);
+
+  const [errorMsg, setErrorMsg] = useState<string>("");
+  const [formUnfilled, setFormUnfilled] = useState<boolean>(false);
 
   //Set the form input fields based on the current selected movie
   const [title, setTitle] = useState<string>(selectedMovieDetails.title)
@@ -29,22 +31,19 @@ export const EditMovieModal: React.FC<Props> = ({ hide }) => {
   const [runtime, setRuntime] = useState<number>(selectedMovieDetails.runtime)
 
   //OnChange handlers
-  const titleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => { setTitle(event.currentTarget.value) };
+  const titleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => setTitle(event.currentTarget.value)
   const genreOnChange = (event: any) => {
     const genres: string[] = event.map((genre: { value: string; }) => genre.value);
-    console.log(genres);
     setGenre(genres);
-    console.log(genre);
   }; 
-  const movieUrlOnChange = (event: React.ChangeEvent<HTMLInputElement>) => { setMovieUrl(event.currentTarget.value) };
-  const overviewOnChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => { setOverview(event.currentTarget.value) };
-  const ratingOnChange = (event: React.ChangeEvent<HTMLInputElement>) => { setRating(Number.parseInt(event.currentTarget.value)) };
-  const releaseDateOnChange = (event: React.ChangeEvent<HTMLInputElement>) => { setReleaseDate(event.currentTarget.value) };
-  const runTimeOnChange = (event: React.ChangeEvent<HTMLInputElement>) => { setRuntime(Number.parseInt(event.currentTarget.value)) };
+  const movieUrlOnChange = (event: React.ChangeEvent<HTMLInputElement>) => setMovieUrl(event.currentTarget.value)
+  const overviewOnChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => setOverview(event.currentTarget.value)
+  const ratingOnChange = (event: React.ChangeEvent<HTMLInputElement>) => setRating(Number.parseInt(event.currentTarget.value))
+  const releaseDateOnChange = (event: React.ChangeEvent<HTMLInputElement>) => setReleaseDate(event.currentTarget.value)
+  const runTimeOnChange = (event: React.ChangeEvent<HTMLInputElement>) => setRuntime(Number.parseInt(event.currentTarget.value))
 
   const reset = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
-    // dispatch(resetForm());
     setTitle("");
     setGenre([""]);
     setMovieUrl("");
@@ -54,43 +53,66 @@ export const EditMovieModal: React.FC<Props> = ({ hide }) => {
     setRuntime(0);
   }
 
-  //Submit the changes of the selected movie
-  // const submitEdit = (event: React.FormEvent<HTMLFormElement>) => {
-  //   event.preventDefault();
-  //   dispatch(editMovie({
-  //     id: selectedMovieDetails.id,
-  //     title: title,
-  //     release_date: releaseDate,
-  //     genres: genre,
-  //     poster_path: selectedMovieDetails.poster_path,
-  //     runtime: runtime,
-  //     overview: overview,
-  //     tagline: "dummyData",
-  //     vote_average: 10,
-  //     budget: 0,
-  //     revenue: 0,
-  //     vote_count: rating
-  //   }) as unknown as AnyAction);
-  //   hide();
-  // };
-
   const submitEdit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    dispatch(editMovie({
-      id: selectedMovieDetails.id,
-      title: title,
-      release_date: releaseDate,
-      genres: genre,
-      poster_path: selectedMovieDetails.poster_path,
-      runtime: runtime,
-      overview: overview,
-      tagline: "dummyData",
-      vote_average: 10,
-      budget: 0,
-      revenue: 0,
-      vote_count: rating
-    }));
-    hide();
+    formValidation();
+    console.log(errorMsg);
+    // if (!formUnfilled) {
+    //   dispatch(
+    //     editMovie({
+    //       id: selectedMovieDetails.id,
+    //       title: title,
+    //       release_date: releaseDate,
+    //       genres: genre,
+    //       poster_path: selectedMovieDetails.poster_path,
+    //       runtime: runtime,
+    //       overview: overview,
+    //       tagline: "dummyData",
+    //       vote_average: 10,
+    //       budget: 0,
+    //       revenue: 0,
+    //       vote_count: rating,
+    //     })
+    //   );
+    //   hide();
+    // }
+  };
+
+  
+  const formValidation = () => {
+    if (title === "") {
+      setErrorMsg("Title must be filled out!");
+      setFormUnfilled(true);
+      return true;
+    }
+    if (movieUrl === "") {
+      setErrorMsg("Movie URL must be filled out!");
+      setFormUnfilled(true);
+      return true;
+    }
+    if (genre.length < 1) {
+      setErrorMsg("Genre must be filled out!");
+      setFormUnfilled(true);
+      return true;
+    }
+    // if(releaseDate === "") {
+    //     setError("Release date must be filled out!");
+    //     setFormFilled(false);
+    //     return true;
+    //   }
+    if (overview === "") {
+      setErrorMsg("Overview must be filled out!");
+      setFormUnfilled(true);
+      return true;
+    }
+    setErrorMsg("");
+    setFormUnfilled(false);
+    return false;
+  };
+
+  const closeErrorMsg = () => {
+    setErrorMsg("");
+    setFormUnfilled(true);
   };
 
   const options = [
@@ -115,7 +137,7 @@ export const EditMovieModal: React.FC<Props> = ({ hide }) => {
               <label htmlFor="url">MOVIE URL</label>
               <input type="text" id="url" value={movieUrl} onChange={movieUrlOnChange}></input>
               <label htmlFor="genre">GENRE</label>
-              <Select options={options} isMulti={true} onChange={genreOnChange} />
+              <Select options={options} isMulti={true} onChange={genreOnChange} styles={selectStyle}/>
             </div>
 
             <div className={classes.rightside}>
@@ -132,6 +154,8 @@ export const EditMovieModal: React.FC<Props> = ({ hide }) => {
             <label htmlFor="overview">OVERVIEW</label>
             <textarea id="overview" value={overview} onChange={overviewOnChange}></textarea>
           </div>
+
+          {formUnfilled && <div className={classes.errorMessage}>{errorMsg}<CgClose size={20} className={classes.errorCloseIcon} onClick={closeErrorMsg}/></div>}
 
           <div className={classes.action}>
             <button className={classes.resetBtn} onClick={reset}>RESET</button>

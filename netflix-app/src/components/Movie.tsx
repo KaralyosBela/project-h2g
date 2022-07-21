@@ -29,23 +29,25 @@ export const Movie: React.FC<Props> = ({ movie }) => {
     setDeleteModalOpen(false);
   };
 
-  const setMovie = () => {
-    dispatch(setMovieBannerStatus(true));
+  const editModalEvent = () => {
     dispatch(setChoosenMovie(movie));
+    setEditModalOpen(!editModalOpen);
+    toggleModal();
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const editStuff = () => {
-    setEditModalOpen(!editModalOpen);
-    setMovie();
+  const deleteModalEvent = () => {
+    dispatch(setChoosenMovie(movie));
+    setDeleteModalOpen(!deleteModalOpen);
     toggleModal();
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const deleteStuff = () => {
-    setDeleteModalOpen(!deleteModalOpen);
-    setMovie();
-    toggleModal();
-  };
+  const infoModalEvent = () => {
+    dispatch(setMovieBannerStatus(true));
+    dispatch(setChoosenMovie(movie));
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
 
   const onMouseLeaveToggle = () => {
     if (modalOpen) {
@@ -65,18 +67,18 @@ export const Movie: React.FC<Props> = ({ movie }) => {
         </div>
         {modalOpen && (
           <div className={classes.dropdownMenu}>
-            <div className={classes.infoModal} onClick={setMovie}>
+            <div className={classes.infoModal} onClick={infoModalEvent}>
               Info
             </div>
-            <div className={classes.editModal} onClick={editStuff}>
+            <div className={classes.editModal} onClick={editModalEvent}>
               Edit
             </div>
-            <div className={classes.deleteModal} onClick={deleteStuff}>
+            <div className={classes.deleteModal} onClick={deleteModalEvent}>
               Delete
             </div>
           </div>
         )}
-        <img className={classes.image} src={movie.poster_path} alt="alt"></img>
+        <img className={classes.image} src={movie.poster_path} alt="Not found"></img>
         <div className={classes.info}>
           <div className={classes.title}>{movie.title}</div>
           <div className={classes.year}>{movie.release_date}</div>

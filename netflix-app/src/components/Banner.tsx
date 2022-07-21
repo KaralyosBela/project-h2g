@@ -4,39 +4,32 @@ import classes from "./Banner.module.css";
 import { useDispatch } from "react-redux";
 import { setSearchedMovie } from "../features/moviesSlice";
 import { AppDispatch } from "../app/store";
+import { AddMovieSuccessModal } from "./AddMovieSuccessModal";
 
 export const Banner: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   const [openAddModal, setOpenAddModal] = useState<boolean>(false);
-  // const [searched, setSearched] = useState<string>("");
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
-  const hideModal = () => {
-    setOpenAddModal(false);
-  };
+  const toggleModal = () => setOpenAddModal(!openAddModal);
 
-  const openModal = () => {
-    setOpenAddModal(true);
-  };
+  const closeModal = () => setIsSubmitted(false);
 
   const searchedMovieInputChange = (event: React.FormEvent<HTMLInputElement>) => {
-    // setSearched(event.currentTarget.value);
     dispatch(setSearchedMovie(event.currentTarget.value));
   };
-
-  // const searchMovie = () => {
-  //   dispatch(setSearchedMovie(searched));
-  // };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
       dispatch(setSearchedMovie(event.currentTarget.value));
     }
   };
-
+  
   return (
     <div className={classes.picture}>
-      {openAddModal && <AddMovieModal hide={hideModal} />}
+      {isSubmitted && <AddMovieSuccessModal close={closeModal}/>}
+      {openAddModal && <AddMovieModal hide={toggleModal} submitted={setIsSubmitted}/>}
       <div className={classes.banner}>
         <div className={classes.upperBar}>
           <div>
@@ -44,7 +37,7 @@ export const Banner: React.FC = () => {
               <span>netflix</span>Roulette
             </h4>
           </div>
-          <button className={classes.addButton} onClick={openModal}>
+          <button className={classes.addButton} onClick={toggleModal}>
             ADD MOVIE
           </button>
         </div>

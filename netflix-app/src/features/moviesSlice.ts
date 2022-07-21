@@ -1,15 +1,15 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import axios from "axios";
+import { rejects } from "assert";
+import axios, { AxiosError } from "axios";
 import { IMovie } from "../interfaces/movies.interface";
-import { v4 } from "uuid";
 import { IMovieWithoutID } from "../interfaces/movies.interface";
 
 export const getMovies = createAsyncThunk(
   "movies/getMovies",
   async (args, { rejectWithValue }) => {
     try {
-      const response = await axios.get("http://localhost:4000/movies?limit=21");
-      
+      const response = await axios.get("http://localhost:4000/movies");
+
       const movieData: IMovie = response.data.data.map((item: IMovie) => {
         return {
           id: item.id,
@@ -28,8 +28,8 @@ export const getMovies = createAsyncThunk(
       });
       console.log(movieData);
       return movieData;
-    } catch (error) {
-      return rejectWithValue(error);
+    } catch (error: unknown) {
+      return rejectWithValue("Fetch failed!");
     }
   }
 );
@@ -74,9 +74,8 @@ export const addMovie = createAsyncThunk(
         overview: movie.overview,
       });
       return movie;
-
-    } catch (error) {
-      return rejectWithValue(error);
+    } catch (error: unknown) {
+      return rejectWithValue("Post failed!");
     }
   }
 );
@@ -87,7 +86,7 @@ export const deleteMovie = createAsyncThunk(
     try {
       axios.delete(`http://localhost:4000/movies/${movie.id}`);
       return movie;
-    } catch (error) {
+    } catch (error: unknown) {
       return rejectWithValue(error);
     }
   }
@@ -100,8 +99,8 @@ export const editMovie = createAsyncThunk(
     try {
       axios.put(`http://localhost:4000/movies`, movie);
       return movie;
-    } catch (error) {
-      return rejectWithValue(error);
+    } catch (error: unknown) {
+      return rejectWithValue("Edit failed!");
     }
   }
 );
@@ -178,8 +177,14 @@ export const moviesSlice = createSlice({
       .addCase(getMovies.fulfilled, (state, action: PayloadAction<IMovie>) => {
         state.movies = Object.values(action.payload);
       })
+      .addCase(getMovies.rejected, (state, action: any) => {
+        console.log(action.payload);
+      })
       .addCase(addMovie.fulfilled, (state, action: PayloadAction<IMovie>) => {
-      state.movies.push(action.payload);
+        state.movies.push(action.payload);
+      })
+      .addCase(addMovie.rejected, (state, action: any) => {
+        console.log(action.payload);
       })
       .addCase(
         deleteMovie.fulfilled,
@@ -189,11 +194,17 @@ export const moviesSlice = createSlice({
           );
         }
       )
+      .addCase(deleteMovie.rejected, (state, action: any) => {
+        console.log(action.payload);
+      })
       .addCase(editMovie.fulfilled, (state, action: PayloadAction<IMovie>) => {
         const index = state.movies.findIndex(
           (movie) => movie.id === action.payload.id
         );
         state.movies[index] = action.payload;
+      })
+      .addCase(editMovie.rejected, (state, action: any) => {
+        console.log(action.payload);
       });
   },
 });
