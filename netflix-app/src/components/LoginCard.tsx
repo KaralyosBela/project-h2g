@@ -7,16 +7,13 @@ export const LoginCard: React.FC = () => {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  const usernameOnChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setUsername(event.currentTarget.value);
-  const passwordOnChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setPassword(event.currentTarget.value);
+  const usernameOnChange = (event: React.ChangeEvent<HTMLInputElement>) => setUsername(event.currentTarget.value);
+  const passwordOnChange = (event: React.ChangeEvent<HTMLInputElement>) => setPassword(event.currentTarget.value);
 
   const auth = (event: any) => {
     event.preventDefault();
     if (username === "admin" && password === "admin") {
       navigate("/");
-    } else {
     }
   };
 

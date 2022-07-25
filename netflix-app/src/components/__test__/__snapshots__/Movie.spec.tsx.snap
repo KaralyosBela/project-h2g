@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render Movie component with the movie details 1`] = `
+<div>
+  <div
+    className="card"
+    onClick={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <div
+      className="circle"
+      onClick={[Function]}
+    >
+      <div
+        className="firstDot"
+      />
+      <div
+        className="secondDot"
+      />
+      <div
+        className="thirdDot"
+      />
+    </div>
+    <img
+      alt="Not found"
+      className="image"
+      src="https://image.tmdb.org/t/p/w500/vDwphkloD7ToaDpKASAXGgHOclN.jpg"
+    />
+    <div
+      className="info"
+    >
+      <div
+        className="title"
+      >
+        Cool Hand Luke
+      </div>
+      <div
+        className="year"
+      >
+        1967-06-22
+      </div>
+    </div>
+    <div
+      className="genre"
+    >
+      Crime, Drama
+    </div>
+  </div>
+</div>
+`;

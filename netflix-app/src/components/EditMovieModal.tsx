@@ -18,8 +18,7 @@ export const EditMovieModal: React.FC<Props> = ({ hide }) => {
   //Get the current selected movie from the store
   const selectedMovieDetails = useAppSelector((state) => state.movies.movie);
 
-  const [errorMsg, setErrorMsg] = useState<string>("");
-  const [formUnfilled, setFormUnfilled] = useState<boolean>(false);
+  const [validation, setValidation] = useState<{errorMsg: string, formUnfilled: boolean}>({errorMsg: "", formUnfilled: true});
 
   //Set the form input fields based on the current selected movie
   const [title, setTitle] = useState<string>(selectedMovieDetails.title)
@@ -56,63 +55,66 @@ export const EditMovieModal: React.FC<Props> = ({ hide }) => {
   const submitEdit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     formValidation();
-    console.log(errorMsg);
-    // if (!formUnfilled) {
-    //   dispatch(
-    //     editMovie({
-    //       id: selectedMovieDetails.id,
-    //       title: title,
-    //       release_date: releaseDate,
-    //       genres: genre,
-    //       poster_path: selectedMovieDetails.poster_path,
-    //       runtime: runtime,
-    //       overview: overview,
-    //       tagline: "dummyData",
-    //       vote_average: 10,
-    //       budget: 0,
-    //       revenue: 0,
-    //       vote_count: rating,
-    //     })
-    //   );
-    //   hide();
-    // }
+    if (!validation.formUnfilled) {
+      dispatch(
+        editMovie({
+          id: selectedMovieDetails.id,
+          title: title,
+          release_date: releaseDate,
+          genres: genre,
+          poster_path: selectedMovieDetails.poster_path,
+          runtime: runtime,
+          overview: overview,
+          tagline: "dummyData",
+          vote_average: 10,
+          budget: 0,
+          revenue: 0,
+          vote_count: rating,
+        })
+      );
+      hide();
+    }
   };
 
-  
+
   const formValidation = () => {
     if (title === "") {
-      setErrorMsg("Title must be filled out!");
-      setFormUnfilled(true);
-      return true;
+      validation.formUnfilled = true;
+      setValidation({
+        errorMsg: "Title must be filled out.",
+        formUnfilled: true,
+      });
+    } else if (movieUrl === "") {
+      validation.formUnfilled = true;
+      setValidation({
+        errorMsg: "Movie URL must be filled out.",
+        formUnfilled: true,
+      });
+    } else if (releaseDate === "") {
+      validation.formUnfilled = true;
+      setValidation({
+        errorMsg: "Release date must be filled out.",
+        formUnfilled: true,
+      });
+    } else if (genre.length < 1) {
+      validation.formUnfilled = true;
+      setValidation({
+        errorMsg: "At least choose one genre.",
+        formUnfilled: true,
+      });
+    } else if (overview === "") {
+      validation.formUnfilled = true;
+      setValidation({
+        errorMsg: "Overview must be filled out.",
+        formUnfilled: true,
+      });
+    } else {
+      validation.formUnfilled = false;
+      setValidation({ errorMsg: "", formUnfilled: false });
     }
-    if (movieUrl === "") {
-      setErrorMsg("Movie URL must be filled out!");
-      setFormUnfilled(true);
-      return true;
-    }
-    if (genre.length < 1) {
-      setErrorMsg("Genre must be filled out!");
-      setFormUnfilled(true);
-      return true;
-    }
-    // if(releaseDate === "") {
-    //     setError("Release date must be filled out!");
-    //     setFormFilled(false);
-    //     return true;
-    //   }
-    if (overview === "") {
-      setErrorMsg("Overview must be filled out!");
-      setFormUnfilled(true);
-      return true;
-    }
-    setErrorMsg("");
-    setFormUnfilled(false);
-    return false;
   };
-
   const closeErrorMsg = () => {
-    setErrorMsg("");
-    setFormUnfilled(true);
+    setValidation({errorMsg: "", formUnfilled: false});
   };
 
   const options = [
@@ -155,7 +157,16 @@ export const EditMovieModal: React.FC<Props> = ({ hide }) => {
             <textarea id="overview" value={overview} onChange={overviewOnChange}></textarea>
           </div>
 
-          {formUnfilled && <div className={classes.errorMessage}>{errorMsg}<CgClose size={20} className={classes.errorCloseIcon} onClick={closeErrorMsg}/></div>}
+          {validation.formUnfilled && validation.errorMsg && (
+              <div className={classes.errorMessage}>
+                {validation.errorMsg}
+                <CgClose
+                  size={20}
+                  className={classes.errorCloseIcon}
+                  onClick={closeErrorMsg}
+                />
+              </div>
+            )}
 
           <div className={classes.action}>
             <button className={classes.resetBtn} onClick={reset}>RESET</button>

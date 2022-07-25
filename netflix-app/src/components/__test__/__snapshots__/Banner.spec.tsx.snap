@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render the filterbar component correctly 1`] = `
+<div
+  className="picture"
+>
+  <div
+    className="banner"
+  >
+    <div
+      className="upperBar"
+    >
+      <div>
+        <h4
+          className="upperBarTitle"
+        >
+          <span>
+            netflix
+          </span>
+          Roulette
+        </h4>
+      </div>
+      <button
+        className="addButton"
+        onClick={[Function]}
+      >
+        ADD MOVIE
+      </button>
+    </div>
+    <div
+      className="title"
+    >
+      <h1>
+        FIND YOUR MOVIE
+      </h1>
+    </div>
+    <div
+      className="searchBar"
+    >
+      <input
+        className="searchInput"
+        onChange={[Function]}
+        onKeyDown={[Function]}
+        placeholder="What do you want to watch?"
+      />
+    </div>
+  </div>
+</div>
+`;

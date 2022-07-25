@@ -2,7 +2,7 @@ import classes from "./AddMovieModal.module.css";
 import { AppDispatch } from "../app/store";
 import { useDispatch } from "react-redux";
 import { addMovie } from "../features/moviesSlice";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Select from "react-select/";
 import { CgClose } from "react-icons/cg";
 import { selectStyle } from "../components/selectStyle";
@@ -39,39 +39,62 @@ export const AddMovieModal: React.FC<Props> = ({ hide, submitted }) => {
   const add = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     formValidation();
-    console.log("ERR: " + validation.errorMsg + " \nFORM NOT VALID: " + validation.formUnfilled);
-    if(!validation.formUnfilled){
-      console.log("if-ben");
-    // dispatch(
-    //   addMovie({
-    //     id: "",
-    //     title: title,
-    //     release_date: releaseDate.slice(0, 4),
-    //     genres: genre,
-    //     runtime: runtime,
-    //     overview: event.currentTarget.overview.value,
-    //     tagline: "dummyData",
-    //     vote_average: 10,
-    //     budget: 0,
-    //     revenue: 0,
-    //     vote_count: rating,
-    //     poster_path:
-    //       "https://i.kym-cdn.com/photos/images/original/001/394/314/c62.jpg",
-    //   })
-    // );
-    submitted(true);
-    hide();
+    if (!validation.formUnfilled) {
+      dispatch(
+        addMovie({
+          id: "",
+          title: title,
+          release_date: releaseDate.slice(0, 4),
+          genres: genre,
+          runtime: runtime,
+          overview: event.currentTarget.overview.value,
+          tagline: "dummyData",
+          vote_average: 10,
+          budget: 0,
+          revenue: 0,
+          vote_count: rating,
+          poster_path:
+            "https://i.kym-cdn.com/photos/images/original/001/394/314/c62.jpg",
+        })
+      );
+      submitted(true);
+      hide();
     }
   };
 
   const formValidation = () => {
     if (title === "") {
+      validation.formUnfilled = true;
       setValidation({
-        errorMsg: "Title must be filled out!",
+        errorMsg: "Title must be filled out.",
+        formUnfilled: true,
+      });
+    } else if (movieUrl === "") {
+      validation.formUnfilled = true;
+      setValidation({
+        errorMsg: "Movie URL must be filled out.",
+        formUnfilled: true,
+      });
+    } else if (releaseDate === "") {
+      validation.formUnfilled = true;
+      setValidation({
+        errorMsg: "Release date must be filled out.",
+        formUnfilled: true,
+      });
+    } else if (genre.length < 1) {
+      validation.formUnfilled = true;
+      setValidation({
+        errorMsg: "At least choose one genre.",
+        formUnfilled: true,
+      });
+    } else if (overview === "") {
+      validation.formUnfilled = true;
+      setValidation({
+        errorMsg: "Overview must be filled out.",
         formUnfilled: true,
       });
     } else {
-      console.log("minden kitoltve");
+      validation.formUnfilled = false;
       setValidation({ errorMsg: "", formUnfilled: false });
     }
   };

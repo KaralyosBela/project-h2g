@@ -6,7 +6,6 @@ interface Props {
   moviesList: IMovie[];
 }
 
-//ha itt kiveszem a childrent nem mukodik
 export const MovieList: React.FC<Props> = ({ moviesList }) => {
   return (
     <div className={classes.mainSection}>

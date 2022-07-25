@@ -1,0 +1,245 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Homepage should render component 1`] = `
+<div>
+  <div>
+    <div
+      class="container"
+    >
+      <div
+        class="picture"
+      >
+        <div
+          class="banner"
+        >
+          <div
+            class="upperBar"
+          >
+            <div>
+              <h4
+                class="upperBarTitle"
+              >
+                <span>
+                  netflix
+                </span>
+                Roulette
+              </h4>
+            </div>
+            <button
+              class="addButton"
+            >
+              ADD MOVIE
+            </button>
+          </div>
+          <div
+            class="title"
+          >
+            <h1>
+              FIND YOUR MOVIE
+            </h1>
+          </div>
+          <div
+            class="searchBar"
+          >
+            <input
+              class="searchInput"
+              placeholder="What do you want to watch?"
+            />
+          </div>
+        </div>
+      </div>
+      <div>
+        <div
+          class="filterBar"
+        >
+          <div
+            class="categories"
+          >
+            <button
+              class="active"
+            >
+              All
+            </button>
+            <button
+              class=""
+            >
+              Action
+            </button>
+            <button
+              class=""
+            >
+              Comedy
+            </button>
+            <button
+              class=""
+            >
+              Horror
+            </button>
+            <button
+              class=""
+            >
+              Crime
+            </button>
+          </div>
+          <div
+            class="sortSection"
+          >
+            <div>
+              Sort by
+            </div>
+            <select>
+              <option
+                value="releaseDate_ascending"
+              >
+                Release date asc
+              </option>
+              <option
+                value="releaseDate_descending"
+              >
+                Release date desc
+              </option>
+              <option
+                value="length_ascending"
+              >
+                Length asc
+              </option>
+              <option
+                value="length_descending"
+              >
+                Length desc
+              </option>
+              <option
+                value="rating_ascending"
+              >
+                Rating asc
+              </option>
+              <option
+                value="rating_descending"
+              >
+                Rating desc
+              </option>
+            </select>
+          </div>
+        </div>
+        <div
+          class="movieCounter"
+        >
+          <span>
+            2
+          </span>
+           movies found
+        </div>
+      </div>
+      <div
+        class="mainSection"
+      >
+        <div
+          class="movieContainer"
+        >
+          <div>
+            <div
+              class="card"
+            >
+              <div
+                class="circle"
+              >
+                <div
+                  class="firstDot"
+                />
+                <div
+                  class="secondDot"
+                />
+                <div
+                  class="thirdDot"
+                />
+              </div>
+              <img
+                alt="Not found"
+                class="image"
+                src="path:://asdasdasd"
+              />
+              <div
+                class="info"
+              >
+                <div
+                  class="title"
+                >
+                  Cim1
+                </div>
+                <div
+                  class="year"
+                >
+                  2019 01 02
+                </div>
+              </div>
+              <div
+                class="genre"
+              >
+                asd234asd, as324d
+              </div>
+            </div>
+          </div>
+          <div>
+            <div
+              class="card"
+            >
+              <div
+                class="circle"
+              >
+                <div
+                  class="firstDot"
+                />
+                <div
+                  class="secondDot"
+                />
+                <div
+                  class="thirdDot"
+                />
+              </div>
+              <img
+                alt="Not found"
+                class="image"
+                src="path://asdasd34234"
+              />
+              <div
+                class="info"
+              >
+                <div
+                  class="title"
+                >
+                  cim2
+                </div>
+                <div
+                  class="year"
+                >
+                  2011 02 02
+                </div>
+              </div>
+              <div
+                class="genre"
+              >
+                sdfsdfd, asddfsd
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="footer"
+        data-testid="footer"
+      >
+        <h4
+          data-testid="header"
+        >
+          <span
+            data-testid="span"
+          >
+            netflix
+          </span>
+          roulette
+        </h4>
+      </div>
+    </div>
+  </div>
+</div>
+`;

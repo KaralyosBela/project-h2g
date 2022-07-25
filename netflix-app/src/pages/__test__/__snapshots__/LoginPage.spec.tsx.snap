@@ -3,9 +3,7 @@
 exports[`LoginPage should render component 1`] = `
 <div>
   <div>
-    <div>
-      Container
-    </div>
+    Container
   </div>
 </div>
 `;

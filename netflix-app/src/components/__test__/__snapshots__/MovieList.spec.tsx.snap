@@ -1,0 +1,114 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Movie list component should render component with movie elements 1`] = `
+<div
+  className="mainSection"
+>
+  <div
+    className="movieContainer"
+  >
+    <div>
+      <div
+        className="card"
+        onClick={[Function]}
+        onMouseLeave={[Function]}
+      >
+        <div
+          className="circle"
+          onClick={[Function]}
+        >
+          <div
+            className="firstDot"
+          />
+          <div
+            className="secondDot"
+          />
+          <div
+            className="thirdDot"
+          />
+        </div>
+        <img
+          alt="Not found"
+          className="image"
+          src="https://image.tmdb.org/t/p/w500/vDwphkloD7ToaDpKASAXGgHOclN.jpg"
+        />
+        <div
+          className="info"
+        >
+          <div
+            className="title"
+          >
+            Cool Hand Luke
+          </div>
+          <div
+            className="year"
+          >
+            1967-06-22
+          </div>
+        </div>
+        <div
+          className="genre"
+        >
+          Crime, Drama
+        </div>
+      </div>
+    </div>
+    <div>
+      <div
+        className="card"
+        onClick={[Function]}
+        onMouseLeave={[Function]}
+      >
+        <div
+          className="circle"
+          onClick={[Function]}
+        >
+          <div
+            className="firstDot"
+          />
+          <div
+            className="secondDot"
+          />
+          <div
+            className="thirdDot"
+          />
+        </div>
+        <img
+          alt="Not found"
+          className="image"
+          src="https://image.tmdb.org/t/p/w500/2pVEMvhXtEUu2rnY94rCZUQ43HL.jpg"
+        />
+        <div
+          className="info"
+        >
+          <div
+            className="title"
+          >
+            Honey 2
+          </div>
+          <div
+            className="year"
+          >
+            2011-06-23
+          </div>
+        </div>
+        <div
+          className="genre"
+        >
+          Comedy, Drama, Music
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Movie list component should render component without elements 1`] = `
+<div
+  className="mainSection"
+>
+  <div
+    className="movieContainer"
+  />
+</div>
+`;
