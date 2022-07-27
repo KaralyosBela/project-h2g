@@ -1,49 +1,577 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render Movie component with the movie details 1`] = `
+exports[`Movie component should close the options modal on card leave 1`] = `
 <div>
-  <div
-    className="card"
-    onClick={[Function]}
-    onMouseLeave={[Function]}
-  >
+  <div>
     <div
-      className="circle"
-      onClick={[Function]}
+      class="card"
+      data-testid="card"
     >
       <div
-        className="firstDot"
+        class="circle"
+        data-testid="circle"
+      >
+        <div
+          class="firstDot"
+        />
+        <div
+          class="secondDot"
+        />
+        <div
+          class="thirdDot"
+        />
+      </div>
+      <img
+        alt="Not found"
+        class="image"
+        src="https://image.tmdb.org/t/p/w500/vDwphkloD7ToaDpKASAXGgHOclN.jpg"
       />
       <div
-        className="secondDot"
-      />
+        class="info"
+      >
+        <div
+          class="title"
+        >
+          Cool Hand Luke
+        </div>
+        <div
+          class="year"
+        >
+          1967-06-22
+        </div>
+      </div>
       <div
-        className="thirdDot"
-      />
+        class="genre"
+      >
+        Crime, Drama
+      </div>
     </div>
-    <img
-      alt="Not found"
-      className="image"
-      src="https://image.tmdb.org/t/p/w500/vDwphkloD7ToaDpKASAXGgHOclN.jpg"
+  </div>
+</div>
+`;
+
+exports[`Movie component should open options modal on when clicked on the movie card 1`] = `
+<div>
+  <div>
+    <div
+      class="card"
+      data-testid="card"
+    >
+      <div
+        class="circle"
+        data-testid="circle"
+      >
+        <div
+          class="firstDot"
+        />
+        <div
+          class="secondDot"
+        />
+        <div
+          class="thirdDot"
+        />
+      </div>
+      <div
+        class="dropdownMenu"
+      >
+        <div
+          class="infoModal"
+        >
+          Info
+        </div>
+        <div
+          class="editModal"
+        >
+          Edit
+        </div>
+        <div
+          class="deleteModal"
+        >
+          Delete
+        </div>
+      </div>
+      <img
+        alt="Not found"
+        class="image"
+        src="https://image.tmdb.org/t/p/w500/vDwphkloD7ToaDpKASAXGgHOclN.jpg"
+      />
+      <div
+        class="info"
+      >
+        <div
+          class="title"
+        >
+          Cool Hand Luke
+        </div>
+        <div
+          class="year"
+        >
+          1967-06-22
+        </div>
+      </div>
+      <div
+        class="genre"
+      >
+        Crime, Drama
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Movie component should open options modal on when clicked the circle on the card 1`] = `
+<div>
+  <div>
+    <div
+      class="card"
+      data-testid="card"
+    >
+      <div
+        class="circle"
+        data-testid="circle"
+      >
+        <div
+          class="firstDot"
+        />
+        <div
+          class="secondDot"
+        />
+        <div
+          class="thirdDot"
+        />
+      </div>
+      <div
+        class="dropdownMenu"
+      >
+        <div
+          class="infoModal"
+        >
+          Info
+        </div>
+        <div
+          class="editModal"
+        >
+          Edit
+        </div>
+        <div
+          class="deleteModal"
+        >
+          Delete
+        </div>
+      </div>
+      <img
+        alt="Not found"
+        class="image"
+        src="https://image.tmdb.org/t/p/w500/vDwphkloD7ToaDpKASAXGgHOclN.jpg"
+      />
+      <div
+        class="info"
+      >
+        <div
+          class="title"
+        >
+          Cool Hand Luke
+        </div>
+        <div
+          class="year"
+        >
+          1967-06-22
+        </div>
+      </div>
+      <div
+        class="genre"
+      >
+        Crime, Drama
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Movie component should open the delete modal 1`] = `
+<div>
+  <div>
+    <div
+      class="overlay"
+      data-testid="overlay"
     />
     <div
-      className="info"
+      class="deleteModal"
     >
-      <div
-        className="title"
+      <h1
+        class="title"
       >
-        Cool Hand Luke
+        DELETE MOVIE
+      </h1>
+      <div
+        class="subtitle"
+      >
+        Are you sure you want to delete this movie?
       </div>
+      <button>
+        CONFIRM
+      </button>
       <div
-        className="year"
+        class="close"
       >
-        1967-06-22
+        <svg
+          fill="none"
+          height="30"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          width="30"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M6.2253 4.81108C5.83477 4.42056 5.20161 4.42056 4.81108 4.81108C4.42056 5.20161 4.42056 5.83477 4.81108 6.2253L10.5858 12L4.81114 17.7747C4.42062 18.1652 4.42062 18.7984 4.81114 19.1889C5.20167 19.5794 5.83483 19.5794 6.22535 19.1889L12 13.4142L17.7747 19.1889C18.1652 19.5794 18.7984 19.5794 19.1889 19.1889C19.5794 18.7984 19.5794 18.1652 19.1889 17.7747L13.4142 12L19.189 6.2253C19.5795 5.83477 19.5795 5.20161 19.189 4.81108C18.7985 4.42056 18.1653 4.42056 17.7748 4.81108L12 10.5858L6.2253 4.81108Z"
+            fill="currentColor"
+          />
+        </svg>
       </div>
     </div>
     <div
-      className="genre"
+      class="card"
+      data-testid="card"
     >
-      Crime, Drama
+      <div
+        class="circle"
+        data-testid="circle"
+      >
+        <div
+          class="firstDot"
+        />
+        <div
+          class="secondDot"
+        />
+        <div
+          class="thirdDot"
+        />
+      </div>
+      <img
+        alt="Not found"
+        class="image"
+        src="https://image.tmdb.org/t/p/w500/vDwphkloD7ToaDpKASAXGgHOclN.jpg"
+      />
+      <div
+        class="info"
+      >
+        <div
+          class="title"
+        >
+          Cool Hand Luke
+        </div>
+        <div
+          class="year"
+        >
+          1967-06-22
+        </div>
+      </div>
+      <div
+        class="genre"
+      >
+        Crime, Drama
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Movie component should open the edit modal 1`] = `
+<div>
+  <div>
+    <div
+      class="overlay"
+    />
+    <div
+      class="modal"
+    >
+      <h1>
+        EDIT MOVIE
+      </h1>
+      <form>
+        <div
+          class="modalbody"
+        >
+          <div
+            class="leftside"
+          >
+            <label
+              for="title"
+            >
+              TITLE
+            </label>
+            <input
+              id="title"
+              type="text"
+              value="Cool Hand Luke"
+            />
+            <label
+              for="url"
+            >
+              MOVIE URL
+            </label>
+            <input
+              id="url"
+              type="text"
+              value="https://image.tmdb.org/t/p/w500/vDwphkloD7ToaDpKASAXGgHOclN.jpg"
+            />
+            <label
+              for="genre"
+            >
+              GENRE
+            </label>
+            <div
+              class=" css-b62m3t-container"
+            >
+              <span
+                class="css-1f43avz-a11yText-A11yText"
+                id="react-select-2-live-region"
+              />
+              <span
+                aria-atomic="false"
+                aria-live="polite"
+                aria-relevant="additions text"
+                class="css-1f43avz-a11yText-A11yText"
+              />
+              <div
+                class=" css-18pngyw-Control"
+              >
+                <div
+                  class=" css-319lph-ValueContainer"
+                >
+                  <div
+                    class=" css-14el2xx-placeholder"
+                    id="react-select-2-placeholder"
+                  >
+                    Select...
+                  </div>
+                  <div
+                    class=" css-6j8wv5-Input"
+                    data-value=""
+                  >
+                    <input
+                      aria-autocomplete="list"
+                      aria-describedby="react-select-2-placeholder"
+                      aria-expanded="false"
+                      aria-haspopup="true"
+                      autocapitalize="none"
+                      autocomplete="off"
+                      autocorrect="off"
+                      class=""
+                      id="react-select-2-input"
+                      role="combobox"
+                      spellcheck="false"
+                      style="opacity: 1; width: 100%; grid-area: 1 / 2; min-width: 2px; border: 0px; margin: 0px; outline: 0; padding: 0px;"
+                      tabindex="0"
+                      type="text"
+                      value=""
+                    />
+                  </div>
+                </div>
+                <div
+                  class=" css-1hb7zxy-IndicatorsContainer"
+                >
+                  <span
+                    class=" css-1okebmr-indicatorSeparator"
+                  />
+                  <div
+                    aria-hidden="true"
+                    class=" css-tlfecz-indicatorContainer"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="css-tj5bde-Svg"
+                      focusable="false"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      width="20"
+                    >
+                      <path
+                        d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="rightside"
+          >
+            <label
+              for="releasedate"
+            >
+              RELEASE DATE
+            </label>
+            <input
+              id="releasedate"
+              type="text"
+              value="1967-06-22"
+            />
+            <label
+              for="rating"
+            >
+              RATING
+            </label>
+            <input
+              id="rating"
+              type="number"
+              value="471"
+            />
+            <label
+              for="runtime"
+            >
+              RUNTIME
+            </label>
+            <input
+              id="runtime"
+              type="number"
+              value="126"
+            />
+          </div>
+        </div>
+        <div
+          class="overview"
+        >
+          <label
+            for="overview"
+          >
+            OVERVIEW
+          </label>
+          <textarea
+            id="overview"
+          >
+            When petty criminal Luke Jackson is sentenced to two years in a Florida prison farm, he doesn't play by the rules of either the sadistic warden or the yard's resident heavy, Dragline, who ends up admiring the new guy's unbreakable will. Luke's bravado, even in the face of repeated stints in the prison's dreaded solitary confinement cell, "the box," make him a rebel hero to his fellow convicts and a thorn in the side of the prison officers.
+          </textarea>
+        </div>
+        <div
+          class="action"
+        >
+          <button
+            class="resetBtn"
+          >
+            RESET
+          </button>
+          <button
+            class="submitBtn"
+            type="submit"
+          >
+            SUBMIT
+          </button>
+        </div>
+      </form>
+      <div
+        class="close"
+      >
+        <svg
+          fill="none"
+          height="30"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          width="30"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M6.2253 4.81108C5.83477 4.42056 5.20161 4.42056 4.81108 4.81108C4.42056 5.20161 4.42056 5.83477 4.81108 6.2253L10.5858 12L4.81114 17.7747C4.42062 18.1652 4.42062 18.7984 4.81114 19.1889C5.20167 19.5794 5.83483 19.5794 6.22535 19.1889L12 13.4142L17.7747 19.1889C18.1652 19.5794 18.7984 19.5794 19.1889 19.1889C19.5794 18.7984 19.5794 18.1652 19.1889 17.7747L13.4142 12L19.189 6.2253C19.5795 5.83477 19.5795 5.20161 19.189 4.81108C18.7985 4.42056 18.1653 4.42056 17.7748 4.81108L12 10.5858L6.2253 4.81108Z"
+            fill="currentColor"
+          />
+        </svg>
+      </div>
+    </div>
+    <div
+      class="card"
+      data-testid="card"
+    >
+      <div
+        class="circle"
+        data-testid="circle"
+      >
+        <div
+          class="firstDot"
+        />
+        <div
+          class="secondDot"
+        />
+        <div
+          class="thirdDot"
+        />
+      </div>
+      <img
+        alt="Not found"
+        class="image"
+        src="https://image.tmdb.org/t/p/w500/vDwphkloD7ToaDpKASAXGgHOclN.jpg"
+      />
+      <div
+        class="info"
+      >
+        <div
+          class="title"
+        >
+          Cool Hand Luke
+        </div>
+        <div
+          class="year"
+        >
+          1967-06-22
+        </div>
+      </div>
+      <div
+        class="genre"
+      >
+        Crime, Drama
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Movie component should render Movie component with the movie details 1`] = `
+<div>
+  <div>
+    <div
+      class="card"
+      data-testid="card"
+    >
+      <div
+        class="circle"
+        data-testid="circle"
+      >
+        <div
+          class="firstDot"
+        />
+        <div
+          class="secondDot"
+        />
+        <div
+          class="thirdDot"
+        />
+      </div>
+      <img
+        alt="Not found"
+        class="image"
+        src="https://image.tmdb.org/t/p/w500/vDwphkloD7ToaDpKASAXGgHOclN.jpg"
+      />
+      <div
+        class="info"
+      >
+        <div
+          class="title"
+        >
+          Cool Hand Luke
+        </div>
+        <div
+          class="year"
+        >
+          1967-06-22
+        </div>
+      </div>
+      <div
+        class="genre"
+      >
+        Crime, Drama
+      </div>
     </div>
   </div>
 </div>

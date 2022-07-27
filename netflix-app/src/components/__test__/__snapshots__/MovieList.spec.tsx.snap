@@ -1,101 +1,101 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Movie list component should render component with movie elements 1`] = `
-<div
-  className="mainSection"
->
+<div>
   <div
-    className="movieContainer"
+    class="mainSection"
   >
-    <div>
-      <div
-        className="card"
-        onClick={[Function]}
-        onMouseLeave={[Function]}
-      >
+    <div
+      class="movieContainer"
+    >
+      <div>
         <div
-          className="circle"
-          onClick={[Function]}
+          class="card"
+          data-testid="card"
         >
           <div
-            className="firstDot"
-          />
-          <div
-            className="secondDot"
-          />
-          <div
-            className="thirdDot"
-          />
-        </div>
-        <img
-          alt="Not found"
-          className="image"
-          src="https://image.tmdb.org/t/p/w500/vDwphkloD7ToaDpKASAXGgHOclN.jpg"
-        />
-        <div
-          className="info"
-        >
-          <div
-            className="title"
+            class="circle"
+            data-testid="circle"
           >
-            Cool Hand Luke
+            <div
+              class="firstDot"
+            />
+            <div
+              class="secondDot"
+            />
+            <div
+              class="thirdDot"
+            />
+          </div>
+          <img
+            alt="Not found"
+            class="image"
+            src="https://image.tmdb.org/t/p/w500/vDwphkloD7ToaDpKASAXGgHOclN.jpg"
+          />
+          <div
+            class="info"
+          >
+            <div
+              class="title"
+            >
+              Cool Hand Luke
+            </div>
+            <div
+              class="year"
+            >
+              1967-06-22
+            </div>
           </div>
           <div
-            className="year"
+            class="genre"
           >
-            1967-06-22
+            Crime, Drama
           </div>
-        </div>
-        <div
-          className="genre"
-        >
-          Crime, Drama
         </div>
       </div>
-    </div>
-    <div>
-      <div
-        className="card"
-        onClick={[Function]}
-        onMouseLeave={[Function]}
-      >
+      <div>
         <div
-          className="circle"
-          onClick={[Function]}
+          class="card"
+          data-testid="card"
         >
           <div
-            className="firstDot"
-          />
-          <div
-            className="secondDot"
-          />
-          <div
-            className="thirdDot"
-          />
-        </div>
-        <img
-          alt="Not found"
-          className="image"
-          src="https://image.tmdb.org/t/p/w500/2pVEMvhXtEUu2rnY94rCZUQ43HL.jpg"
-        />
-        <div
-          className="info"
-        >
-          <div
-            className="title"
+            class="circle"
+            data-testid="circle"
           >
-            Honey 2
+            <div
+              class="firstDot"
+            />
+            <div
+              class="secondDot"
+            />
+            <div
+              class="thirdDot"
+            />
+          </div>
+          <img
+            alt="Not found"
+            class="image"
+            src="https://image.tmdb.org/t/p/w500/2pVEMvhXtEUu2rnY94rCZUQ43HL.jpg"
+          />
+          <div
+            class="info"
+          >
+            <div
+              class="title"
+            >
+              Honey 2
+            </div>
+            <div
+              class="year"
+            >
+              2011-06-23
+            </div>
           </div>
           <div
-            className="year"
+            class="genre"
           >
-            2011-06-23
+            Comedy, Drama, Music
           </div>
-        </div>
-        <div
-          className="genre"
-        >
-          Comedy, Drama, Music
         </div>
       </div>
     </div>
@@ -104,11 +104,13 @@ exports[`Movie list component should render component with movie elements 1`] = 
 `;
 
 exports[`Movie list component should render component without elements 1`] = `
-<div
-  className="mainSection"
->
+<div>
   <div
-    className="movieContainer"
-  />
+    class="mainSection"
+  >
+    <div
+      class="movieContainer"
+    />
+  </div>
 </div>
 `;

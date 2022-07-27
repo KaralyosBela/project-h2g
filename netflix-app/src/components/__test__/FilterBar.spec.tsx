@@ -15,8 +15,8 @@ const MockFilterBar = ({movieCount}: any) => {
 };
 
 it("should render the filterbar component correctly", () => {
-  const tree = renderer.create(<MockFilterBar movieCount={10} />).toJSON();
-  expect(tree).toMatchSnapshot();
+  const {container} = render(<MockFilterBar movieCount={10} />);
+  expect(container).toMatchSnapshot();
   // screen.debug();
 });
 
@@ -36,9 +36,22 @@ it("the 'all' button should be selected on init", () => {
 
 it("the 'comedy' button should have an active class when clicked", () => {
   render(<MockFilterBar movieCount={0} />);
+  const allButton = screen.getByText(/All/i);
+  const actionButton = screen.getByText(/Action/i);
   const comedyButton = screen.getByText(/Comedy/i);
+  const horrorButton = screen.getByText(/Horror/i);
+  const crimeButton = screen.getByText(/Crime/i);
+
+  fireEvent.click(allButton);
+  expect(allButton).toHaveClass("active");
+  fireEvent.click(actionButton);
+  expect(actionButton).toHaveClass("active");
   fireEvent.click(comedyButton);
   expect(comedyButton).toHaveClass("active");
+  fireEvent.click(horrorButton);
+  expect(horrorButton).toHaveClass("active");
+  fireEvent.click(crimeButton);
+  expect(crimeButton).toHaveClass("active");
   // screen.debug();
 });
 

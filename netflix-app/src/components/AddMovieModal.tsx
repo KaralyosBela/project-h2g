@@ -2,7 +2,7 @@ import classes from "./AddMovieModal.module.css";
 import { AppDispatch } from "../app/store";
 import { useDispatch } from "react-redux";
 import { addMovie } from "../features/moviesSlice";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Select from "react-select/";
 import { CgClose } from "react-icons/cg";
 import { selectStyle } from "../components/selectStyle";
@@ -25,7 +25,9 @@ export const AddMovieModal: React.FC<Props> = ({ hide, submitted }) => {
   const [runtime, setRuntime] = useState<number>(0);
 
   //OnChange handlers
-  const titleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => setTitle(event.currentTarget.value)
+  const titleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setTitle(event.currentTarget.value)
+  }
   const genreOnChange = (event: any) => {
     const genres: string[] = event.map((genre: { value: string }) => genre.value);
     setGenre(genres);
@@ -35,6 +37,11 @@ export const AddMovieModal: React.FC<Props> = ({ hide, submitted }) => {
   const ratingOnChange = (event: React.ChangeEvent<HTMLInputElement>) => setRating(Number.parseInt(event.currentTarget.value))
   const releaseDateOnChange = (event: React.ChangeEvent<HTMLInputElement>) => setReleaseDate(event.currentTarget.value)
   const runTimeOnChange = (event: React.ChangeEvent<HTMLInputElement>) => setRuntime(Number.parseInt(event.currentTarget.value))
+
+  useEffect(() => {
+    //if title... minden input vizsgálata, ha mind valid ,akkor valid else invalid
+  },[title])
+
 
   const add = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -64,37 +71,37 @@ export const AddMovieModal: React.FC<Props> = ({ hide, submitted }) => {
 
   const formValidation = () => {
     if (title === "") {
-      validation.formUnfilled = true;
+      // validation.formUnfilled = true;
       setValidation({
         errorMsg: "Title must be filled out.",
         formUnfilled: true,
       });
     } else if (movieUrl === "") {
-      validation.formUnfilled = true;
+      // validation.formUnfilled = true;
       setValidation({
         errorMsg: "Movie URL must be filled out.",
         formUnfilled: true,
       });
     } else if (releaseDate === "") {
-      validation.formUnfilled = true;
+      // validation.formUnfilled = true;
       setValidation({
         errorMsg: "Release date must be filled out.",
         formUnfilled: true,
       });
     } else if (genre.length < 1) {
-      validation.formUnfilled = true;
+      // validation.formUnfilled = true;
       setValidation({
         errorMsg: "At least choose one genre.",
         formUnfilled: true,
       });
     } else if (overview === "") {
-      validation.formUnfilled = true;
+      // validation.formUnfilled = true;
       setValidation({
         errorMsg: "Overview must be filled out.",
         formUnfilled: true,
       });
     } else {
-      validation.formUnfilled = false;
+      // validation.formUnfilled = false;
       setValidation({ errorMsg: "", formUnfilled: false });
     }
   };

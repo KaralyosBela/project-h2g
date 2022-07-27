@@ -2,92 +2,87 @@
 
 exports[`should render the filterbar component correctly 1`] = `
 <div>
-  <div
-    className="filterBar"
-  >
+  <div>
     <div
-      className="categories"
+      class="filterBar"
     >
-      <button
-        className="active"
-        onClick={[Function]}
+      <div
+        class="categories"
       >
-        All
-      </button>
-      <button
-        className=""
-        onClick={[Function]}
-      >
-        Action
-      </button>
-      <button
-        className=""
-        onClick={[Function]}
-      >
-        Comedy
-      </button>
-      <button
-        className=""
-        onClick={[Function]}
-      >
-        Horror
-      </button>
-      <button
-        className=""
-        onClick={[Function]}
-      >
-        Crime
-      </button>
-    </div>
-    <div
-      className="sortSection"
-    >
-      <div>
-        Sort by
+        <button
+          class="active"
+        >
+          All
+        </button>
+        <button
+          class=""
+        >
+          Action
+        </button>
+        <button
+          class=""
+        >
+          Comedy
+        </button>
+        <button
+          class=""
+        >
+          Horror
+        </button>
+        <button
+          class=""
+        >
+          Crime
+        </button>
       </div>
-      <select
-        onChange={[Function]}
+      <div
+        class="sortSection"
       >
-        <option
-          value="releaseDate_ascending"
-        >
-          Release date asc
-        </option>
-        <option
-          value="releaseDate_descending"
-        >
-          Release date desc
-        </option>
-        <option
-          value="length_ascending"
-        >
-          Length asc
-        </option>
-        <option
-          value="length_descending"
-        >
-          Length desc
-        </option>
-        <option
-          value="rating_ascending"
-        >
-          Rating asc
-        </option>
-        <option
-          value="rating_descending"
-        >
-          Rating desc
-        </option>
-      </select>
+        <div>
+          Sort by
+        </div>
+        <select>
+          <option
+            value="releaseDate_ascending"
+          >
+            Release date asc
+          </option>
+          <option
+            value="releaseDate_descending"
+          >
+            Release date desc
+          </option>
+          <option
+            value="length_ascending"
+          >
+            Length asc
+          </option>
+          <option
+            value="length_descending"
+          >
+            Length desc
+          </option>
+          <option
+            value="rating_ascending"
+          >
+            Rating asc
+          </option>
+          <option
+            value="rating_descending"
+          >
+            Rating desc
+          </option>
+        </select>
+      </div>
     </div>
-  </div>
-  <div
-    className="movieCounter"
-  >
-    <span>
-      10
-    </span>
-     movies found
+    <div
+      class="movieCounter"
+    >
+      <span>
+        10
+      </span>
+       movies found
+    </div>
   </div>
 </div>
 `;

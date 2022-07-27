@@ -12,26 +12,23 @@ const mockUseMovies = jest.fn();
 //   MovieList: () => <div>MovieList</div>,
 // }));
 
-jest.mock("../../app/hooks.ts", () => ({
-  useAppSelector: () => mockUseAppSelector(),
-}));
-
-jest.mock("react-redux", () => ({
-  useDispatch: () => mockUseDispatch, //itt eddig megvolt hívva a mockUseDispatch()
-}));
-
-jest.mock("../../features/movies.hook.ts", () => ({
-  useMovies: () => mockUseMovies(),
-}));
-
+jest
+  .mock("../../app/hooks.ts", () => ({
+    useAppSelector: () => mockUseAppSelector(),
+  }))
+  .mock("react-redux", () => ({
+    useDispatch: () => mockUseDispatch, //itt eddig megvolt hívva a mockUseDispatch()
+  }))
+  .mock("../../features/movies.hook.ts", () => ({
+    useMovies: () => mockUseMovies(),
+  }));
 
 describe("Homepage", () => {
-  
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
-  it("should render component", () => {
+  it("should render component without the movie banner, with the default banner", () => {
     const movies: IMovie[] = [
       {
         id: "1",
@@ -77,15 +74,102 @@ describe("Homepage", () => {
       overview: "string",
     };
     const bannerVisible = false;
+
     mockUseAppSelector.mockReturnValueOnce(movieSelected);
     mockUseAppSelector.mockReturnValueOnce(bannerVisible);
     mockUseMovies.mockReturnValue(movies);
 
     const { container } = render(<HomePage />);
 
-    // expect(mockUseDispatch.mock.calls.length).toEqual(2);
+    expect(container).toMatchSnapshot();
+    expect(mockUseDispatch.mock.calls.length).toEqual(1);
+    // screen.debug();
+  });
+
+  it("should render component with the movie banner, without the default banner", () => {
+    const movies: IMovie[] = [
+      {
+        id: "1",
+        title: "Cim1",
+        tagline: "alcim1",
+        vote_average: 4,
+        vote_count: 4,
+        budget: 4,
+        revenue: 4,
+        release_date: "2019 01 02",
+        genres: ["asd234asd", "as324d"],
+        poster_path: "path:://asdasdasd",
+        runtime: 4,
+        overview: "the best movie ever",
+      },
+      {
+        id: "2",
+        title: "cim2",
+        tagline: "alcim2",
+        vote_average: 4,
+        vote_count: 4,
+        budget: 4,
+        revenue: 4,
+        release_date: "2011 02 02",
+        genres: ["sdfsdfd", "asddfsd"],
+        poster_path: "path://asdasd34234",
+        runtime: 4,
+        overview: "the best movie ever 2",
+      },
+    ];
+    const movieSelected = {
+      id: "string",
+      title: "string",
+      tagline: "string",
+      vote_average: 4,
+      vote_count: 4,
+      budget: 4,
+      revenue: 4,
+      release_date: "string",
+      genres: ["asd", "asd"],
+      poster_path: "string",
+      runtime: 4,
+      overview: "string",
+    };
+    const bannerVisible = true;
+
+    mockUseAppSelector.mockReturnValueOnce(movieSelected);
+    mockUseAppSelector.mockReturnValueOnce(bannerVisible);
+    mockUseMovies.mockReturnValue(movies);
+
+    const { container } = render(<HomePage />);
 
     expect(container).toMatchSnapshot();
-    screen.debug();
+    expect(mockUseDispatch.mock.calls.length).toEqual(1);
+    // screen.debug();
+  });
+
+  it("should render component without the movieslist component", () => {
+    const movies: IMovie[] = [];
+    const movieSelected = {
+      id: "string",
+      title: "string",
+      tagline: "string",
+      vote_average: 4,
+      vote_count: 4,
+      budget: 4,
+      revenue: 4,
+      release_date: "string",
+      genres: ["asd", "asd"],
+      poster_path: "string",
+      runtime: 4,
+      overview: "string",
+    };
+    const bannerVisible = true;
+
+    mockUseAppSelector.mockReturnValueOnce(movieSelected);
+    mockUseAppSelector.mockReturnValueOnce(bannerVisible);
+    mockUseMovies.mockReturnValue(movies);
+
+    const { container } = render(<HomePage />);
+
+    expect(container).toMatchSnapshot();
+    expect(mockUseDispatch.mock.calls.length).toEqual(1);
+    // screen.debug();
   });
 });

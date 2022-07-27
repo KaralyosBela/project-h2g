@@ -3,8 +3,8 @@ import { Footer } from "../Footer";
 
 describe("Footer component", () => {
   it("Rendered footer", () => {
-    const component = render(<Footer />);
-    expect(component).toBeTruthy();
+    const {container} = render(<Footer />);
+    expect(container).toMatchSnapshot();
   });
 
   it("h4 has a text called netflixroulette", () => {

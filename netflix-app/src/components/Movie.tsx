@@ -46,6 +46,7 @@ export const Movie: React.FC<Props> = ({ movie }) => {
   const infoModalEvent = () => {
     dispatch(setMovieBannerStatus(true));
     dispatch(setChoosenMovie(movie));
+    toggleModal();
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
@@ -59,8 +60,8 @@ export const Movie: React.FC<Props> = ({ movie }) => {
     <div>
       {editModalOpen && <EditMovieModal hide={hideModal} />}
       {deleteModalOpen && <DeleteMovieModal hide={hideModal} />}
-      <div className={classes.card} onClick={toggleModal} onMouseLeave={onMouseLeaveToggle}>
-        <div className={classes.circle} onClick={toggleModal}>
+      <div data-testid="card" className={classes.card} onClick={toggleModal} onMouseLeave={onMouseLeaveToggle}>
+        <div data-testid="circle" className={classes.circle} onClick={toggleModal}>
           <div className={classes.firstDot}></div>
           <div className={classes.secondDot}></div>
           <div className={classes.thirdDot}></div>

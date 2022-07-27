@@ -1,48 +1,97 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render the filterbar component correctly 1`] = `
-<div
-  className="picture"
->
+exports[`Banner component should render the component with the 'Add Modal' 1`] = `
+<div>
   <div
-    className="banner"
+    class="picture"
+  >
+    <div>
+      Add Movie Modal
+    </div>
+    <div
+      class="banner"
+    >
+      <div
+        class="upperBar"
+      >
+        <div>
+          <h4
+            class="upperBarTitle"
+          >
+            <span>
+              netflix
+            </span>
+            Roulette
+          </h4>
+        </div>
+        <button
+          class="addButton"
+        >
+          ADD MOVIE
+        </button>
+      </div>
+      <div
+        class="title"
+      >
+        <h1>
+          FIND YOUR MOVIE
+        </h1>
+      </div>
+      <div
+        class="searchBar"
+      >
+        <input
+          class="searchInput"
+          placeholder="What do you want to watch?"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Banner component should render the component without the modals 1`] = `
+<div>
+  <div
+    class="picture"
   >
     <div
-      className="upperBar"
+      class="banner"
     >
-      <div>
-        <h4
-          className="upperBarTitle"
-        >
-          <span>
-            netflix
-          </span>
-          Roulette
-        </h4>
-      </div>
-      <button
-        className="addButton"
-        onClick={[Function]}
+      <div
+        class="upperBar"
       >
-        ADD MOVIE
-      </button>
-    </div>
-    <div
-      className="title"
-    >
-      <h1>
-        FIND YOUR MOVIE
-      </h1>
-    </div>
-    <div
-      className="searchBar"
-    >
-      <input
-        className="searchInput"
-        onChange={[Function]}
-        onKeyDown={[Function]}
-        placeholder="What do you want to watch?"
-      />
+        <div>
+          <h4
+            class="upperBarTitle"
+          >
+            <span>
+              netflix
+            </span>
+            Roulette
+          </h4>
+        </div>
+        <button
+          class="addButton"
+        >
+          ADD MOVIE
+        </button>
+      </div>
+      <div
+        class="title"
+      >
+        <h1>
+          FIND YOUR MOVIE
+        </h1>
+      </div>
+      <div
+        class="searchBar"
+      >
+        <input
+          class="searchInput"
+          placeholder="What do you want to watch?"
+        />
+      </div>
     </div>
   </div>
 </div>

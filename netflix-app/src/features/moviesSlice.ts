@@ -1,8 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { rejects } from "assert";
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 import { IMovie } from "../interfaces/movies.interface";
-import { IMovieWithoutID } from "../interfaces/movies.interface";
 
 export const getMovies = createAsyncThunk(
   "movies/getMovies",

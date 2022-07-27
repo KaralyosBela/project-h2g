@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer component Rendered footer 1`] = `
+<div>
+  <div
+    class="footer"
+    data-testid="footer"
+  >
+    <h4
+      data-testid="header"
+    >
+      <span
+        data-testid="span"
+      >
+        netflix
+      </span>
+      roulette
+    </h4>
+  </div>
+</div>
+`;

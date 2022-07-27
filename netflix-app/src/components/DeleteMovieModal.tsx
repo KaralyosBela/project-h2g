@@ -4,7 +4,6 @@ import { AppDispatch } from "../app/store";
 import { useAppSelector } from "../app/hooks";
 import { deleteMovie } from "../features/moviesSlice";
 import { CgClose } from "react-icons/cg";
-import { AnyAction } from "@reduxjs/toolkit";
 
 interface Props {
   hide: () => void;
@@ -15,11 +14,6 @@ export const DeleteMovieModal: React.FC<Props> = ({ hide }) => {
   //Get the current selected movie from the store
   const selectedMovie = useAppSelector((state) => state.movies.movie);
 
-  // const delMovie = () => {
-  //   dispatch(deleteMovie(selectedMovie) as unknown as AnyAction);
-  //   hide();
-  // };
-
   const delMovie = () => {
     dispatch(deleteMovie(selectedMovie));
     hide();
@@ -27,7 +21,7 @@ export const DeleteMovieModal: React.FC<Props> = ({ hide }) => {
 
   return (
     <>
-      <div className={classes.overlay} onClick={hide} />
+      <div data-testid="overlay" className={classes.overlay} onClick={hide} />
       <div className={classes.deleteModal}>
         <h1 className={classes.title}>DELETE MOVIE</h1>
         <div className={classes.subtitle}>

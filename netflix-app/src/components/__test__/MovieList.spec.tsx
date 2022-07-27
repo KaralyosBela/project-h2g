@@ -1,13 +1,11 @@
-import React from "react";
 import { render, screen } from "@testing-library/react";
 import { MovieList } from "../MovieList";
 import { Provider } from "react-redux";
 import { store } from "../../app/store";
-import renderer from 'react-test-renderer';
 
 describe("Movie list component", () => {
   it("should render component with movie elements", () => {
-    const tree = renderer.create(
+    const { container } = render(
       <Provider store={store}>
         <MovieList
           moviesList={[
@@ -46,20 +44,18 @@ describe("Movie list component", () => {
           ]}
         />
       </Provider>
-    ).toJSON();
-    expect(tree).toMatchSnapshot();
+    );
+    expect(container).toMatchSnapshot();
     // screen.debug();
   });
 
   it("should render component without elements", () => {
-    const tree = renderer.create(
+    const { container } = render(
       <Provider store={store}>
-        <MovieList
-          moviesList={[]}
-        />
+        <MovieList moviesList={[]} />
       </Provider>
-    ).toJSON();
-    expect(tree).toMatchSnapshot();
+    );
+    expect(container).toMatchSnapshot();
     // screen.debug();
   });
 });
