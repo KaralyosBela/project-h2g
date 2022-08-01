@@ -51,9 +51,5 @@ const moviesSelector = (state: {
     });
 };
 
-const numberOfMoviesSelector = (state: any) => {
-  return state.movies.movies.length;
-};
 
 export const useMovies = () => useSelector(moviesSelector);
-export const useMoviesCount = () => useSelector(numberOfMoviesSelector);

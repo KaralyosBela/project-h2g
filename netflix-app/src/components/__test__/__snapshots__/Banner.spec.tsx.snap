@@ -1,5 +1,53 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Banner component should call dispatch after input change with the right action (mocked) 1`] = `
+<div>
+  <div
+    class="picture"
+  >
+    <div
+      class="banner"
+    >
+      <div
+        class="upperBar"
+      >
+        <div>
+          <h4
+            class="upperBarTitle"
+          >
+            <span>
+              netflix
+            </span>
+            Roulette
+          </h4>
+        </div>
+        <button
+          class="addButton"
+        >
+          ADD MOVIE
+        </button>
+      </div>
+      <div
+        class="title"
+      >
+        <h1>
+          FIND YOUR MOVIE
+        </h1>
+      </div>
+      <div
+        class="searchBar"
+      >
+        <input
+          class="searchInput"
+          data-testid="inputField"
+          placeholder="What do you want to watch?"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Banner component should render the component with the 'Add Modal' 1`] = `
 <div>
   <div
@@ -42,6 +90,7 @@ exports[`Banner component should render the component with the 'Add Modal' 1`] =
       >
         <input
           class="searchInput"
+          data-testid="inputField"
           placeholder="What do you want to watch?"
         />
       </div>
@@ -89,6 +138,7 @@ exports[`Banner component should render the component without the modals 1`] = `
       >
         <input
           class="searchInput"
+          data-testid="inputField"
           placeholder="What do you want to watch?"
         />
       </div>

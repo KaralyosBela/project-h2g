@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Movie list component should render component with movie elements 1`] = `
+exports[`Movie list component should render component with 1 movie element 1`] = `
 <div>
   <div
     class="mainSection"
@@ -9,94 +9,26 @@ exports[`Movie list component should render component with movie elements 1`] = 
       class="movieContainer"
     >
       <div>
-        <div
-          class="card"
-          data-testid="card"
-        >
-          <div
-            class="circle"
-            data-testid="circle"
-          >
-            <div
-              class="firstDot"
-            />
-            <div
-              class="secondDot"
-            />
-            <div
-              class="thirdDot"
-            />
-          </div>
-          <img
-            alt="Not found"
-            class="image"
-            src="https://image.tmdb.org/t/p/w500/vDwphkloD7ToaDpKASAXGgHOclN.jpg"
-          />
-          <div
-            class="info"
-          >
-            <div
-              class="title"
-            >
-              Cool Hand Luke
-            </div>
-            <div
-              class="year"
-            >
-              1967-06-22
-            </div>
-          </div>
-          <div
-            class="genre"
-          >
-            Crime, Drama
-          </div>
-        </div>
+        Movie Component
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Movie list component should render component with 2 movie elements 1`] = `
+<div>
+  <div
+    class="mainSection"
+  >
+    <div
+      class="movieContainer"
+    >
+      <div>
+        Movie Component
       </div>
       <div>
-        <div
-          class="card"
-          data-testid="card"
-        >
-          <div
-            class="circle"
-            data-testid="circle"
-          >
-            <div
-              class="firstDot"
-            />
-            <div
-              class="secondDot"
-            />
-            <div
-              class="thirdDot"
-            />
-          </div>
-          <img
-            alt="Not found"
-            class="image"
-            src="https://image.tmdb.org/t/p/w500/2pVEMvhXtEUu2rnY94rCZUQ43HL.jpg"
-          />
-          <div
-            class="info"
-          >
-            <div
-              class="title"
-            >
-              Honey 2
-            </div>
-            <div
-              class="year"
-            >
-              2011-06-23
-            </div>
-          </div>
-          <div
-            class="genre"
-          >
-            Comedy, Drama, Music
-          </div>
-        </div>
+        Movie Component
       </div>
     </div>
   </div>

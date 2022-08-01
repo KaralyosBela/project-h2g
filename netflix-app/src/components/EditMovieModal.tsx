@@ -2,7 +2,7 @@ import classes from "./EditMovieModal.module.css";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../app/store";
 import { useAppSelector } from "../app/hooks";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { editMovie } from "../features/moviesSlice";
 import Select from "react-select"
 import {CgClose} from "react-icons/cg"
@@ -18,8 +18,11 @@ export const EditMovieModal: React.FC<Props> = ({ hide }) => {
   //Get the current selected movie from the store
   const selectedMovieDetails = useAppSelector((state) => state.movies.movie);
 
-  const [validation, setValidation] = useState<{errorMsg: string, formUnfilled: boolean}>({errorMsg: "", formUnfilled: true});
-
+  const [err, setErr] = useState<boolean>(false);
+  const [validation, setValidation] = useState<{
+    errorMsg: string;
+    valid: boolean;
+  }>({ errorMsg: "", valid: true });
   //Set the form input fields based on the current selected movie
   const [title, setTitle] = useState<string>(selectedMovieDetails.title)
   const [genre, setGenre] = useState<string[]>(selectedMovieDetails.genres)
@@ -54,8 +57,10 @@ export const EditMovieModal: React.FC<Props> = ({ hide }) => {
 
   const submitEdit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    formValidation();
-    if (!validation.formUnfilled) {
+    if (!validation.valid) {
+      setErr(true);
+    } else {
+      setErr(false);
       dispatch(
         editMovie({
           id: selectedMovieDetails.id,
@@ -76,45 +81,25 @@ export const EditMovieModal: React.FC<Props> = ({ hide }) => {
     }
   };
 
-
-  const formValidation = () => {
+  useEffect(() => {
     if (title === "") {
-      validation.formUnfilled = true;
-      setValidation({
-        errorMsg: "Title must be filled out.",
-        formUnfilled: true,
-      });
+      setValidation({ errorMsg: "title error", valid: false });
     } else if (movieUrl === "") {
-      validation.formUnfilled = true;
-      setValidation({
-        errorMsg: "Movie URL must be filled out.",
-        formUnfilled: true,
-      });
+      setValidation({ errorMsg: "movie url error", valid: false });
     } else if (releaseDate === "") {
-      validation.formUnfilled = true;
-      setValidation({
-        errorMsg: "Release date must be filled out.",
-        formUnfilled: true,
-      });
+      setValidation({ errorMsg: "release date error", valid: false });
     } else if (genre.length < 1) {
-      validation.formUnfilled = true;
-      setValidation({
-        errorMsg: "At least choose one genre.",
-        formUnfilled: true,
-      });
+      setValidation({ errorMsg: "genre error", valid: false });
     } else if (overview === "") {
-      validation.formUnfilled = true;
-      setValidation({
-        errorMsg: "Overview must be filled out.",
-        formUnfilled: true,
-      });
+      setValidation({ errorMsg: "overview error", valid: false });
     } else {
-      validation.formUnfilled = false;
-      setValidation({ errorMsg: "", formUnfilled: false });
+      setValidation({ errorMsg: "", valid: true });
+      setErr(false);
     }
-  };
+  }, [title, movieUrl, releaseDate, genre, overview]);
+
   const closeErrorMsg = () => {
-    setValidation({errorMsg: "", formUnfilled: false});
+    setErr(false);
   };
 
   const options = [
@@ -157,7 +142,7 @@ export const EditMovieModal: React.FC<Props> = ({ hide }) => {
             <textarea id="overview" value={overview} onChange={overviewOnChange}></textarea>
           </div>
 
-          {validation.formUnfilled && validation.errorMsg && (
+          {err && (
               <div className={classes.errorMessage}>
                 {validation.errorMsg}
                 <CgClose

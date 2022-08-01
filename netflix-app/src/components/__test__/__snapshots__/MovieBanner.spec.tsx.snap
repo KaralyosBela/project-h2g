@@ -15,6 +15,7 @@ exports[`Movie banner component should render movie banner 1`] = `
       </h3>
       <div
         class="searchIcon"
+        data-testid="searchIcon"
       >
         <svg
           fill="currentColor"

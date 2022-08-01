@@ -20,7 +20,7 @@ export const MovieBanner: React.FC<Props> = ({ movie }) => {
     <div className={classes.movieBanner}>
       <div className={classes.titleBar}>
         <h3 className={classes.pageTitle}>netflixRoulette</h3>
-        <div className={classes.searchIcon} onClick={setMovieBannerState}><FaSearch size={30}/></div>
+        <div data-testid="searchIcon" className={classes.searchIcon} onClick={setMovieBannerState}><FaSearch size={30}/></div>
       </div>
       <div className={classes.infoPart}>
         <img className={classes.image} src={movie.poster_path} alt="alt"></img>

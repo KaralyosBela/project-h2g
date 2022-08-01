@@ -1,30 +1,29 @@
 import { fireEvent, getByText, render, screen } from "@testing-library/react";
-import { Provider } from "react-redux";
-import { store } from "../../app/store";
 import { DeleteMovieModal } from "../DeleteMovieModal";
 
 const mockDispatch = jest.fn();
-const mockUseDispatch = jest.fn(() => mockDispatch);
 const mockUseAppSelector = jest.fn();
 const mockDeleteMovie = jest.fn();
+const mockHide = jest.fn();
 
-jest
-  .mock("../../app/hooks.ts", () => ({
+jest.mock("../../app/hooks.ts", () => ({
     useAppSelector: () => mockUseAppSelector(),
-  }))
-  .mock("react-redux", () => ({
-    useDispatch: () => mockUseDispatch, //itt eddig megvolt hívva a mockUseDispatch()
-  }))
-  .mock("../../features/moviesSlice.ts", () => ({
-    deleteMovie: (param: any) => mockDeleteMovie(param),
+  })).mock("react-redux", () => ({
+    useDispatch: () => mockDispatch,
+  })).mock("../../features/moviesSlice.ts", () => ({
+      deleteMovie: (param: any) => mockDeleteMovie(param),
   }));
 
+const mockUseDispatch = jest.fn();
+mockDispatch.mockReturnValue(mockUseDispatch);
+
 describe("Delete modal component", () => {
+
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
-  it("shoule render component correctly", () => {
+  it("should render component correctly", () => {
     const selectedMovie = {
       id: "string",
       title: "string",
@@ -39,25 +38,16 @@ describe("Delete modal component", () => {
       runtime: 4,
       overview: "string",
     };
-
-    mockUseAppSelector.mockReturnValueOnce(selectedMovie);
-
-    const mockHide = jest.fn();
-    const { container } = render(
-      // <Provider store={store}>
-      <DeleteMovieModal hide={mockHide} />
-      //   </Provider>
-    );
-
-    const deleteButton = screen.getByText(/Confirm/i);
-    fireEvent.click(deleteButton);
-
+    // mockUseAppSelector.mockReturnValueOnce(selectedMovie);
+    const { container } = render(<DeleteMovieModal hide={mockHide} />);
+    // const deleteButton = screen.getByText(/Confirm/i);
+    // fireEvent.click(deleteButton);
     // expect(mockUseDispatch).toHaveBeenCalledWith(selectedMovie);
-    expect(mockUseDispatch.mock.calls.length).toEqual(1);
+    // expect(mockUseDispatch.mock.calls.length).toEqual(1);
     expect(container).toMatchSnapshot();
   });
 
-  it("shoule render component 2", () => {
+  it("should call hide prop when overlay clicked", () => {
     const selectedMovie = {
       id: "string",
       title: "string",
@@ -73,25 +63,16 @@ describe("Delete modal component", () => {
       overview: "string",
     };
 
-    mockUseAppSelector.mockReturnValueOnce(selectedMovie);
-
-    const mockHide = jest.fn();
-    const { container } = render(
-      // <Provider store={store}>
-      <DeleteMovieModal hide={mockHide} />
-      //   </Provider>
-    );
+    const { container } = render(<DeleteMovieModal hide={mockHide} />);
 
     const overlay = screen.getByTestId("overlay");
     fireEvent.click(overlay);
 
-    // expect(mockUseDispatch).toHaveBeenCalledWith(selectedMovie);
-    // expect(mockUseDispatch.mock.calls.length).toEqual(1);
-    expect(mockHide.mock.calls.length).toEqual(1);
+    expect(mockHide).toBeCalledTimes(1);
     expect(container).toMatchSnapshot();
   });
 
-  it("shoule render component 3", () => {
+  it("should dispatch with the correct action, then call hide prop fnc", () => {
     const selectedMovie = {
       id: "string",
       title: "string",
@@ -107,26 +88,18 @@ describe("Delete modal component", () => {
       overview: "string",
     };
 
-    mockUseAppSelector.mockReturnValueOnce(selectedMovie);
-    mockDeleteMovie.mockReturnValueOnce("mockDeleteMovie");
+    mockUseAppSelector.mockReturnValueOnce(selectedMovie); //ezt hogy kéne elképzelni
+    mockDeleteMovie.mockReturnValueOnce(selectedMovie);
 
-    const mockHide = jest.fn();
-    const { container } = render(
-      // <Provider store={store}>
-      <DeleteMovieModal hide={mockHide} />
-      //   </Provider>
-    );
+    const { container } = render(<DeleteMovieModal hide={mockHide} />);
 
     const deleteButton = screen.getByText(/Confirm/i);
     fireEvent.click(deleteButton);
 
-    // expect(mockUseDispatch.mock.calls.length).toEqual(1);
-    //expect(mockUseDispatch).toHaveBeenCalledWith(selectedMovie);
-    // expect(mockUseDispatch.mock.calls.length).toEqual(1);
-    // expect(mockHide.mock.calls.length).toEqual(1);
-    expect(mockDeleteMovie.mock.calls.length).toEqual(1);
-    expect(mockDeleteMovie.mock.calls[0][0]).toEqual(selectedMovie);
-    // expect(mockUseDispatch.mock.calls[0][0]).toEqual("mockDeleteMovie");
+    expect(mockHide).toBeCalledTimes(1);
+    expect(mockDispatch).toBeCalledTimes(1);
+    // async cuccok még nem mennek
+    expect(mockDeleteMovie).toBeCalledWith(selectedMovie); //mockdeleteMovie(selectedMovie) így nézne ki
     expect(container).toMatchSnapshot();
   });
 

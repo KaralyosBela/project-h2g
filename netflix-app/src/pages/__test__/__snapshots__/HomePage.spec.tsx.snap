@@ -19,6 +19,7 @@ exports[`Homepage should render component with the movie banner, without the def
           </h3>
           <div
             class="searchIcon"
+            data-testid="searchIcon"
           >
             <svg
               fill="currentColor"
@@ -131,7 +132,9 @@ exports[`Homepage should render component with the movie banner, without the def
             <div>
               Sort by
             </div>
-            <select>
+            <select
+              data-testid="selectInput"
+            >
               <option
                 value="releaseDate_ascending"
               >
@@ -335,6 +338,7 @@ exports[`Homepage should render component without the movie banner, with the def
           >
             <input
               class="searchInput"
+              data-testid="inputField"
               placeholder="What do you want to watch?"
             />
           </div>
@@ -379,7 +383,9 @@ exports[`Homepage should render component without the movie banner, with the def
             <div>
               Sort by
             </div>
-            <select>
+            <select
+              data-testid="selectInput"
+            >
               <option
                 value="releaseDate_ascending"
               >
@@ -559,6 +565,7 @@ exports[`Homepage should render component without the movieslist component 1`] =
           </h3>
           <div
             class="searchIcon"
+            data-testid="searchIcon"
           >
             <svg
               fill="currentColor"
@@ -671,7 +678,9 @@ exports[`Homepage should render component without the movieslist component 1`] =
             <div>
               Sort by
             </div>
-            <select>
+            <select
+              data-testid="selectInput"
+            >
               <option
                 value="releaseDate_ascending"
               >

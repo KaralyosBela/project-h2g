@@ -41,7 +41,9 @@ exports[`should render the filterbar component correctly 1`] = `
         <div>
           Sort by
         </div>
-        <select>
+        <select
+          data-testid="selectInput"
+        >
           <option
             value="releaseDate_ascending"
           >

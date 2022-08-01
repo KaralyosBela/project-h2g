@@ -49,6 +49,7 @@ export const Banner: React.FC = () => {
             placeholder="What do you want to watch?"
             onChange={searchedMovieInputChange}
             onKeyDown={handleKeyDown}
+            data-testid="inputField"
           ></input>
           {/* <button className={classes.searchbutton} onClick={searchMovie}>
             SEARCH

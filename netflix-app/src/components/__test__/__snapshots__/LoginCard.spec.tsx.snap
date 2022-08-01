@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login component should render the login compoenent 1`] = `
+<div>
+  <div
+    class="logincard"
+  >
+    <div
+      class="card"
+    >
+      <h1>
+        LOG IN
+      </h1>
+      <form
+        class="inputs"
+        role="form"
+      >
+        <label
+          for="username"
+        >
+          USER ID*
+        </label>
+        <input
+          data-testid="userIdInput"
+          id="username"
+          type="text"
+        />
+        <label
+          for="password"
+        >
+          PASSWORD*
+        </label>
+        <input
+          data-testid="passwordInput"
+          id="password"
+          type="password"
+        />
+        <div
+          class="action"
+        >
+          <button
+            class="resetBtn"
+          >
+            RESET
+          </button>
+          <button
+            class="loginBtn"
+            data-testid="loginBtn"
+            type="submit"
+          >
+            LOG IN
+          </button>
+        </div>
+        <p>
+          *Mandatory
+        </p>
+      </form>
+    </div>
+  </div>
+</div>
+`;

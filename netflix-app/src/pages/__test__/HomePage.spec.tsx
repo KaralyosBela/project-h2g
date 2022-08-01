@@ -1,27 +1,31 @@
 import { render, screen } from "@testing-library/react";
 import { HomePage } from "../HomePage";
 import { IMovie } from "../../interfaces/movies.interface";
+import { getMovies } from "../../features/moviesSlice";
+import { customAction } from "../../features/actions";
 
-const mockDispatch = jest.fn();
-const mockUseDispatch = jest.fn(() => mockDispatch); //itt is megtudom hívni
-// const dispatch = useDispatch<AppDispatch>(); kb ami itt történik
+// const mockDispatch = jest.fn();
+// const mockUseDispatch = jest.fn(() => mockDispatch);
+
 const mockUseAppSelector = jest.fn();
 const mockUseMovies = jest.fn();
-
-// jest.mock("../../components/MovieList", () => ({
-//   MovieList: () => <div>MovieList</div>,
-// }));
+const mockDispatch = jest.fn();
 
 jest
   .mock("../../app/hooks.ts", () => ({
     useAppSelector: () => mockUseAppSelector(),
   }))
-  .mock("react-redux", () => ({
-    useDispatch: () => mockUseDispatch, //itt eddig megvolt hívva a mockUseDispatch()
+  jest.mock("react-redux", () => ({
+    useDispatch: () => mockDispatch,
   }))
   .mock("../../features/movies.hook.ts", () => ({
     useMovies: () => mockUseMovies(),
   }));
+
+const mockUseDispatch = jest.fn();
+mockDispatch.mockReturnValue(mockUseDispatch);
+
+
 
 describe("Homepage", () => {
   beforeEach(() => {
@@ -82,8 +86,9 @@ describe("Homepage", () => {
     const { container } = render(<HomePage />);
 
     expect(container).toMatchSnapshot();
-    expect(mockUseDispatch.mock.calls.length).toEqual(1);
-    // screen.debug();
+    expect(mockDispatch.mock.calls.length).toEqual(2);
+    expect(mockDispatch).toBeCalledWith(customAction("Hello Action"));
+    // console.log(mockDispatch.mock.calls);
   });
 
   it("should render component with the movie banner, without the default banner", () => {
@@ -140,12 +145,12 @@ describe("Homepage", () => {
     const { container } = render(<HomePage />);
 
     expect(container).toMatchSnapshot();
-    expect(mockUseDispatch.mock.calls.length).toEqual(1);
-    // screen.debug();
+    expect(mockDispatch.mock.calls.length).toEqual(2);
   });
 
   it("should render component without the movieslist component", () => {
     const movies: IMovie[] = [];
+
     const movieSelected = {
       id: "string",
       title: "string",
@@ -169,7 +174,6 @@ describe("Homepage", () => {
     const { container } = render(<HomePage />);
 
     expect(container).toMatchSnapshot();
-    expect(mockUseDispatch.mock.calls.length).toEqual(1);
-    // screen.debug();
+    expect(mockDispatch.mock.calls.length).toEqual(2);
   });
 });

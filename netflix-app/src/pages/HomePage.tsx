@@ -11,7 +11,7 @@ import { MovieBanner } from "../components/MovieBanner";
 import { useMovies } from "../features/movies.hook";
 import { useAppSelector } from "../app/hooks";
 //Action gyakorlas
-// import { customAction } from "../features/actions";
+import { customAction } from "../features/actions";
 
 export const HomePage: React.FC = () => {
   const movieSelected = useAppSelector((state) => state.movies.movie);
@@ -22,7 +22,7 @@ export const HomePage: React.FC = () => {
   useEffect(() => {
     dispatch(getMovies());
     //Action gyakorlas
-    // dispatch(customAction("Hello Action"));
+    dispatch(customAction("Hello Action"));
   },[]);
   
   return (

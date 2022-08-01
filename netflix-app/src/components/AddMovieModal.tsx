@@ -15,7 +15,11 @@ interface Props {
 export const AddMovieModal: React.FC<Props> = ({ hide, submitted }) => {
   const dispatch = useDispatch<AppDispatch>();
 
-  const [validation, setValidation] = useState<{errorMsg: string, formUnfilled: boolean}>({errorMsg: "", formUnfilled: true});
+  const [err, setErr] = useState<boolean>(false);
+  const [validation, setValidation] = useState<{
+    errorMsg: string;
+    valid: boolean;
+  }>({ errorMsg: "", valid: true });
   const [title, setTitle] = useState<string>("");
   const [genre, setGenre] = useState<string[]>([]);
   const [movieUrl, setMovieUrl] = useState<string>("");
@@ -26,27 +30,48 @@ export const AddMovieModal: React.FC<Props> = ({ hide, submitted }) => {
 
   //OnChange handlers
   const titleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setTitle(event.currentTarget.value)
-  }
+    setTitle(event.currentTarget.value);
+  };
   const genreOnChange = (event: any) => {
-    const genres: string[] = event.map((genre: { value: string }) => genre.value);
+    const genres: string[] = event.map(
+      (genre: { value: string }) => genre.value
+    );
     setGenre(genres);
   };
-  const movieUrlOnChange = (event: React.ChangeEvent<HTMLInputElement>) => setMovieUrl(event.currentTarget.value)
-  const overviewOnChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => setOverview(event.currentTarget.value)
-  const ratingOnChange = (event: React.ChangeEvent<HTMLInputElement>) => setRating(Number.parseInt(event.currentTarget.value))
-  const releaseDateOnChange = (event: React.ChangeEvent<HTMLInputElement>) => setReleaseDate(event.currentTarget.value)
-  const runTimeOnChange = (event: React.ChangeEvent<HTMLInputElement>) => setRuntime(Number.parseInt(event.currentTarget.value))
+  const movieUrlOnChange = (event: React.ChangeEvent<HTMLInputElement>) =>
+    setMovieUrl(event.currentTarget.value);
+  const overviewOnChange = (event: React.ChangeEvent<HTMLTextAreaElement>) =>
+    setOverview(event.currentTarget.value);
+  const ratingOnChange = (event: React.ChangeEvent<HTMLInputElement>) =>
+    setRating(Number.parseInt(event.currentTarget.value));
+  const releaseDateOnChange = (event: React.ChangeEvent<HTMLInputElement>) =>
+    setReleaseDate(event.currentTarget.value);
+  const runTimeOnChange = (event: React.ChangeEvent<HTMLInputElement>) =>
+    setRuntime(Number.parseInt(event.currentTarget.value));
 
   useEffect(() => {
-    //if title... minden input vizsgálata, ha mind valid ,akkor valid else invalid
-  },[title])
-
+    if (title === "") {
+      setValidation({ errorMsg: "title error", valid: false });
+    } else if (movieUrl === "") {
+      setValidation({ errorMsg: "movie url error", valid: false });
+    // } else if (releaseDate === "") {
+    //   setValidation({ errorMsg: "release date error", valid: false });
+    // } else if (genre.length < 1) {
+    //   setValidation({ errorMsg: "genre error", valid: false });
+    } else if (overview === "") {
+      setValidation({ errorMsg: "overview error", valid: false });
+    } else {
+      setValidation({ errorMsg: "", valid: true });
+      setErr(false);
+    }
+  }, [title, movieUrl, releaseDate, genre, overview]);
 
   const add = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    formValidation();
-    if (!validation.formUnfilled) {
+    if (!validation.valid) {
+      setErr(true);
+    } else {
+      setErr(false);
       dispatch(
         addMovie({
           id: "",
@@ -54,7 +79,7 @@ export const AddMovieModal: React.FC<Props> = ({ hide, submitted }) => {
           release_date: releaseDate.slice(0, 4),
           genres: genre,
           runtime: runtime,
-          overview: event.currentTarget.overview.value,
+          overview: overview,
           tagline: "dummyData",
           vote_average: 10,
           budget: 0,
@@ -69,45 +94,8 @@ export const AddMovieModal: React.FC<Props> = ({ hide, submitted }) => {
     }
   };
 
-  const formValidation = () => {
-    if (title === "") {
-      // validation.formUnfilled = true;
-      setValidation({
-        errorMsg: "Title must be filled out.",
-        formUnfilled: true,
-      });
-    } else if (movieUrl === "") {
-      // validation.formUnfilled = true;
-      setValidation({
-        errorMsg: "Movie URL must be filled out.",
-        formUnfilled: true,
-      });
-    } else if (releaseDate === "") {
-      // validation.formUnfilled = true;
-      setValidation({
-        errorMsg: "Release date must be filled out.",
-        formUnfilled: true,
-      });
-    } else if (genre.length < 1) {
-      // validation.formUnfilled = true;
-      setValidation({
-        errorMsg: "At least choose one genre.",
-        formUnfilled: true,
-      });
-    } else if (overview === "") {
-      // validation.formUnfilled = true;
-      setValidation({
-        errorMsg: "Overview must be filled out.",
-        formUnfilled: true,
-      });
-    } else {
-      // validation.formUnfilled = false;
-      setValidation({ errorMsg: "", formUnfilled: false });
-    }
-  };
-
   const closeErrorMsg = () => {
-    setValidation({errorMsg: "", formUnfilled: false});
+    setErr(false);
   };
 
   const reset = (event: React.MouseEvent<HTMLElement>) => {
@@ -136,11 +124,12 @@ export const AddMovieModal: React.FC<Props> = ({ hide, submitted }) => {
         <div className={classes.overlay} onClick={hide} />
         <div className={classes.modal}>
           <h1>ADD MOVIE</h1>
-          <form onSubmit={add}>
+          <form role="form" onSubmit={add}>
             <div className={classes.modalbody}>
               <div className={classes.leftside}>
                 <label htmlFor="title">TITLE*</label>
                 <input
+                  data-testid="title"
                   type="text"
                   id="title"
                   name="title"
@@ -149,6 +138,7 @@ export const AddMovieModal: React.FC<Props> = ({ hide, submitted }) => {
                 ></input>
                 <label htmlFor="url">MOVIE URL*</label>
                 <input
+                  data-testid="movieUrl"
                   type="text"
                   id="url"
                   name="url"
@@ -167,6 +157,7 @@ export const AddMovieModal: React.FC<Props> = ({ hide, submitted }) => {
               <div className={classes.rightside}>
                 <label htmlFor="releasedate">RELEASE DATE*</label>
                 <input
+                  data-testid="relDate"
                   type="date"
                   id="releasedate"
                   name="date"
@@ -195,6 +186,7 @@ export const AddMovieModal: React.FC<Props> = ({ hide, submitted }) => {
             <div className={classes.overview}>
               <label htmlFor="overview">OVERVIEW*</label>
               <textarea
+                data-testid="overview"
                 id="overview"
                 name="overview"
                 value={overview}
@@ -202,7 +194,7 @@ export const AddMovieModal: React.FC<Props> = ({ hide, submitted }) => {
               ></textarea>
             </div>
 
-            {validation.formUnfilled && validation.errorMsg && (
+            {err && (
               <div className={classes.errorMessage}>
                 {validation.errorMsg}
                 <CgClose

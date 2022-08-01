@@ -1,10 +1,8 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { Movie } from "../Movie";
-import { Provider } from "react-redux";
-import { store } from "../../app/store";
 import "@testing-library/jest-dom/extend-expect";
 
-const movie = {
+const MOOVIE = {
   id: "903",
   title: "Cool Hand Luke",
   tagline: "What we've got here is failure to communicate.",
@@ -21,103 +19,109 @@ const movie = {
   runtime: 126,
 };
 
-// const mockDispatch = jest.fn();
-// const mockUseDispatch = jest.fn(() => mockDispatch()); //itt is megtudom hívni
+const mockDispatch = jest.fn();
+const mockUseDispatch = jest.fn(() => mockDispatch);
+const mockUseAppSelector = jest.fn();
+const mockSetChoosenMovie = jest.fn();
+const mockSetMovieBannerStatus = jest.fn();
 
-// jest.mock("react-redux", () => ({
-//   useDispatch: () => mockUseDispatch(),
-// }));
+
+jest.mock("react-redux", () => ({
+  useDispatch: () => mockUseDispatch,
+}));
+
+jest.mock("../../app/hooks.ts", () => ({
+  useAppSelector: () => mockUseAppSelector(),
+}))>
+
+jest.mock("../../components/EditMovieModal", () => ({
+  EditMovieModal: () => <div>EditMovieModal</div>,
+}));
+
+jest.mock("../../components/DeleteMovieModal", () => ({
+  DeleteMovieModal: () => <div>DeleteMovieModal</div>,
+}));
+
+jest.mock("../../features/moviesSlice", () => ({
+  setChoosenMovie: (param: any) => mockSetChoosenMovie(param),
+}));
+
+jest.mock("../../features/moviesSlice", () => ({
+  setMovieBannerStatus: (param: any) => mockSetMovieBannerStatus(param),
+}))
+
 
 describe("Movie component", () => {
 
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
+  beforeEach(() => {jest.clearAllMocks();});
 
   it("should render Movie component with the movie details", () => {
-    const { container } = render(
-      <Provider store={store}>
-        <Movie movie={movie} />
-      </Provider>
-    );
+    const { container } = render(<Movie movie={MOOVIE} />);
     expect(container).toMatchSnapshot();
-    // screen.debug();
   });
 
-  it("should open options modal on when clicked on the movie card", () => {
-    const { container } = render(
-      <Provider store={store}>
-        <Movie movie={movie} />
-      </Provider>
-    );
+  // it("should open options modal on when clicked on the movie card", () => {
+  //   const { container } = render(<Movie movie={MOOVIE} />);
+  //   //Click on card, modal pops up
+  //   const movieCard = screen.getByTestId("card");
+  //   fireEvent.click(movieCard);
+  //   expect(container).toMatchSnapshot();
+  // });
 
-    //divet hogy érdemes lekérni
-    const movieCard = screen.getByTestId("card");
-    fireEvent.click(movieCard);
-    expect(container).toMatchSnapshot();
-    // screen.debug();
-  });
+  // it("should open options modal on when clicked the circle on the card", () => {
+  //   const { container } = render(<Movie movie={MOOVIE} />);
+  //   //Click on circle, modal pops up
+  //   const circle = screen.getByTestId("circle");
+  //   fireEvent.click(circle);
+  //   expect(container).toMatchSnapshot();
+  // });
 
-  it("should open options modal on when clicked the circle on the card", () => {
-    const { container } = render(
-      <Provider store={store}>
-        <Movie movie={movie} />
-      </Provider>
-    );
+  // it("should open the edit modal", () => {
+  //   const { container } = render(<Movie movie={MOOVIE} />);
+  //   //Click on card, modal pops up, click on edit button -> edit modal appear
+  //   const card = screen.getByTestId("card");
+  //   fireEvent.click(card);
+  //   const editBtn = screen.getByText(/Edit/i);
+  //   fireEvent.click(editBtn);
 
-    //divet hogy érdemes lekérni
-    const circle = screen.getByTestId("card");
-    fireEvent.click(circle);
-    expect(container).toMatchSnapshot();
-    // screen.debug();
-  });
+  //   mockSetChoosenMovie.mockReturnValueOnce("movie");
+  //   expect(container).toMatchSnapshot();
+  // });
 
-  it("should open the edit modal", () => {
-    const { container } = render(
-      <Provider store={store}>
-        <Movie movie={movie} />
-      </Provider>
-    );
+  // it("should open the delete modal", () => {
+  //   const { container } = render(<Movie movie={MOOVIE} />);
+  //   //Click on card, modal pops up, click on delete button -> delete modal appear
+  //   const card = screen.getByTestId("card");
+  //   fireEvent.click(card);
+  //   const deleteBtn = screen.getByText(/Delete/i);
+  //   fireEvent.click(deleteBtn);
 
-    //divet hogy érdemes lekérni
-    const card = screen.getByTestId("card");
-    fireEvent.click(card);
-    const editBtn = screen.getByText(/Edit/i);
-    fireEvent.click(editBtn);
-    // expect(mockUseDispatch.mock.calls.length).toEqual(2);
-    // expect(mockUseDispatch).toBeCalledWith(movie);
-    expect(container).toMatchSnapshot();
-    // screen.debug();
-  });
+  //   mockSetChoosenMovie.mockReturnValueOnce("movie");
+  //   expect(container).toMatchSnapshot();
+  // });
 
-  it("should open the delete modal", () => {
-    const { container } = render(
-      <Provider store={store}>
-        <Movie movie={movie} />
-      </Provider>
-    );
+  // it("should open the info modal", () => {
+  //   const { container } = render(<Movie movie={MOOVIE} />);
+  //   //Click on card, modal pops up, click on delete button -> delete modal appear
+  //   const card = screen.getByTestId("card");
+  //   fireEvent.click(card);
+  //   const infoBtn = screen.getByText(/Info/i);
+  //   fireEvent.click(infoBtn);
 
-    //divet hogy érdemes lekérni
-    const card = screen.getByTestId("card");
-    fireEvent.click(card);
-    const deleteBtn = screen.getByText(/Delete/i);
-    fireEvent.click(deleteBtn);
-    expect(container).toMatchSnapshot();
-    // screen.debug();
-  });
+  //   mockSetChoosenMovie.mockReturnValueOnce("movie");
+  //   mockSetMovieBannerStatus.mockReturnValueOnce(true);
+  //   // expect(mockSetMovieBannerStatus.mock.calls[0][0]).toEqual(true);
+  //   // expect(mockSetMovieBannerStatus.mock.calls.length).toEqual(1);
+  //   expect(container).toMatchSnapshot();
+  // });
 
-  it("should close the options modal on card leave", () => {
-    const { container } = render(
-      <Provider store={store}>
-        <Movie movie={movie} />
-      </Provider>
-    );
 
-    //divet hogy érdemes lekérni
-    const card = screen.getByTestId("card");
-    fireEvent.click(card);
-    fireEvent.mouseOut(card);
-    expect(container).toMatchSnapshot();
-    // screen.debug();
-  });
+  // it("should close the options modal on card leave", () => {
+  //   const { container } = render(<Movie movie={MOOVIE} />);
+  //   //Click on card, modal pops up, leave card -> modal disappear
+  //   const card = screen.getByTestId("card");
+  //   fireEvent.click(card);
+  //   fireEvent.mouseOut(card);
+  //   expect(container).toMatchSnapshot();
+  // });
 });

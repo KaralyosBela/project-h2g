@@ -9,7 +9,7 @@ interface Props {
 export const AddMovieSuccessModal: React.FC<Props> = ({ close }) => {
   return (
     <>
-      <div className={classes.overlay} onClick={close} />
+      <div data-testid="overlay" className={classes.overlay} onClick={close} />
       <div className={classes.successModal}>
         <div className={classes.icon}><AiFillCheckCircle size={80}/></div>
         <h1 className={classes.title}>CONGRATULATIONS!</h1>

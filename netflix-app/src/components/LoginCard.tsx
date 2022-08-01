@@ -7,8 +7,10 @@ export const LoginCard: React.FC = () => {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  const usernameOnChange = (event: React.ChangeEvent<HTMLInputElement>) => setUsername(event.currentTarget.value);
-  const passwordOnChange = (event: React.ChangeEvent<HTMLInputElement>) => setPassword(event.currentTarget.value);
+  const usernameOnChange = (event: React.ChangeEvent<HTMLInputElement>) =>
+    setUsername(event.currentTarget.value);
+  const passwordOnChange = (event: React.ChangeEvent<HTMLInputElement>) =>
+    setPassword(event.currentTarget.value);
 
   const auth = (event: any) => {
     event.preventDefault();
@@ -21,12 +23,18 @@ export const LoginCard: React.FC = () => {
     <div className={classes.logincard}>
       <div className={classes.card}>
         <h1>LOG IN</h1>
-        <form className={classes.inputs} onSubmit={auth}>
+        <form role="form" className={classes.inputs} onSubmit={auth}>
           <label htmlFor="username">USER ID*</label>
-          <input type="text" id="username" onChange={usernameOnChange}></input>
+          <input
+            data-testid="userIdInput"
+            type="text"
+            id="username"
+            onChange={usernameOnChange}
+          ></input>
 
           <label htmlFor="password">PASSWORD*</label>
           <input
+            data-testid="passwordInput"
             type="password"
             id="password"
             onChange={passwordOnChange}
@@ -34,7 +42,11 @@ export const LoginCard: React.FC = () => {
 
           <div className={classes.action}>
             <button className={classes.resetBtn}>RESET</button>
-            <button className={classes.loginBtn} type="submit">
+            <button
+              className={classes.loginBtn}
+              data-testid="loginBtn"
+              type="submit"
+            >
               LOG IN
             </button>
           </div>

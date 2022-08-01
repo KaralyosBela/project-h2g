@@ -1,6 +1,6 @@
-import { render } from "@testing-library/react";
-import { Provider } from "react-redux";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { store } from "../../app/store";
+import { setMovieBannerStatus } from "../../features/moviesSlice";
 import { MovieBanner } from "../MovieBanner";
 
 const movie = {
@@ -20,13 +20,22 @@ const movie = {
   runtime: 126,
 };
 
+const mockDispatch = jest.fn();
+const mockUseDispatch = jest.fn();
+jest.mock("react-redux", () => ({ useDispatch: () => mockDispatch }));
+mockDispatch.mockReturnValue(mockUseDispatch);
+
 describe("Movie banner component", () => {
   it("should render movie banner", () => {
-    const { container } = render(
-      <Provider store={store}>
-        <MovieBanner movie={movie} />
-      </Provider>
-    );
+    const { container } = render(<MovieBanner movie={movie} />);
     expect(container).toMatchSnapshot();
+  });
+
+  it("should dispatch on 'searchIcon' click", () => {
+    render(<MovieBanner movie={movie} />);
+    const searchIcon = screen.getByTestId("searchIcon");
+    fireEvent.click(searchIcon);
+    expect(mockDispatch).toBeCalledTimes(1);
+    expect(mockDispatch).toHaveBeenCalledWith(setMovieBannerStatus(false));
   });
 });

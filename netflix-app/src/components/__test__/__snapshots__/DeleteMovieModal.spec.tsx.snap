@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Delete modal component shoule render component 2 1`] = `
+exports[`Delete modal component should call hide prop when overlay clicked 1`] = `
 <div>
   <div
     class="overlay"
@@ -44,7 +44,7 @@ exports[`Delete modal component shoule render component 2 1`] = `
 </div>
 `;
 
-exports[`Delete modal component shoule render component 3 1`] = `
+exports[`Delete modal component should dispatch with the correct action, then call hide prop fnc 1`] = `
 <div>
   <div
     class="overlay"
@@ -88,7 +88,7 @@ exports[`Delete modal component shoule render component 3 1`] = `
 </div>
 `;
 
-exports[`Delete modal component shoule render component correctly 1`] = `
+exports[`Delete modal component should render component correctly 1`] = `
 <div>
   <div
     class="overlay"

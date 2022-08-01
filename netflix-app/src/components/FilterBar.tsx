@@ -86,7 +86,7 @@ export const FilterBar: React.FC<Props> = ({ movieCount }) => {
         </div>
         <div className={classes.sortSection}>
           <div>Sort by</div>
-          <select
+          <select data-testid="selectInput"
             onChange={sort(2)}
           >
             {sortOptions.map((option) => (
