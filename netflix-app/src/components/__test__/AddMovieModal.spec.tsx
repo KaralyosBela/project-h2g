@@ -1,7 +1,6 @@
 import { fireEvent, getByText, render, screen } from "@testing-library/react";
 import { IMovie } from "../../interfaces/movies.interface";
 import { AddMovieModal } from "../AddMovieModal";
-import { DeleteMovieModal } from "../DeleteMovieModal";
 
 const mockDispatch = jest.fn();
 const mockAddMovie = jest.fn();
@@ -66,7 +65,6 @@ describe("Add modal component", () => {
     expect(mockHide).toBeCalledTimes(1);
     expect(mockSubmitted).toBeCalledTimes(1);
     expect(container).toMatchSnapshot();
-    console.log(mockDispatch.mock.calls);
 
   });
 

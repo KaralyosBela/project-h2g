@@ -88,8 +88,8 @@ export const EditMovieModal: React.FC<Props> = ({ hide }) => {
       setValidation({ errorMsg: "movie url error", valid: false });
     } else if (releaseDate === "") {
       setValidation({ errorMsg: "release date error", valid: false });
-    } else if (genre.length < 1) {
-      setValidation({ errorMsg: "genre error", valid: false });
+    // } else if (genre.length < 1) {
+    //   setValidation({ errorMsg: "genre error", valid: false });
     } else if (overview === "") {
       setValidation({ errorMsg: "overview error", valid: false });
     } else {
@@ -116,20 +116,21 @@ export const EditMovieModal: React.FC<Props> = ({ hide }) => {
       <div className={classes.overlay} onClick={hide} />
       <div className={classes.modal}>
         <h1>EDIT MOVIE</h1>
-        <form onSubmit={submitEdit}>
+        <form role="form" onSubmit={submitEdit}>
           <div className={classes.modalbody}>
             <div className={classes.leftside}>
               <label htmlFor="title">TITLE</label>
-              <input type="text" id="title" value={title} onChange={titleOnChange}></input>
+              <input type="text" id="title" data-testid="title" value={title} onChange={titleOnChange}></input>
               <label htmlFor="url">MOVIE URL</label>
-              <input type="text" id="url" value={movieUrl} onChange={movieUrlOnChange}></input>
+              <input type="text" id="url" data-testid="movieUrl" value={movieUrl} onChange={movieUrlOnChange}></input>
               <label htmlFor="genre">GENRE</label>
-              <Select options={options} isMulti={true} onChange={genreOnChange} styles={selectStyle}/>
+              <Select options={options} isMulti={true} onChange={genreOnChange} styles={selectStyle} 
+              defaultValue={{label: "Choose one", value: ""}}/>
             </div>
 
             <div className={classes.rightside}>
               <label htmlFor="releasedate">RELEASE DATE</label>
-              <input type="text" id="releasedate" value={releaseDate} onChange={releaseDateOnChange}></input>
+              <input type="text" id="releasedate" data-testid="relDate" value={releaseDate} onChange={releaseDateOnChange}></input>
               <label htmlFor="rating">RATING</label>
               <input type="number" id="rating" value={rating} onChange={ratingOnChange}></input>
               <label htmlFor="runtime">RUNTIME</label>
@@ -139,7 +140,7 @@ export const EditMovieModal: React.FC<Props> = ({ hide }) => {
 
           <div className={classes.overview}>
             <label htmlFor="overview">OVERVIEW</label>
-            <textarea id="overview" value={overview} onChange={overviewOnChange}></textarea>
+            <textarea id="overview" data-testid="overview "value={overview} onChange={overviewOnChange}></textarea>
           </div>
 
           {err && (

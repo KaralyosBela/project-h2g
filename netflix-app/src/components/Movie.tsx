@@ -44,8 +44,8 @@ export const Movie: React.FC<Props> = ({ movie }) => {
   };
 
   const infoModalEvent = () => {
-    dispatch(setMovieBannerStatus(true));
     dispatch(setChoosenMovie(movie));
+    dispatch(setMovieBannerStatus(true));
     toggleModal();
     window.scrollTo({ top: 0, behavior: "smooth" });
   }

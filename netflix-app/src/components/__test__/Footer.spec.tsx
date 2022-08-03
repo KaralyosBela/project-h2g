@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { Footer } from "../Footer";
-
+const add = jest.fn();
 describe("Footer component", () => {
   it("Rendered footer", () => {
     const {container} = render(<Footer />);
@@ -24,4 +24,9 @@ describe("Footer component", () => {
     const spanEl = getByTestId("span");
     expect(spanEl.textContent).toBe("netflix");
   });
+
+  it("should add", () => {
+    add.mockReturnValue(3);
+    expect(add()).toBe(3);
+  })
 });
