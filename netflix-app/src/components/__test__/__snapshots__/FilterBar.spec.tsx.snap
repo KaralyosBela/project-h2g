@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render the filterbar component correctly 1`] = `
+<div>
+  <div>
+    <div
+      class="filterBar"
+    >
+      <div
+        class="categories"
+      >
+        <button
+          class="active"
+        >
+          All
+        </button>
+        <button
+          class=""
+        >
+          Action
+        </button>
+        <button
+          class=""
+        >
+          Comedy
+        </button>
+        <button
+          class=""
+        >
+          Horror
+        </button>
+        <button
+          class=""
+        >
+          Crime
+        </button>
+      </div>
+      <div
+        class="sortSection"
+      >
+        <div>
+          Sort by
+        </div>
+        <select
+          data-testid="selectInput"
+        >
+          <option
+            value="releaseDate_ascending"
+          >
+            Release date asc
+          </option>
+          <option
+            value="releaseDate_descending"
+          >
+            Release date desc
+          </option>
+          <option
+            value="length_ascending"
+          >
+            Length asc
+          </option>
+          <option
+            value="length_descending"
+          >
+            Length desc
+          </option>
+          <option
+            value="rating_ascending"
+          >
+            Rating asc
+          </option>
+          <option
+            value="rating_descending"
+          >
+            Rating desc
+          </option>
+        </select>
+      </div>
+    </div>
+    <div
+      class="movieCounter"
+    >
+      <span>
+        10
+      </span>
+       movies found
+    </div>
+  </div>
+</div>
+`;

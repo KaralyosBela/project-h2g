@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Movie list component should render component with 1 movie element 1`] = `
+<div>
+  <div
+    class="mainSection"
+  >
+    <div
+      class="movieContainer"
+    >
+      <div>
+        Movie Component
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Movie list component should render component with 2 movie elements 1`] = `
+<div>
+  <div
+    class="mainSection"
+  >
+    <div
+      class="movieContainer"
+    >
+      <div>
+        Movie Component
+      </div>
+      <div>
+        Movie Component
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Movie list component should render component without elements 1`] = `
+<div>
+  <div
+    class="mainSection"
+  >
+    <div
+      class="movieContainer"
+    />
+  </div>
+</div>
+`;

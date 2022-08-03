@@ -90,13 +90,29 @@ select {
   color: #f65261;
   border-color: #f65261;
   background-color: #424242;
+  transition: all 0.5s ease-in-out;
 }
 
 .modal .action .submitBtn {
   color: white;
+  border: none;
   border-color: #f65261;
   background-color: #f65261;
   margin-right: 0px;
+  transition: all 0.5s ease-in-out;
+}
+
+.modal .action .submitBtn:hover {
+  color: #f65261;
+  background-color: white;
+  transition: all 0.5s ease-in-out;
+}
+
+.modal .action .resetBtn:hover {
+  color: #f65261;
+  background-color: white;
+  transition: all 0.5s ease-in-out;
+  border-color: white;
 }
 
 .modal h1 {
@@ -114,11 +130,16 @@ select {
 .modal .close {
   position: absolute;
   color: white;
-  top: 15px;
-  left: 940px;
+  top: 25px;
+  left: 925px;
   cursor: pointer;
-  font-size: 25px;
+  transition: all 0.4s ease-in ;
 }
+
+.modal .close:hover {
+  transform: rotate(180deg);
+  color: #f65261;
+ }
 
 .overlay {
   width: 100vw;
@@ -128,7 +149,23 @@ select {
   right: 0;
   bottom: 0;
   position: fixed;
-  z-index: 1;
+  z-index: 20;
   background: rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+}
+
+.modal .errorMessage {
+  background-color: #f65261;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  margin: 30px 0px;
+}
+
+.modal .errorCloseIcon {
+  position: absolute;
+  right: 70px;
   cursor: pointer;
 }

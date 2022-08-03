@@ -1,12 +1,11 @@
-import { IMovies } from "../interfaces/movies.interface";
+import { IMovie } from "../interfaces/movies.interface";
 import { Movie } from "./Movie";
 import classes from "./MovieList.module.css";
 
 interface Props {
-  moviesList: IMovies[];
+  moviesList: IMovie[];
 }
 
-//ha itt kiveszem a childrent nem mukodik
 export const MovieList: React.FC<Props> = ({ moviesList }) => {
   return (
     <div className={classes.mainSection}>

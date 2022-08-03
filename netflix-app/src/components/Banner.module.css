@@ -6,6 +6,7 @@
   flex-direction: column;
   backdrop-filter: blur(2px);
   flex-wrap: wrap;
+  margin-bottom: 10px;
 }
 
 .picture {
@@ -32,8 +33,14 @@
   display: flex;
   letter-spacing: 2px;
   justify-content: left;
-  margin: 20px 0px;
-  padding-left: 75px;
+  margin: 40px 0px;
+  font-size: 20px;
+  padding-left: 120px;
+}
+
+.title h1 {
+  margin: 0px;
+
 }
 
 .searchBar {
@@ -70,11 +77,15 @@ input {
   text-align: left;
   width: 713px;
   height: 57px;
-  opacity: 70%;
   color: white;
   background: rgba(50, 50, 50, 0.8);
   border-radius: 4px;
   margin-right: 5px;
+}
+
+.searchInput {
+  color: white;
+  opacity: 100%;
 }
 
 .searchbutton {

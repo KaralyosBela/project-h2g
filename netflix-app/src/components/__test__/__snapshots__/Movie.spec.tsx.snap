@@ -1,0 +1,395 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Movie component should close the options modal on card leave 1`] = `
+<div>
+  <div>
+    <div
+      class="card"
+      data-testid="card"
+    >
+      <div
+        class="circle"
+        data-testid="circle"
+      >
+        <div
+          class="firstDot"
+        />
+        <div
+          class="secondDot"
+        />
+        <div
+          class="thirdDot"
+        />
+      </div>
+      <img
+        alt="Not found"
+        class="image"
+        src="https://image.tmdb.org/t/p/w500/vDwphkloD7ToaDpKASAXGgHOclN.jpg"
+      />
+      <div
+        class="info"
+      >
+        <div
+          class="title"
+        >
+          Cool Hand Luke
+        </div>
+        <div
+          class="year"
+        >
+          1967-06-22
+        </div>
+      </div>
+      <div
+        class="genre"
+      >
+        Crime, Drama
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Movie component should open options modal on when clicked on the movie card 1`] = `
+<div>
+  <div>
+    <div
+      class="card"
+      data-testid="card"
+    >
+      <div
+        class="circle"
+        data-testid="circle"
+      >
+        <div
+          class="firstDot"
+        />
+        <div
+          class="secondDot"
+        />
+        <div
+          class="thirdDot"
+        />
+      </div>
+      <div
+        class="dropdownMenu"
+      >
+        <div
+          class="infoModal"
+        >
+          Info
+        </div>
+        <div
+          class="editModal"
+        >
+          Edit
+        </div>
+        <div
+          class="deleteModal"
+        >
+          Delete
+        </div>
+      </div>
+      <img
+        alt="Not found"
+        class="image"
+        src="https://image.tmdb.org/t/p/w500/vDwphkloD7ToaDpKASAXGgHOclN.jpg"
+      />
+      <div
+        class="info"
+      >
+        <div
+          class="title"
+        >
+          Cool Hand Luke
+        </div>
+        <div
+          class="year"
+        >
+          1967-06-22
+        </div>
+      </div>
+      <div
+        class="genre"
+      >
+        Crime, Drama
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Movie component should open options modal on when clicked the circle on the card 1`] = `
+<div>
+  <div>
+    <div
+      class="card"
+      data-testid="card"
+    >
+      <div
+        class="circle"
+        data-testid="circle"
+      >
+        <div
+          class="firstDot"
+        />
+        <div
+          class="secondDot"
+        />
+        <div
+          class="thirdDot"
+        />
+      </div>
+      <div
+        class="dropdownMenu"
+      >
+        <div
+          class="infoModal"
+        >
+          Info
+        </div>
+        <div
+          class="editModal"
+        >
+          Edit
+        </div>
+        <div
+          class="deleteModal"
+        >
+          Delete
+        </div>
+      </div>
+      <img
+        alt="Not found"
+        class="image"
+        src="https://image.tmdb.org/t/p/w500/vDwphkloD7ToaDpKASAXGgHOclN.jpg"
+      />
+      <div
+        class="info"
+      >
+        <div
+          class="title"
+        >
+          Cool Hand Luke
+        </div>
+        <div
+          class="year"
+        >
+          1967-06-22
+        </div>
+      </div>
+      <div
+        class="genre"
+      >
+        Crime, Drama
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Movie component should open the delete modal 1`] = `
+<div>
+  <div>
+    <div>
+      DeleteMovieModal
+    </div>
+    <div
+      class="card"
+      data-testid="card"
+    >
+      <div
+        class="circle"
+        data-testid="circle"
+      >
+        <div
+          class="firstDot"
+        />
+        <div
+          class="secondDot"
+        />
+        <div
+          class="thirdDot"
+        />
+      </div>
+      <img
+        alt="Not found"
+        class="image"
+        src="https://image.tmdb.org/t/p/w500/vDwphkloD7ToaDpKASAXGgHOclN.jpg"
+      />
+      <div
+        class="info"
+      >
+        <div
+          class="title"
+        >
+          Cool Hand Luke
+        </div>
+        <div
+          class="year"
+        >
+          1967-06-22
+        </div>
+      </div>
+      <div
+        class="genre"
+      >
+        Crime, Drama
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Movie component should open the edit modal 1`] = `
+<div>
+  <div>
+    <div>
+      EditMovieModal
+    </div>
+    <div
+      class="card"
+      data-testid="card"
+    >
+      <div
+        class="circle"
+        data-testid="circle"
+      >
+        <div
+          class="firstDot"
+        />
+        <div
+          class="secondDot"
+        />
+        <div
+          class="thirdDot"
+        />
+      </div>
+      <img
+        alt="Not found"
+        class="image"
+        src="https://image.tmdb.org/t/p/w500/vDwphkloD7ToaDpKASAXGgHOclN.jpg"
+      />
+      <div
+        class="info"
+      >
+        <div
+          class="title"
+        >
+          Cool Hand Luke
+        </div>
+        <div
+          class="year"
+        >
+          1967-06-22
+        </div>
+      </div>
+      <div
+        class="genre"
+      >
+        Crime, Drama
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Movie component should open the info modal 1`] = `
+<div>
+  <div>
+    <div
+      class="card"
+      data-testid="card"
+    >
+      <div
+        class="circle"
+        data-testid="circle"
+      >
+        <div
+          class="firstDot"
+        />
+        <div
+          class="secondDot"
+        />
+        <div
+          class="thirdDot"
+        />
+      </div>
+      <img
+        alt="Not found"
+        class="image"
+        src="https://image.tmdb.org/t/p/w500/vDwphkloD7ToaDpKASAXGgHOclN.jpg"
+      />
+      <div
+        class="info"
+      >
+        <div
+          class="title"
+        >
+          Cool Hand Luke
+        </div>
+        <div
+          class="year"
+        >
+          1967-06-22
+        </div>
+      </div>
+      <div
+        class="genre"
+      >
+        Crime, Drama
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Movie component should render Movie component 1`] = `
+<div>
+  <div>
+    <div
+      class="card"
+      data-testid="card"
+    >
+      <div
+        class="circle"
+        data-testid="circle"
+      >
+        <div
+          class="firstDot"
+        />
+        <div
+          class="secondDot"
+        />
+        <div
+          class="thirdDot"
+        />
+      </div>
+      <img
+        alt="Not found"
+        class="image"
+        src="https://image.tmdb.org/t/p/w500/vDwphkloD7ToaDpKASAXGgHOclN.jpg"
+      />
+      <div
+        class="info"
+      >
+        <div
+          class="title"
+        >
+          Cool Hand Luke
+        </div>
+        <div
+          class="year"
+        >
+          1967-06-22
+        </div>
+      </div>
+      <div
+        class="genre"
+      >
+        Crime, Drama
+      </div>
+    </div>
+  </div>
+</div>
+`;

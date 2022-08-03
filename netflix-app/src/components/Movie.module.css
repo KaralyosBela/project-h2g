@@ -1,6 +1,6 @@
 .card {
   width: 330px;
-  height: 470px;
+  height: 520px;
   display: flex;
   flex-direction: column;
   color: white;
@@ -25,12 +25,8 @@
 }
 
 .card:hover .circle {
-  transform: scale(2,2);
   transition: all 0.5s ease-in-out;
   transform: rotate(360deg);
-  transform-origin: center;
-  width: 30px;
-  height: 30px;
 }
 
 .card:hover .firstDot {
@@ -54,7 +50,7 @@
 .image {
   width: 100%;
   object-fit: cover;
-  height: 400px;
+  height: 450px;
 }  
 
 .info {
@@ -80,7 +76,7 @@
 }
 
 .circle {
-  transition: all 0.8s ease-in-out;
+  transition: all 0.3s ease-in-out;
   background-color: #F65261;
    width: 30px;
   height: 30px;
@@ -100,13 +96,13 @@
 }
 
 .firstDot {
-  transition: all 0.5s ease-in-out;
+  transition: all 0.3s ease-in-out;
   left:12.5px;
   top:12.5px
 }
 
 .secondDot{
-  transition: all 0.5s ease-in-out;
+  transition: all 0.3s ease-in-out;
   width: 8px;
   height: 8px;
   left:11px;
@@ -114,7 +110,7 @@
 }
 
 .thirdDot{
-  transition: all 0.5s ease-in-out;
+  transition: all 0.3s ease-in-out;
   left:12.5px;
   top:12.5px;
 }
@@ -131,7 +127,23 @@
   border-radius: 10px;
 }
 
-.editModal, .deleteModal {
+
+
+.editModal, .deleteModal, .infoModal {
   padding: 5px;
+  margin: 5px;
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  width: 90%;
+  text-align: center;
+}
+
+.editModal:hover ,.deleteModal:hover, .infoModal:hover {
+  color: #F65261;
+  font-weight: bold;
+  background-color: white;
+  border-radius: 5px;
+  width: 90%;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
 }
